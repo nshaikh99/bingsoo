@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571961d5_0882c319",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-13T19:11:21Z",
+      "side": 1,
+      "message": "Everything in this CMake file looks good so far!",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "c1a3e70915376b9e5243468746d96ff4d5768727",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9058285f_6da7cf0d",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-13T19:11:21Z",
+      "side": 1,
+      "message": "This skeleton code also looks correct.",
+      "revId": "c1a3e70915376b9e5243468746d96ff4d5768727",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
