@@ -44,7 +44,6 @@ int main(int argc, char* argv[])
       cerr << "Invalid port number in config file" << std::endl;
       return -1;
     }
-    // cout<<"the port num is "<<port_num<<endl;
 
     boost::asio::io_service io_service;
 
