@@ -44,12 +44,12 @@ add_library(reply src/reply.cc)
 add_executable(server src/server_main.cc)
 target_link_libraries(server session_lib server_lib Boost::system request_parser reply)
 
-# TODO(!): Update test executable name, srcs, and deps
-# add_executable(example_lib_test tests/example_lib_test.cc)
-# target_link_libraries(example_lib_test example_lib gtest_main)
+# TODO(!): Update test executable name, srcs and deps
+add_executable(request_parser_test tests/request_parser_test.cc)
+target_link_libraries(request_parser_test request_parser gtest_main)
 
 # TODO(!): Update with test binary
-# gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+gtest_discover_tests(request_parser_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 # TODO(!): Update with target/test targets
 # include(cmake/CodeCoverageReportConfig.cmake)

@@ -12,6 +12,7 @@
 #define request_parser_h
 
 #include <tuple>
+#include <iostream>
 
 struct request;
 
@@ -36,8 +37,10 @@ public:
   std::tuple<result_type, InputIterator> parse(request& req,
       InputIterator begin, InputIterator end)
   {
+    std::cout << "TEST \n";
     while (begin != end)
     {
+      std::cout << *begin;
       result_type result = consume(req, *begin++);
       if (result == good || result == bad){
         return std::make_tuple(result, begin);
