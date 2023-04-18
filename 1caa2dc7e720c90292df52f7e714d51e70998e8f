@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e0564dd_ffbed7ea",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-18T23:30:38Z",
+      "side": 1,
+      "message": "This code block looks good as well so far.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 0
+      },
+      "revId": "1caa2dc7e720c90292df52f7e714d51e70998e8f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c2619f_f4fd6b2c",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-18T23:30:38Z",
+      "side": 1,
+      "message": "This part looks good so far. Good job having it parse through a file argument",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "1caa2dc7e720c90292df52f7e714d51e70998e8f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1b1ea2e_fd9c0eb2",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-18T23:30:38Z",
+      "side": 1,
+      "message": "Remember to delete this comment if it is not needed anymore.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "1caa2dc7e720c90292df52f7e714d51e70998e8f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "189506cf_4135fc6f",
+        "filename": "tests/config_parser_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-18T23:30:38Z",
+      "side": 1,
+      "message": "These tests look correct as of the spec from Assignment 1.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 0
+      },
+      "revId": "1caa2dc7e720c90292df52f7e714d51e70998e8f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
