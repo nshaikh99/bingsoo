@@ -8,8 +8,11 @@
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
 
+using namespace std; // For atoi.
+
 #include "session.h"
 #include "server.h"
+#include "config_parser.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -24,14 +27,27 @@ int main(int argc, char* argv[])
   {
     if (argc != 2)
     {
-      std::cerr << "Usage: async_tcp_echo_server <port>\n";
+      std::cerr << "Usage: bin/server <config>\n";
       return 1;
+    }
+
+    NginxConfigParser config_parser;
+    NginxConfig config;
+    bool parsed_config = config_parser.Parse(argv[1], &config);
+    if (!parsed_config){
+      cerr << "Invalid config file" << std::endl;
+      return -1;
+    }
+
+    int port_num = config.get_port_num();
+    if (port_num == -1) {
+      cerr << "Invalid port number in config file" << std::endl;
+      return -1;
     }
 
     boost::asio::io_service io_service;
 
-    using namespace std; // For atoi.
-    server s(io_service, atoi(argv[1])); //calls the server::server(...) function in server.cc
+    server s(io_service, port_num); //calls the server::server(...) function in server.cc
 
     io_service.run();
   }
