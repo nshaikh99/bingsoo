@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2867ec2_f77fbd25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-19T05:16:02Z",
+      "side": 1,
+      "message": "Everything looks correct. It is ready to deploy now.",
+      "revId": "76aa0111f49fe3ea34278afc09fb6256c3eb7c76",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
