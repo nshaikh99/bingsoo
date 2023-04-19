@@ -56,7 +56,7 @@ void session::handle_read(const boost::system::error_code& error,
         reply_ = generate_response(data_, bytes_transferred, reply::bad_request); //loads reply with a 200 HTTP response
     }
     boost::asio::async_write(socket_,
-        boost::asio::buffer(reply_.to_buffers(), bytes_transferred),
+        reply_.to_buffers(),
         boost::bind(&session::handle_write, this,
         boost::asio::placeholders::error));
   }
