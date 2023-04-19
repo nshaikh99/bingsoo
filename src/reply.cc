@@ -247,4 +247,3 @@ reply reply::stock_reply(reply::status_type status)
   rep.headers[1].value = "text/html";
   return rep;
 }
-

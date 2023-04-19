@@ -14,7 +14,7 @@ public:
   session(boost::asio::io_service& io_service);
   tcp::socket& socket();
   void start();
-  reply generate_response(char *data_, int bytes_transferred);
+  reply generate_response(char *data_, int bytes_transferred, reply::status_type status);
 private:
   void handle_read(const boost::system::error_code& error, size_t bytes_transferred);
   void handle_write(const boost::system::error_code& error);
