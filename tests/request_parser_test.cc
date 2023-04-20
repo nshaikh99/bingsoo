@@ -19,7 +19,6 @@ TEST_F(RequestParserTestFixture, ValidRequest) {
   
   EXPECT_TRUE(success);
 }
-
 TEST_F(RequestParserTestFixture, InvalidEnding) {
   char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r";
   auto pair = req_parser.parse(req, input, input + strlen(input));
@@ -28,7 +27,6 @@ TEST_F(RequestParserTestFixture, InvalidEnding) {
   
   EXPECT_FALSE(failure);
 }
-
 TEST_F(RequestParserTestFixture, InvalidProtocol) {
   char input[1024] = "GET / FAKE/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r";
   auto pair = req_parser.parse(req, input, input + strlen(input));
@@ -37,7 +35,6 @@ TEST_F(RequestParserTestFixture, InvalidProtocol) {
   
   EXPECT_FALSE(failure);
 }
-
 TEST_F(RequestParserTestFixture, InvalidVersion) {
   char input[1024] = "GET / HTTP/1.X\r\nHost: www.test.com\r\nConnection: close\r\n\r";
   auto pair = req_parser.parse(req, input, input + strlen(input));
