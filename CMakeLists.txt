@@ -61,6 +61,7 @@ target_link_libraries(reply_test reply gtest_main Boost::system session)
 gtest_discover_tests(config_parser_test WORKING_DIRECTORY ../tests)
 gtest_discover_tests(reply_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(request_parser_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+add_test(NAME successful_get_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 
 # TODO(!): Update with target/test targets
