@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a7a257_6aa97ef3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "nit: could you please add a little more detail about what exactly the test tests? For example, is it testing for a malformed HTTP request, an error 404, etc.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685d14fe_3aee5efc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "nit: since this is the first integration test, it might be worth adding something about how we already know from our unit tests that all of the different classes and components of the source code work individually, but we want to make sure that they work together cohesively.",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 58
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44efe594_2a74fd6f",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "nit: specificity",
+      "range": {
+        "startLine": 64,
+        "startChar": 73,
+        "endLine": 64,
+        "endChar": 92
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da72046_8b25cf2a",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "nit: can you be a little more specific in the name of the test to avoid confusion if we want to add more integration tests later?",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e5ae7c_47892c71",
+        "filename": "tests/integration_test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "Can we use conf/sample.conf instead? I believe that\u0027s the one that our Google Cloud deployment uses. Same port.",
+      "range": {
+        "startLine": 4,
+        "startChar": 13,
+        "endLine": 4,
+        "endChar": 46
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35537402_a1ee163c",
+        "filename": "tests/integration_test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "nit: specificity",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4205a0b5_e53471bd",
+        "filename": "tests/integration_test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "nit: maybe add a comment explaining that you\u0027re comparing the exit code of the diff",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab2c35f_ac302479",
+        "filename": "tests/integration_test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-24T23:27:42Z",
+      "side": 1,
+      "message": "I\u0027m assuming that this command kills the web server job, but will it always have job ID #1?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "607c92234e693377a46317c00f23c77dd0f8aa4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
