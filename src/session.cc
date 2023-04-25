@@ -30,30 +30,33 @@ reply session::generate_response(char *data_, int bytes_transferred, reply::stat
   return reply_;
 }
 
-void session::start()
+bool session::start()
 {
   socket_.async_read_some(boost::asio::buffer(data_, max_length), //places data from socket stream into buffer
       boost::bind(&session::handle_read, this,                    //and passess it to handle_read
         boost::asio::placeholders::error,
         boost::asio::placeholders::bytes_transferred));
-  
+  return true;
 }
 
 //reads data from buffer and passes it to handle_write
-void session::handle_read(const boost::system::error_code& error,
+int session::handle_read(const boost::system::error_code& error,
     size_t bytes_transferred)
 {
+  int result = -1; //if result is still -1 this means an error has occured
   if (!error) 
   {
     request_parser::result_type result;
     request req;
     auto pair = req_parser_.parse(req, data_, data_ + bytes_transferred);
-    result = std::get<0>(pair); //result indicates whether the parsing was done successfully 
+    parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
 
-    if (result == request_parser::good) {
-        reply_ = generate_response(data_, bytes_transferred, reply::ok); //loads reply with a 200 HTTP response
-    } else if (result == request_parser::bad) {
-        reply_ = generate_response(data_, bytes_transferred, reply::bad_request); //loads reply with a 200 HTTP response
+    if (parse_status == request_parser::good) {
+      result = 0;
+      reply_ = generate_response(data_, bytes_transferred, reply::ok); //loads reply with a 200 HTTP response
+    } else if (parse_status == request_parser::bad) {
+      result = 1;
+      reply_ = generate_response(data_, bytes_transferred, reply::bad_request); //loads reply with a 200 HTTP response
     }
     boost::asio::async_write(socket_,
         reply_.to_buffers(),
@@ -64,6 +67,7 @@ void session::handle_read(const boost::system::error_code& error,
   {
     delete this;
   }
+  return result;
 }
 
 //writes max amount of data to stream. if there's more than max data, the rest gets sent back to handle_read
