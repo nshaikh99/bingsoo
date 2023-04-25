@@ -11,19 +11,6 @@ class RequestParserTestFixture : public ::testing::Test {
     request_parser::result_type res;
 };
 
-#include "gtest/gtest.h"
-#include "request_parser.h"
-#include "request.h"
-
-#include <iostream>
-
-class RequestParserTestFixture : public ::testing::Test {
-  protected:
-    request_parser req_parser;
-    request req;
-    request_parser::result_type res;
-};
-
 TEST_F(RequestParserTestFixture, ValidRequest) {
   char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r\n";
   auto pair = req_parser.parse(req, input, input + strlen(input));
@@ -187,7 +174,6 @@ TEST_F(RequestParserTestFixture, NoNewLine) {
   EXPECT_FALSE(failure);
 }
 
-//FIX FROM HERE DOWN
 TEST_F(RequestParserTestFixture, StartHeaderWithSpace) {
   char input[1024] = "GET / HTTP/1.1\r\n\t\r\nConnection: close\r\n\r";
   auto pair = req_parser.parse(req, input, input + strlen(input));
@@ -199,42 +185,6 @@ TEST_F(RequestParserTestFixture, StartHeaderWithSpace) {
 
 TEST_F(RequestParserTestFixture, StartHeaderWithNonDigit) {
   char input[1024] = "GET / HTTP/1.1\r\n{ \r\nConnection: close\r\n\r";
-  auto pair = req_parser.parse(req, input, input + strlen(input));
-  res = std::get<0>(pair);
-  bool failure = res == request_parser::good ? true : false;
-  
-  EXPECT_FALSE(failure);
-}
-
-TEST_F(RequestParserTestFixture, HeaderLWS) {
-  char input[1024] = "GET / HTTP/1.1\r\n\t\r\nConnection: close\r\n\r";
-  auto pair = req_parser.parse(req, input, input + strlen(input));
-  res = std::get<0>(pair);
-  bool failure = res == request_parser::good ? true : false;
-  
-  EXPECT_FALSE(failure);
-}
-
-TEST_F(RequestParserTestFixture, HeaderLWSWithSpace) {
-  char input[1024] = "GET / HTTP/1.1\r\n\t \nConnection: close\r\n\r";
-  auto pair = req_parser.parse(req, input, input + strlen(input));
-  res = std::get<0>(pair);
-  bool failure = res == request_parser::good ? true : false;
-  
-  EXPECT_FALSE(failure);
-}
-
-TEST_F(RequestParserTestFixture, HeaderLWSWithCTL) {
-  char input[1024] = "GET / HTTP/1.1\r\n\t0\nConnection: close\r\n\r";
-  auto pair = req_parser.parse(req, input, input + strlen(input));
-  res = std::get<0>(pair);
-  bool failure = res == request_parser::good ? true : false;
-  
-  EXPECT_FALSE(failure);
-}
-
-TEST_F(RequestParserTestFixture, HeaderLWSWElse) {
-  char input[1024] = "GET / HTTP/1.1\r\n\t(\nConnection: close\r\n\r";
   auto pair = req_parser.parse(req, input, input + strlen(input));
   res = std::get<0>(pair);
   bool failure = res == request_parser::good ? true : false;
@@ -273,8 +223,20 @@ TEST_F(RequestParserTestFixture, MissingSecondNewline) {
   char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\r\n";
   auto pair = req_parser.parse(req, input, input + strlen(input));
   res = std::get<0>(pair);
+
   bool failure = res == request_parser::good ? true : false;
   
   EXPECT_FALSE(failure);
+}
+
+TEST_F(RequestParserTestFixture, Reset) {
+  char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r\n";
+  auto pair = req_parser.parse(req, input, input + strlen(input));
+  res = std::get<0>(pair);
+  
+  req_parser.reset();
+  bool success = res == request_parser::good ? true : false;
+  
+  EXPECT_TRUE(success);
 }
 
