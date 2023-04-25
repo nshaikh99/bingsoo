@@ -414,6 +414,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba5ae4a_92434f2c",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T19:13:06Z",
+      "side": 1,
+      "message": "For some reason, I thought that HTTP requests could have curly braces in the header. My mistake.",
+      "parentUuid": "db8535e3_19d88f4a",
+      "range": {
+        "startLine": 201,
+        "startChar": 40,
+        "endLine": 201,
+        "endChar": 69
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2aa306a_9a3c4cc2",
@@ -721,6 +745,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94643067_44c89c16",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T19:13:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5311947f_440a5831",
+      "range": {
+        "startLine": 236,
+        "startChar": 42,
+        "endLine": 236,
+        "endChar": 47
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ba9f1d_5844e5aa",
@@ -806,6 +854,30 @@
       "side": 1,
       "message": "It was what was coded in the .cc file, so I just stuck with the notation. But, I believe it is just a \"special\" character like {, }, ;, etc.",
       "parentUuid": "4d2250e3_547c0600",
+      "range": {
+        "startLine": 245,
+        "startChar": 43,
+        "endLine": 245,
+        "endChar": 44
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1f6de1_1fbb99d3",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T19:13:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a03abb4e_39bf2490",
       "range": {
         "startLine": 245,
         "startChar": 43,
