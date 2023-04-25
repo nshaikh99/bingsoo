@@ -183,7 +183,7 @@ TEST_F(RequestParserTestFixture, StartHeaderWithSpace) {
   EXPECT_FALSE(failure);
 }
 
-TEST_F(RequestParserTestFixture, StartHeaderWithNonDigit) {
+TEST_F(RequestParserTestFixture, StartHeaderWithSpecialChar) {
   char input[1024] = "GET / HTTP/1.1\r\n{ \r\nConnection: close\r\n\r";
   auto pair = req_parser.parse(req, input, input + strlen(input));
   res = std::get<0>(pair);
@@ -220,12 +220,24 @@ TEST_F(RequestParserTestFixture, CTLforHeaderValue) {
   EXPECT_FALSE(failure);
 }
 
-TEST_F(RequestParserTestFixture, MissingSecondNewline) {
+TEST_F(RequestParserTestFixture, MissingThirdNewline) {
   char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\r\n";
   auto pair = req_parser.parse(req, input, input + strlen(input));
   res = std::get<0>(pair);
+
   bool failure = res == request_parser::good ? true : false;
   
   EXPECT_FALSE(failure);
+}
+
+TEST_F(RequestParserTestFixture, Reset) {
+  char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r\n";
+  auto pair = req_parser.parse(req, input, input + strlen(input));
+  req_parser.reset();
+  res = std::get<0>(pair);
+  
+  bool success = res == request_parser::good ? true : false;
+  
+  EXPECT_TRUE(success);
 }
 

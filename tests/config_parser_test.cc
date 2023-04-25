@@ -5,6 +5,7 @@ class NginxConfigTestFixture : public ::testing::Test {
   protected:
     NginxConfigParser parser;
     NginxConfig out_config;
+    NginxConfigStatement config_statement; 
 };
 
 TEST_F(NginxConfigTestFixture, SimpleConfig) {
@@ -65,4 +66,62 @@ TEST_F(NginxConfigTestFixture, PortNumberInvalid) {
   bool port_val = (port==-1);
 
   EXPECT_TRUE(port_val);
+}
+
+TEST_F(NginxConfigTestFixture, CommentingConfig) {
+  bool success = parser.Parse("test_configs/comment_config", &out_config);
+
+  EXPECT_TRUE(success);
+}
+
+TEST_F(NginxConfigTestFixture, DoubleSlashConfig) {
+  bool failure = parser.Parse("test_configs/double_slash_config", &out_config);
+
+  EXPECT_FALSE(failure);
+}
+
+TEST_F(NginxConfigTestFixture, WrongCharAfterQuote) {
+  bool failure = parser.Parse("test_configs/incorrect_char_after_quote_config", &out_config);
+
+  EXPECT_FALSE(failure);
+}
+
+TEST_F(NginxConfigTestFixture, UnmatchedQuote) {
+  bool failure = parser.Parse("test_configs/unmatched_quote_config", &out_config);
+
+  EXPECT_FALSE(failure);
+}
+
+TEST_F(NginxConfigTestFixture, ExtraSemicolon) {
+  bool failure = parser.Parse("test_configs/extra_semicolon_config", &out_config);
+
+  EXPECT_FALSE(failure);
+}
+
+TEST_F(NginxConfigTestFixture, BadFileConfig) {
+  bool failure = parser.Parse("test_configs/bad_file_config", &out_config);
+
+  EXPECT_FALSE(failure);
+}
+
+TEST_F(NginxConfigTestFixture, MismatchedBrackets) {
+  bool failure = parser.Parse("test_configs/mismatched_brackets_config", &out_config);
+
+  EXPECT_FALSE(failure);
+}
+
+TEST_F(NginxConfigTestFixture, ToStringTest) {
+  bool success = parser.Parse("test_configs/example_config", &out_config);
+
+  out_config.ToString(1);
+
+  EXPECT_TRUE(success);
+}
+
+TEST_F(NginxConfigTestFixture, ToStringConfigStatement) {
+  bool success = parser.Parse("test_configs/example_config", &out_config);
+
+  config_statement.ToString(1);
+
+  EXPECT_TRUE(success);
 }
