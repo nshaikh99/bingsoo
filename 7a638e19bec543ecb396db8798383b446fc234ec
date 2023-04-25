@@ -22,6 +22,30 @@
       },
       "revId": "7a638e19bec543ecb396db8798383b446fc234ec",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb13f41_15824bff",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-04-25T19:23:55Z",
+      "side": 0,
+      "message": "They were removed, since I they did not work in testing the lines that I wanted to test.",
+      "parentUuid": "17d7c097_6f8b1df2",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 1
+      },
+      "revId": "7a638e19bec543ecb396db8798383b446fc234ec",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
