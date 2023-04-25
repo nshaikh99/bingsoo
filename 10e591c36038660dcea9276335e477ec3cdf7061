@@ -177,6 +177,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c81d9b8_efcac03a",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19cc9faf_98e22d06",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 20
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f8106f6_bfff906a",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "Yes, I will fix this.",
       "parentUuid": "6f8106f6_bfff906a",
+      "range": {
+        "startLine": 192,
+        "startChar": 36,
+        "endLine": 192,
+        "endChar": 46
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a43b43_8090c907",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9331acb0_3b635005",
       "range": {
         "startLine": 192,
         "startChar": 36,
@@ -320,6 +368,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55c866c0_58e450d3",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "What I meant to say is that it might be possible that the test is failing for the wrong reason, with that reason being that there is no closing curly brace. So you could theoretically have two different tests here: one that tests to make sure that there is a closing curly brace for every open one, and one that tests to make sure that you start the header with a char.",
+      "parentUuid": "106d7e68_8c9b4d32",
+      "range": {
+        "startLine": 201,
+        "startChar": 40,
+        "endLine": 201,
+        "endChar": 69
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2aa306a_9a3c4cc2",
         "filename": "tests/request_parser_test.cc",
         "patchSetId": 6
@@ -402,6 +474,30 @@
       "side": 1,
       "message": "Ok, I will include a comment.",
       "parentUuid": "42653aad_6a03f000",
+      "range": {
+        "startLine": 218,
+        "startChar": 33,
+        "endLine": 218,
+        "endChar": 51
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc195e22_6c0decd3",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46c4b0b2_8d6c91d6",
       "range": {
         "startLine": 218,
         "startChar": 33,
@@ -508,6 +604,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6213edfa_e658d26b",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "Ok, can you please add a comment explaining that in the code?",
+      "parentUuid": "7338eb16_c6d11b9a",
+      "range": {
+        "startLine": 227,
+        "startChar": 46,
+        "endLine": 227,
+        "endChar": 49
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5cd55b1_745a180a",
         "filename": "tests/request_parser_test.cc",
         "patchSetId": 6
@@ -602,6 +722,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d2250e3_547c0600",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "I meant in the title of the test \"HeaderNameTSpecial\", what does the T signify?",
+      "parentUuid": "c51a509e_77be8a4b",
+      "range": {
+        "startLine": 245,
+        "startChar": 43,
+        "endLine": 245,
+        "endChar": 44
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1360b300_4ccd4fc9",
         "filename": "tests/request_parser_test.cc",
         "patchSetId": 6
@@ -637,6 +781,30 @@
       "side": 1,
       "message": "I will define it better in the comments.",
       "parentUuid": "1360b300_4ccd4fc9",
+      "range": {
+        "startLine": 263,
+        "startChar": 33,
+        "endLine": 263,
+        "endChar": 36
+      },
+      "revId": "10e591c36038660dcea9276335e477ec3cdf7061",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c8ba97_7fcd00cf",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T18:42:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "415a5939_442506dd",
       "range": {
         "startLine": 263,
         "startChar": 33,
