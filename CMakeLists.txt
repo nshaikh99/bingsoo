@@ -55,6 +55,8 @@ add_executable(request_parser_test tests/request_parser_test.cc)
 target_link_libraries(request_parser_test request_parser gtest_main)
 add_executable(reply_test tests/reply_test.cc)
 target_link_libraries(reply_test reply gtest_main Boost::system session)
+add_executable(session_test tests/session_test.cc)
+target_link_libraries(session_test session gtest_main Boost::system)
 
 # TODO(!): Update with test binary
 # gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
@@ -64,9 +66,10 @@ gtest_discover_tests(request_parser_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURC
 if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_get_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
+gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 
 # TODO(!): Update with target/test targets
 include(cmake/CodeCoverageReportConfig.cmake)
 # generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
-generate_coverage_report(TARGETS server session server_lib Boost::system request_parser reply config_parser_lib TESTS config_parser_test reply_test request_parser_test)
+generate_coverage_report(TARGETS server session server_lib Boost::system request_parser reply config_parser_lib TESTS config_parser_test reply_test request_parser_test session_test)
