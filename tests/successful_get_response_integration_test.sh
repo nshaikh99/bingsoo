@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start the webserver; uses port 80
-./bin/server ../conf/sample.conf &
+./build/bin/server ./conf/sample.conf &
 
 sleep 1
 # send a request to the server
