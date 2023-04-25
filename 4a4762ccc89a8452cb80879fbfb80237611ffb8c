@@ -22,6 +22,30 @@
       },
       "revId": "4a4762ccc89a8452cb80879fbfb80237611ffb8c",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ad4469_808e9fd2",
+        "filename": "docker/coverage.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-04-25T19:29:02Z",
+      "side": 0,
+      "message": "we don\u0027t need to run these in here I realize since this is a dockerfile only for the coverage report (hence why we have cmake with the coverage flag)",
+      "parentUuid": "aa630f0b_f45822de",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "4a4762ccc89a8452cb80879fbfb80237611ffb8c",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
