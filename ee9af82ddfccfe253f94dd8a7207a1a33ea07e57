@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6537e1_8ea35c64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T23:46:32Z",
+      "side": 1,
+      "message": "How was the test coverage for the file under 40% if there were no tests for session.cc?",
+      "range": {
+        "startLine": 11,
+        "startChar": 44,
+        "endLine": 11,
+        "endChar": 121
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660fdf1d_0b0e4dc2",
+        "filename": "include/session.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T23:46:32Z",
+      "side": 1,
+      "message": "Was it necessary to make this function public?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 84
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d80402_dff6c910",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T23:46:32Z",
+      "side": 1,
+      "message": "Seems like this function always returns true, which means that it would always pass the test even if the session failed to start. Under what conditions might it need to return false? Perhaps look at the tcp::socket documentation to see if the socket_.async_read() function might return a status code?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5687d799_47648c92",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T23:46:32Z",
+      "side": 1,
+      "message": "res implies response which could be confusing to anyone reading the code, can we use a more specific variable name like return_code instead?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0186ff2_a684e9ae",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T23:46:32Z",
+      "side": 1,
+      "message": "What is the purpose of having res initially set to -1? It returns either 0 or 1 in the end, so why not set it to one of those initially (probably the latter since we want it to return an error if the request does not complete successfully and set it to 0).",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3512df5_6531ced6",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T23:46:32Z",
+      "side": 1,
+      "message": "Maybe instead of having two return res statements inside of the if else statement, we could just put it at the bottom?",
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
