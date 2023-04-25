@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59846b54_02d0912c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T17:44:49Z",
+      "side": 1,
+      "message": "Can you specify in the change description that this is specifically for the test configs? Also, I think that the word folder might be more appropriate than branch since branch implies Git",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bd09da_73bee3e6",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T17:44:49Z",
+      "side": 1,
+      "message": "We might not want it to print the token type for every single token that it processes, maybe only have it print when the token type causes an error?",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 70
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c463cd8_ed5d9a2e",
+        "filename": "tests/reply_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T17:44:49Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why there are so many replies being sent and what exactly this is testing? The request in this test looks the exact same as the stock reply above.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d91cb1_16dafc74",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T17:44:49Z",
+      "side": 1,
+      "message": "I don\u0027t think that the value of your response is actually impacted by resetting the request parser since you already stored it into the res variable.",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 60
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06895324_6fa433a4",
+        "filename": "tests/test_configs/double_slash_config",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T17:44:49Z",
+      "side": 1,
+      "message": "What is the error here? Is it that there is a char after a quote or something to do with the slashes?",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 9
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe16fdb3_201b6d8b",
+        "filename": "tests/test_configs/mismatched_brackets_config",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T17:44:49Z",
+      "side": 1,
+      "message": "The brackets don\u0027t appear mismatched here.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
