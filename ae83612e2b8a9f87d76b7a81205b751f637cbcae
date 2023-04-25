@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f393b4e_4436a215",
+        "filename": "docker/coverage.Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-25T19:05:40Z",
+      "side": 1,
+      "message": "Why was this line added?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "ae83612e2b8a9f87d76b7a81205b751f637cbcae",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
