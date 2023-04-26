@@ -236,6 +236,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33583a9_260ca3eb",
+        "filename": "tests/test_configs/double_slash_config",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T01:45:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "974a3a35_f34bcb9a",
+      "range": {
+        "startLine": 2,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 9
+      },
+      "revId": "26cb8e51f0345ab290886124e0349248fa177775",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe16fdb3_201b6d8b",

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26314ee8_871242f0",
+        "filename": "tests/request_parser_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T01:45:32Z",
+      "side": 1,
+      "message": "I still don\u0027t think that the value of your response is actually impacted by resetting the request parser since you\u0027re just getting it from auto pair which is declared and initialized in the line before. I think that you need to move it one more line up.",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 21
+      },
+      "revId": "972657964418412663d15ebbc3494e4d8bf524f0",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
