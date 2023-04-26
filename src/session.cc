@@ -46,7 +46,7 @@ int session::handle_read(const boost::system::error_code& error,
   int result = -1; //if result is still -1 this means an error has occured
   if (!error) 
   {
-    request_parser::result_type result;
+    request_parser::result_type parse_status;
     request req;
     auto pair = req_parser_.parse(req, data_, data_ + bytes_transferred);
     parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
