@@ -214,6 +214,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa255045_bd5ab83b",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T02:29:25Z",
+      "side": 1,
+      "message": "I think that return true would still be hit even if handle_read fails since the boost::bind function call does not examine the return value of the handle_read function. That being said, I did some research and it doesn\u0027t seem like the boost::bind function returns any value so I don\u0027t think that there\u0027s anything that we can do to have this function return false.",
+      "parentUuid": "c84b5546_b2ea99ae",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5687d799_47648c92",
@@ -380,6 +404,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e1a133_3fd25a81",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T02:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c04a4a0_78e32e5e",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3512df5_6531ced6",
@@ -411,6 +459,24 @@
       "side": 1,
       "message": "that makes sense. ill change that",
       "parentUuid": "e3512df5_6531ced6",
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53413098_763ef669",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T02:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f19c6c1c_44bf7024",
       "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
