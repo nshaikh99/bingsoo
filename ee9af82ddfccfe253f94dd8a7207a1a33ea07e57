@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c84b5546_b2ea99ae",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-04-26T01:59:17Z",
+      "side": 1,
+      "message": "ok it seems like before \u0027return true\u0027 gets hit start() passes functionality to handle_read, so if something fails there \u0027return true\u0027 won\u0027t get hit",
+      "parentUuid": "bcbf9fdc_1b1bd8e5",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5687d799_47648c92",
         "filename": "src/session.cc",
         "patchSetId": 2
