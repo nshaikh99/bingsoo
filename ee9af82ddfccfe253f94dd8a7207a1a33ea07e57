@@ -48,6 +48,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f639bdd3_e9e6f3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T01:46:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a06e732f_5564957e",
+      "range": {
+        "startLine": 11,
+        "startChar": 44,
+        "endLine": 11,
+        "endChar": 121
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "660fdf1d_0b0e4dc2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "it\u0027s the only way for test files to call this function, and calling this function directly seems to be the only way for it to be fun under a text fixture",
       "parentUuid": "660fdf1d_0b0e4dc2",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 84
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2a6791_f69a18c5",
+        "filename": "include/session.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T01:46:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0724b6ff_a3639ba3",
       "range": {
         "startLine": 20,
         "startChar": 2,
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "0 is a good request, 1 is a bad request, and -1 means there was an error",
       "parentUuid": "d0186ff2_a684e9ae",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "ee9af82ddfccfe253f94dd8a7207a1a33ea07e57",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3362245_496f7402",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-04-26T01:46:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7030bc6_bc832f32",
       "range": {
         "startLine": 46,
         "startChar": 12,
