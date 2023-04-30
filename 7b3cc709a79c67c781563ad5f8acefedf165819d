@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6319d58_ca9b810b",
+        "filename": "src/server_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-04-30T04:39:38Z",
+      "side": 1,
+      "message": "Could we define these values in a cost or add documentation to explain what they mean?",
+      "revId": "7b3cc709a79c67c781563ad5f8acefedf165819d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7e5441_ef0e4bfc",
+        "filename": "src/server_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-04-30T04:39:38Z",
+      "side": 1,
+      "message": "could you add a bit of documentation explaining at what time point this 0,0,0 is?",
+      "revId": "7b3cc709a79c67c781563ad5f8acefedf165819d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
