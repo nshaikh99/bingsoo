@@ -23,6 +23,8 @@ using namespace std; // For atoi.
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/utility/setup/console.hpp>
 
+#include "global.h"
+
 using boost::asio::ip::tcp;
 
 int main(int argc, char* argv[])
@@ -54,13 +56,15 @@ int main(int argc, char* argv[])
     NginxConfig config;
     bool parsed_config = config_parser.Parse(argv[1], &config);
     if (!parsed_config){
-      cerr << "Invalid config file" << std::endl;
+      // cerr << "Invalid config file" << std::endl;
+      BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid config file";
       return -1;
     }
 
     int port_num = config.get_port_num();
     if (port_num == -1) {
-      cerr << "Invalid port number in config file" << std::endl;
+      // cerr << "Invalid port number in config file" << std::endl;
+      BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid port number in config file";
       return -1;
     }
 
@@ -68,18 +72,20 @@ int main(int argc, char* argv[])
 
     server s(io_service, port_num); //calls the server::server(...) function in server.cc
 
-    BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
-    BOOST_LOG_TRIVIAL(debug) << "A debug severity message";
-    BOOST_LOG_TRIVIAL(info) << "An informational severity message";
-    BOOST_LOG_TRIVIAL(warning) << "A warning severity message";
-    BOOST_LOG_TRIVIAL(error) << "An error severity message";
-    BOOST_LOG_TRIVIAL(fatal) << "A fatal severity message";
+    // Sample error messages
+    // BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "A trace severity message";
+    // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "A debug severity message";
+    // BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "An informational severity message";
+    // BOOST_LOG_TRIVIAL(warning) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::WARNING] << "A warning severity message";
+    // BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "An error severity message";
+    // BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "A fatal severity message";
 
     io_service.run();
   }
   catch (std::exception& e)
   {
-    std::cerr << "Exception: " << e.what() << "\n";
+    // std::cerr << "Exception: " << e.what() << "\n";
+    BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << e.what();
   }
 
   return 0;
