@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     );
 
     boost::log::add_file_log(
-      boost::log::keywords::file_name = "../logs/log_%N.log",
+      boost::log::keywords::file_name = "./logs/log_%N.log",
       boost::log::keywords::rotation_size = 1024 * 1024 * 10, // 1024 bytes/kilobyte * 1024 kilobytes/megabyte * 10 megabytes
       boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0), // hour 0, minute 0, second 0
       boost::log::keywords::auto_flush = true,
@@ -71,6 +71,7 @@ int main(int argc, char* argv[])
     boost::asio::io_service io_service;
 
     server s(io_service, port_num); //calls the server::server(...) function in server.cc
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
 
     // Sample error messages
     // BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "A trace severity message";
@@ -84,8 +85,8 @@ int main(int argc, char* argv[])
   }
   catch (std::exception& e)
   {
-    // std::cerr << "Exception: " << e.what() << "\n";
-    BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << e.what();
+    std::cerr << "Exception: " << e.what() << "\n";
+    // BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << e.what();
   }
 
   return 0;
