@@ -3,6 +3,7 @@
 #include "request.h"
 #include "echo_request_handler.h"
 #include "reply.h"
+#include "static_request_handler.h"
 #include <iostream>
 
 #include <boost/bind.hpp>
@@ -17,8 +18,8 @@
 using boost::asio::ip::tcp;
 using namespace std;
 
-session::session(boost::asio::io_service& io_service)
-  : socket_(io_service)
+session::session(boost::asio::io_service& io_service, std::vector<std::string> parsed_config_paths)
+  : socket_(io_service), parsed_config_paths_(parsed_config_paths)
 {
 }
 
@@ -58,7 +59,8 @@ int session::handle_read(const boost::system::error_code& error,
     auto pair = req_parser_.parse(req, data_, data_ + bytes_transferred);
     parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
     //// TODO: CHANGE THIS BOOL TO REFLECT STATIC OR ECHO
-    bool is_echo_request = true;
+    bool is_echo_request = false;
+    bool is_static_request = true;
     if (parse_status == request_parser::good) {
       result = 0;
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good request has occurred.\n";
@@ -67,12 +69,31 @@ int session::handle_read(const boost::system::error_code& error,
         Echo_Request_Handler echo_request;
         reply_ = echo_request.handleRequest(data_, bytes_transferred, reply::ok);
       }
+      else if (is_static_request){
+        bool served = false;
+        for (auto original_path : parsed_config_paths_)
+        {
+          if (original_path == req.uri)
+          {
+            std::string path_with_dot = "."+original_path;
+            Static_Request_Handler static_request = Static_Request_Handler(path_with_dot);
+            reply_ = static_request.getStaticReply(data_, bytes_transferred, reply::ok);
+            served = true;
+          }
+        }
+        if (!served)
+        {
+          reply_ = generate_response(data_, bytes_transferred, reply::bad_request);
+        }
+      }
+      else{
+        reply_ = generate_response(data_, bytes_transferred, reply::bad_request); // it should never get to this case
+      }
     } else if (parse_status == request_parser::bad) {
       result = 1;
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "400 Bad Request: A bad request has occurred.\n";
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
-
-      reply_ = generate_response(data_, bytes_transferred, reply::bad_request); //loads reply with a 200 HTTP response
+      reply_ = generate_response(data_, bytes_transferred, reply::bad_request);
     }
     boost::asio::async_write(socket_,
         reply_.to_buffers(),
@@ -112,7 +133,7 @@ std::string session::request_info()
   {
     request += "Header " + std::to_string(i) + ": " + "\n" +
           "Name: " + req.headers.at(i).name + "\n" +
-          "Value: " + req.headers.at(i).value;
+          "Value: " + req.headers.at(i).value + "\n";
   }
   
   return request;

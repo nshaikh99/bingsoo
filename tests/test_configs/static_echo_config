@@ -1,0 +1,18 @@
+server {
+    listen       7101;
+
+    static {
+        location /static/ {
+            root index.html;
+        }
+
+        location /static/ {
+            root screenshot1.png;
+        }
+    }
+
+    echo {
+        location /echo {
+        }
+    }
+}

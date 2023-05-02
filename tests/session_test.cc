@@ -8,7 +8,8 @@ using namespace std;
 class SessionTestFixture : public ::testing::Test {
   protected:
     boost::asio::io_service io_service;
-    session* new_session = new session(io_service);
+    std::vector<std::string> parsed_config_paths;
+    session* new_session = new session(io_service, parsed_config_paths);
 };
 
 TEST_F(SessionTestFixture, StartSession){
