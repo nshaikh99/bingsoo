@@ -15,7 +15,16 @@
 #include <string>
 #include <vector>
 
+#include <boost/bind.hpp>
+#include <boost/asio.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/utility/setup/console.hpp>
+
 #include "config_parser.h"
+
+#include "global.h"
 
 std::string NginxConfig::ToString(int depth) {
   std::string serialized_config;
@@ -187,7 +196,10 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     std::string token;
     token_type = ParseToken(config_file, &token);
 
-    printf ("%s: %s\n", TokenTypeAsString(token_type), token.c_str());
+    // printf ("%s: %s\n", TokenTypeAsString(token_type), token.c_str());
+
+    // log each token in the config file
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << TokenTypeAsString(token_type) << ": " << token.c_str();
 
     if (token_type == TOKEN_TYPE_ERROR) {
       break;
@@ -268,7 +280,9 @@ bool NginxConfigParser::Parse(const char* file_name, NginxConfig* config) {
   std::ifstream config_file;
   config_file.open(file_name);
   if (!config_file.good()) {
-    printf ("Failed to open config file: %s\n", file_name);
+    // printf ("Failed to open config file: %s\n", file_name);
+    BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "Failed to open config file: " << file_name;
+
     return false;
   }
 

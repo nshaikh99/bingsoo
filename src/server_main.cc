@@ -27,6 +27,14 @@ using namespace std; // For atoi.
 
 using boost::asio::ip::tcp;
 
+void handler(const boost::system::error_code& error, int signum)
+{
+  std::cout << "Terminated program with signal: " << signum << std::endl;
+  BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Terminated program with signal: " << signum;
+
+  exit(signum); // Terminate program
+}
+
 int main(int argc, char* argv[])
 {
   try
@@ -75,6 +83,9 @@ int main(int argc, char* argv[])
     server s(io_service, port_num); //calls the server::server(...) function in server.cc
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
 
+    boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
+    signals.async_wait(handler);
+
     // Sample error messages
     // BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "A trace severity message";
     // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "A debug severity message";
@@ -93,3 +104,4 @@ int main(int argc, char* argv[])
 
   return 0;
 }
+
