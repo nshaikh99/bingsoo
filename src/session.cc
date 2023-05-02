@@ -1,6 +1,7 @@
 #include "session.h"
 #include "request_parser.h"
 #include "request.h"
+#include "echo_request_handler.h"
 #include <iostream>
 
 #include <boost/bind.hpp>
@@ -50,10 +51,14 @@ int session::handle_read(const boost::system::error_code& error,
     request req;
     auto pair = req_parser_.parse(req, data_, data_ + bytes_transferred);
     parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
-
+    //// TODO: CHANGE THIS BOOL TO REFLECT STATIC OR ECHO
+    bool is_echo_request = true;
     if (parse_status == request_parser::good) {
       result = 0;
-      reply_ = generate_response(data_, bytes_transferred, reply::ok); //loads reply with a 200 HTTP response
+      if (is_echo_request){
+        Echo_Request_Handler echo_request;
+        reply_ = echo_request.handleRequest(data_, bytes_transferred, reply::ok);
+      }
     } else if (parse_status == request_parser::bad) {
       result = 1;
       reply_ = generate_response(data_, bytes_transferred, reply::bad_request); //loads reply with a 200 HTTP response
