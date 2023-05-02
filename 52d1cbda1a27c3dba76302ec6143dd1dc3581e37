@@ -36,6 +36,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "699fc276_5500e169",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-02T00:04:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "772e7185_4d5e6795",
+      "revId": "52d1cbda1a27c3dba76302ec6143dd1dc3581e37",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f37372c8_35d67cda",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "The Boost logger is instantiated within the try block, so if the code were to fail and go to the catch block, then the logger wouldn\u0027t be in scope anymore, and the line would result in an error.",
       "parentUuid": "f37372c8_35d67cda",
+      "revId": "52d1cbda1a27c3dba76302ec6143dd1dc3581e37",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3ec906_1a0b6610",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-02T00:04:55Z",
+      "side": 1,
+      "message": "is it possible to initiate it before the try block",
+      "parentUuid": "062fcc1e_f09999b0",
       "revId": "52d1cbda1a27c3dba76302ec6143dd1dc3581e37",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
