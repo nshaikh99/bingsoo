@@ -12,13 +12,13 @@
 #include <string>
 
 const std::string ok =
-  "HTTP/1.1 200 OK\r\n";
+  "HTTP/1.0 200 OK\r\n";
 const std::string bad_request =
-  "HTTP/1.1 400 Bad Request\r\n";
+  "HTTP/1.0 400 Bad Request\r\n";
 const std::string not_found = 
-  "HTTP/1.1 404 Not Found\r\n";
+  "HTTP/1.0 404 Not Found\r\n";
 const std::string internal_server_error =
-  "HTTP/1.1 500 Internal Server Error\r\n";
+  "HTTP/1.0 500 Internal Server Error\r\n";
 
 boost::asio::const_buffer to_buffer(reply::status_type status)
 {
@@ -73,6 +73,11 @@ const char not_found[] =
   "<body><h1>404 Not Found</h1></body>"
   "</html>";
 
+const char server_error[] =
+  "<html>"
+  "<head><title>Internal Server Error</title></head>"
+  "<body><h1>500 Internal Server Error</h1></body>"
+  "</html>";
 }
 
 reply reply::stock_reply(reply::status_type status)
@@ -82,13 +87,16 @@ reply reply::stock_reply(reply::status_type status)
   switch (status)
   {
     case reply::ok:
-      rep.content = ok;
+      rep.content = stock_replies::ok;
       break;
     case reply::bad_request:
-      rep.content = bad_request;
+      rep.content = stock_replies::bad_request;
       break;
     case reply::not_found:
-      rep.content = not_found;
+      rep.content = stock_replies::not_found;
+      break;
+    case reply::internal_server_error:
+      rep.content = stock_replies::server_error;
       break;
   }
   rep.headers.resize(2);

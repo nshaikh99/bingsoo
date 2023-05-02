@@ -35,18 +35,19 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 include_directories(include)
 
 # TODO(!): Update name and srcs
-add_library(session src/session.cc src/request_parser.cc src/reply.cc src/echo_request_handler.cc)
+add_library(session src/session.cc src/request_parser.cc src/reply.cc src/echo_request_handler.cc src/static_request_handler.cc)
 add_library(server_lib src/server.cc src/session.cc)
 add_library(request_parser src/request_parser.cc)
 add_library(reply src/reply.cc)
 add_library(config_parser_lib src/config_parser.cc)
 add_library(echo_request_handler src/echo_request_handler.cc)
+add_library(static_request_handler src/static_request_handler.cc)
 target_link_libraries(server_lib session config_parser_lib reply request_parser Boost::log_setup Boost::log)
 
 
 # TODO(!): Update executable name, srcs, and deps
 add_executable(server src/server_main.cc)
-target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler config_parser_lib Boost::log_setup Boost::log)
+target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler config_parser_lib Boost::log_setup Boost::log)
 
 # TODO(!): Update test executable name, srcs, and deps
 # add_executable(example_lib_test tests/example_lib_test.cc)
