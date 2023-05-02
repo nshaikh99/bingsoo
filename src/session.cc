@@ -6,6 +6,12 @@
 
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/utility/setup/console.hpp>
+
+#include "global.h"
 
 using boost::asio::ip::tcp;
 using namespace std;
@@ -48,19 +54,23 @@ int session::handle_read(const boost::system::error_code& error,
   if (!error) 
   {
     request_parser::result_type parse_status;
-    request req;
     auto pair = req_parser_.parse(req, data_, data_ + bytes_transferred);
     parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
     //// TODO: CHANGE THIS BOOL TO REFLECT STATIC OR ECHO
     bool is_echo_request = true;
     if (parse_status == request_parser::good) {
       result = 0;
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Good Request.\n";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
       if (is_echo_request){
         Echo_Request_Handler echo_request;
         reply_ = echo_request.handleRequest(data_, bytes_transferred, reply::ok);
       }
     } else if (parse_status == request_parser::bad) {
       result = 1;
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Bad Request.\n";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
+
       reply_ = generate_response(data_, bytes_transferred, reply::bad_request); //loads reply with a 200 HTTP response
     }
     boost::asio::async_write(socket_,
@@ -89,4 +99,20 @@ void session::handle_write(const boost::system::error_code& error)
   {
     delete this;
   }
+}
+
+std::string session::request_info()
+{
+  std::string request = "Method: " + req.method + "\n" +
+                        "Uri: " + req.uri + "\n" +
+                        "HTTP Version: " + std::to_string(req.http_version_major) + "." +
+                        std::to_string(req.http_version_minor) + "\n";
+  for (int i = 0; i < req.headers.size(); i++) 
+  {
+    request += "Header " + std::to_string(i) + ": " + "\n" +
+          "Name: " + req.headers.at(i).name + "\n" +
+          "Value: " + req.headers.at(i).value;
+  }
+  
+  return request;
 }
