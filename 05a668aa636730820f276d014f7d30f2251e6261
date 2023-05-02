@@ -36,6 +36,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccc1e2d_ec45e942",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-02T18:29:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "438d7c8b_eb552ed7",
+      "revId": "05a668aa636730820f276d014f7d30f2251e6261",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6530b5b_9a6cef74",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Ok, I will add the HTTP code in for 200 and 400. I\u0027ll add the 404 Not Found logging later when the static server part is finished.",
       "parentUuid": "b6530b5b_9a6cef74",
+      "revId": "05a668aa636730820f276d014f7d30f2251e6261",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16826c6_138a17ec",
+        "filename": "src/session.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-02T18:29:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "902ea2b9_8f347099",
       "revId": "05a668aa636730820f276d014f7d30f2251e6261",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
