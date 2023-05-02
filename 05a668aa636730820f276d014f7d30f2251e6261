@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "438d7c8b_eb552ed7",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-02T18:17:08Z",
+      "side": 1,
+      "message": "Yes, I will change the message.",
+      "parentUuid": "4fec17cf_7a72334c",
+      "revId": "05a668aa636730820f276d014f7d30f2251e6261",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6530b5b_9a6cef74",
         "filename": "src/session.cc",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-02T17:55:19Z",
       "side": 1,
       "message": "we have to add a \u0027not found\u0027 request error later so maybe include the HTTP code int the logging. (200 for good, 400 for bad, and 404 when we implement not found)",
+      "revId": "05a668aa636730820f276d014f7d30f2251e6261",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902ea2b9_8f347099",
+        "filename": "src/session.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-02T18:17:08Z",
+      "side": 1,
+      "message": "Ok, I will add the HTTP code in for 200 and 400. I\u0027ll add the 404 Not Found logging later when the static server part is finished.",
+      "parentUuid": "b6530b5b_9a6cef74",
       "revId": "05a668aa636730820f276d014f7d30f2251e6261",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
