@@ -316,3 +316,64 @@ int NginxConfig::get_port_num(){
   }
   return -1;
 }
+
+std::vector<std::string> NginxConfig::get_static_file_path(){
+  std::vector<std::string> paths_vec;
+  for (const auto& statement : statements_) {
+    if (statement->tokens_[0] == "server") {
+      for (auto config_statement : statement -> child_block_ -> statements_) {
+        if (config_statement->child_block_.get() != nullptr &&  config_statement->tokens_[0] == "static") {
+          for (auto static_statements : config_statement->child_block_->statements_) {
+              if (static_statements->child_block_.get() != nullptr) {
+                if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") {
+                  for (auto loc_statement : static_statements->child_block_->statements_)
+                  {
+                    if (loc_statement->tokens_[0] == "root" && 
+                      loc_statement->tokens_.size() == 2)         
+                    {
+                      std::string result_file_path = static_statements->tokens_[1] + loc_statement->tokens_[1];
+                      paths_vec.push_back(result_file_path);
+                    }
+                  } 
+                }
+              }
+            }
+          return paths_vec;
+        }
+      }
+    }
+  }
+  return paths_vec;
+}
+
+std::string NginxConfig::get_echo_path(){
+  std::string paths_str;
+  for (const auto& statement : statements_) {
+    if (statement->tokens_[0] == "server") {
+      for (auto config_statement : statement -> child_block_ -> statements_) {
+        if (config_statement->child_block_.get() != nullptr &&  config_statement->tokens_[0] == "echo") {
+          for (auto static_statements : config_statement->child_block_->statements_) {
+              if (static_statements->child_block_.get() == nullptr) {
+                if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") { 
+                  paths_str = static_statements->tokens_[1];
+                  return paths_str;
+                }
+              }
+            }
+          return paths_str;
+        }
+      }
+    }
+  }
+  return paths_str;
+}
+
+bool NginxConfig::is_echo(){
+  std::string echo_in_config = get_echo_path();
+  return echo_in_config != "";
+}
+
+bool NginxConfig::is_static(){
+  std::vector<std::string> static_in_config = get_static_file_path();
+  return static_in_config.size() > 0;
+}
