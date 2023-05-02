@@ -105,6 +105,24 @@
       "parentUuid": "062fcc1e_f09999b0",
       "revId": "52d1cbda1a27c3dba76302ec6143dd1dc3581e37",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ab5ccd_114c480c",
+        "filename": "src/server_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-02T00:05:50Z",
+      "side": 1,
+      "message": "It is but I would not recommend it because we would not be able to catch any errors with the Boost library.",
+      "parentUuid": "5f3ec906_1a0b6610",
+      "revId": "52d1cbda1a27c3dba76302ec6143dd1dc3581e37",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
