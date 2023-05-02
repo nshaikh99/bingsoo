@@ -5,6 +5,7 @@
 #include <boost/asio.hpp>
 #include "reply.h"
 #include "request_parser.h"
+#include "request.h"
 
 using boost::asio::ip::tcp;
 
@@ -18,11 +19,13 @@ public:
   enum { max_length = 1024 };
   char data_[max_length];
   int handle_read(const boost::system::error_code& error, size_t bytes_transferred);
+  std::string request_info();
 private:
   void handle_write(const boost::system::error_code& error);
   tcp::socket socket_;
   reply reply_;
   request_parser req_parser_;
+  request req;
 };
 
 #endif

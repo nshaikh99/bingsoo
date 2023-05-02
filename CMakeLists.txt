@@ -29,7 +29,7 @@ add_subdirectory(/usr/src/googletest googletest)
 # Enable Boost
 # Use static libraries so binaries can be deployed without a full boost install
 set(Boost_USE_STATIC_LIBS ON)
-find_package(Boost 1.50 REQUIRED COMPONENTS system log log_setup)
+find_package(Boost 1.50 REQUIRED COMPONENTS system log_setup log)
 message(STATUS "Boost version: ${Boost_VERSION}")
 
 include_directories(include)
@@ -41,6 +41,7 @@ add_library(request_parser src/request_parser.cc)
 add_library(reply src/reply.cc)
 add_library(config_parser_lib src/config_parser.cc)
 add_library(echo_request_handler src/echo_request_handler.cc)
+target_link_libraries(server_lib session config_parser_lib reply request_parser Boost::log_setup Boost::log)
 
 
 # TODO(!): Update executable name, srcs, and deps
@@ -52,12 +53,19 @@ target_link_libraries(server session server_lib Boost::system request_parser rep
 # target_link_libraries(example_lib_test example_lib gtest_main)
 add_executable(config_parser_test tests/config_parser_test.cc)
 target_link_libraries(config_parser_test config_parser_lib gtest_main)
+target_link_libraries(config_parser_test Boost::log Boost::log_setup)
+
 add_executable(request_parser_test tests/request_parser_test.cc)
 target_link_libraries(request_parser_test request_parser gtest_main)
+
 add_executable(reply_test tests/reply_test.cc)
-target_link_libraries(reply_test reply gtest_main Boost::system session)
+target_link_libraries(reply_test reply gtest_main)
+target_link_libraries(reply_test session Boost::log Boost::log_setup)
+
 add_executable(session_test tests/session_test.cc)
-target_link_libraries(session_test session gtest_main Boost::system)
+target_link_libraries(session_test session gtest_main)
+target_link_libraries(session_test Boost::log Boost::log_setup)
+
 
 # TODO(!): Update with test binary
 # gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)

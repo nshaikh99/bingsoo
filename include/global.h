@@ -7,4 +7,4 @@ enum LOG_MESSAGE_TYPE {
     FATAL
 };
 
-string LOG_MESSAGE_TYPES[6] = {"(Trace)", "(Debug)", "(Info)", "(Warning)", "(Error)", "(Fatal)"};
+inline std::string LOG_MESSAGE_TYPES[6] = {"(Trace)", "(Debug)", "(Info)", "(Warning)", "(Error)", "(Fatal)"};
