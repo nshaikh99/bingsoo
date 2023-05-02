@@ -7,7 +7,11 @@ class ReplyTestFixture : public ::testing::Test {
   protected:
     reply rep;
     boost::asio::io_service io_service;
-    session* new_session = new session(io_service);
+    std::vector<std::string> parsed_config_paths;
+    bool is_echo = true;
+    bool is_static = true;
+    std::string echo_path = "/echo";
+    session* new_session = new session(io_service, parsed_config_paths, echo_path, is_echo, is_static);
 };
 
 TEST_F(ReplyTestFixture, ValidRequest) {

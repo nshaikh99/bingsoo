@@ -21,6 +21,10 @@ class NginxConfig {
   std::string ToString(int depth = 0);
   std::vector<std::shared_ptr<NginxConfigStatement>> statements_;
   int get_port_num();
+  std::vector<std::string> get_static_file_path();
+  std::string get_echo_path();
+  bool is_echo();
+  bool is_static();
 };
 
 // The driver that parses a config file and generates an NginxConfig.
