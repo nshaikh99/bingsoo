@@ -316,3 +316,33 @@ int NginxConfig::get_port_num(){
   }
   return -1;
 }
+
+std::vector<std::string> NginxConfig::get_static_file_path(){
+  std::vector<std::string> paths_vec;
+  for (auto config_statement : statements_) {
+    if (config_statement->child_block_.get() != nullptr &&  config_statement->tokens_[0] == "static") {
+      for (auto static_statements : config_statement->child_block_->statements_) {
+          if (static_statements->child_block_.get() != nullptr) {
+            if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") {
+              for (auto loc_statement : static_statements->child_block_->statements_)
+              {
+                if (static_statements->child_block_.get() != nullptr && loc_statement->tokens_[0] == "root" && 
+                  loc_statement->tokens_.size() == 2)         
+                {
+                  std::string result_file_path = static_statements->tokens_[1] + loc_statement->tokens_[1];
+                  paths_vec.push_back(result_file_path);
+                }
+              } 
+            }
+          }
+        }
+      return paths_vec;
+    }
+    else if (config_statement->child_block_.get() != nullptr) {
+      // recurse through nested blocks to find the inner block with the static path
+      paths_vec = config_statement -> child_block_ -> get_static_file_path();
+      return paths_vec;
+    }
+  }
+  return paths_vec;
+}
