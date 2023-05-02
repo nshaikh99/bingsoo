@@ -70,6 +70,7 @@ int main(int argc, char* argv[])
     }
 
     int port_num = config.get_port_num();
+    std::vector<std::string> parsed_config_paths = config.get_static_file_path();
     if (port_num == -1) {
       // cerr << "Invalid port number in config file" << std::endl;
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid port number in config file";
@@ -80,7 +81,7 @@ int main(int argc, char* argv[])
 
     boost::asio::io_service io_service;
 
-    server s(io_service, port_num); //calls the server::server(...) function in server.cc
+    server s(io_service, port_num, parsed_config_paths); //calls the server::server(...) function in server.cc
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
 
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);

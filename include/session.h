@@ -12,7 +12,7 @@ using boost::asio::ip::tcp;
 class session
 {
 public:
-  session(boost::asio::io_service& io_service);
+  session(boost::asio::io_service& io_service, std::vector<std::string> parsed_config_paths);
   tcp::socket& socket();
   bool start();
   reply generate_response(char *data_, int bytes_transferred, reply::status_type status);
@@ -26,6 +26,7 @@ private:
   reply reply_;
   request_parser req_parser_;
   request req;
+  std::vector<std::string> parsed_config_paths_;
 };
 
 #endif
