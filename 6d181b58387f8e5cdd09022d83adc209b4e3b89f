@@ -18,6 +18,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cdff41_bdf482cb",
+        "filename": "conf/sample.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-03T05:32:29Z",
+      "side": 1,
+      "message": "these are hardcoded for testing; root is where the file is located. roots can be nested",
+      "parentUuid": "73da37af_ed9e44b4",
+      "revId": "6d181b58387f8e5cdd09022d83adc209b4e3b89f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dddf615_441223a4",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-03T05:18:40Z",
       "side": 1,
       "message": "if we\u0027re using internal_server_error it should be added to \u0027to_buffer\u0027 and \u0027stock_reply\u0027",
+      "revId": "6d181b58387f8e5cdd09022d83adc209b4e3b89f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c682b59_57e127c5",
+        "filename": "src/reply.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-03T05:32:29Z",
+      "side": 1,
+      "message": "it is already in to_buffer. I\u0027ll add it to stock reply",
+      "parentUuid": "3dddf615_441223a4",
       "revId": "6d181b58387f8e5cdd09022d83adc209b4e3b89f",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
