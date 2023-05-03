@@ -24,6 +24,7 @@ struct reply
   {
     ok = 200,
     bad_request = 400,
+    not_found = 404,
   } status;
 
   /// The headers to be included in the reply.
