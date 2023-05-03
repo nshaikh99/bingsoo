@@ -2,6 +2,7 @@
 #include "request_parser.h"
 #include "request.h"
 #include "echo_request_handler.h"
+#include "reply.h"
 #include <iostream>
 
 #include <boost/bind.hpp>
