@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73da37af_ed9e44b4",
+        "filename": "conf/sample.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-03T05:18:40Z",
+      "side": 1,
+      "message": "are these hard coded for testing purposes? shouldn\u0027t root just be the directory where the files are",
+      "revId": "6d181b58387f8e5cdd09022d83adc209b4e3b89f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dddf615_441223a4",
+        "filename": "src/reply.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-03T05:18:40Z",
+      "side": 1,
+      "message": "if we\u0027re using internal_server_error it should be added to \u0027to_buffer\u0027 and \u0027stock_reply\u0027",
+      "revId": "6d181b58387f8e5cdd09022d83adc209b4e3b89f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
