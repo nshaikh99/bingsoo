@@ -64,6 +64,9 @@ int session::handle_read(const boost::system::error_code& error,
     if (parse_status == request_parser::good) {
       bool echoed = false;
       result = 0;
+
+      // Client IP address
+      BOOST_LOG_TRIVIAL(info) << "Client IP: " << socket_.remote_endpoint().address().to_string() << std::endl;
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good request has occurred.\n";
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
       if (is_echo_request){
@@ -98,6 +101,7 @@ int session::handle_read(const boost::system::error_code& error,
       }
     } else if (parse_status == request_parser::bad) {
       result = 1;
+      BOOST_LOG_TRIVIAL(info) << "Client IP: " << socket_.remote_endpoint().address().to_string() << std::endl;
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "400 Bad Request: A bad request has occurred.\n";
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
       reply_ = generate_response(data_, bytes_transferred, reply::bad_request);
