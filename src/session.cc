@@ -94,7 +94,7 @@ int session::handle_read(const boost::system::error_code& error,
           {
             std::string path_with_dot = "."+original_path;
             Static_Request_Handler static_request = Static_Request_Handler(path_with_dot);
-            reply_ = static_request.getStaticReply(data_, bytes_transferred, reply::ok);
+            reply_ = static_request.handleRequest(data_, bytes_transferred, reply::ok);
             served = true;
           }
         }
