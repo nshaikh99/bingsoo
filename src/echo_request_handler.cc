@@ -5,7 +5,7 @@
 Echo_Request_Handler::Echo_Request_Handler() = default;
 
 
-reply Echo_Request_Handler::handleRequest(char* data, size_t bytes_transferred, reply::status_type status){
+reply Echo_Request_Handler::handleRequest(char* data, int bytes_transferred, reply::status_type status){
   using namespace std;
   reply_.status = status;
   reply_.content = string(data, bytes_transferred);
