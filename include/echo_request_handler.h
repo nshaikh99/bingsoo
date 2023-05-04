@@ -2,14 +2,12 @@
 #define echo_request_handler_h
 
 #include <string>
+#include "request_handler.h"
 #include "reply.h"
 
-class Echo_Request_Handler{
+class Echo_Request_Handler : public Request_Handler{
     public:
-        Echo_Request_Handler();
         reply handleRequest(char* data, int bytes_transferred, reply::status_type status);
-    private:
-        reply reply_;
 };
 
-#endif // echo_request_handler_h
+#endif // echo_request_handler_h 
