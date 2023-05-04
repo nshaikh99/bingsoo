@@ -2,9 +2,6 @@
 #include "reply.h"
 #include <string>
 
-Echo_Request_Handler::Echo_Request_Handler() = default;
-
-
 reply Echo_Request_Handler::handleRequest(char* data, int bytes_transferred, reply::status_type status){
   using namespace std;
   reply_.status = status;

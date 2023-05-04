@@ -36,7 +36,7 @@ Static_Request_Handler::Static_Request_Handler(std::string file_path){
     file_path_ = file_path;
 }
 
-reply Static_Request_Handler::getStaticReply(char* data, size_t bytes_transferred, reply::status_type status){
+reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred, reply::status_type status){
     std::ifstream static_file(file_path_.c_str(), std::ios::in | std::ios::binary);
     if (!static_file)
     {
