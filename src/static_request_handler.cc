@@ -36,7 +36,7 @@ Static_Request_Handler::Static_Request_Handler(std::string file_path){
     file_path_ = file_path;
 }
 
-reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred, reply::status_type status){
+reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred){
     std::ifstream static_file(file_path_.c_str(), std::ios::in | std::ios::binary);
     if (!static_file)
     {
@@ -59,7 +59,7 @@ reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred, r
     }
     static_file.close();
 
-    reply_.status = status;
+    reply_.status = reply::ok;
     reply_.content = file_contents;
     header length_header = {"Content-Length", std::to_string(file_contents.length())};
     header type_header = {"Content-Type", extension_type_map(ext_type)};
