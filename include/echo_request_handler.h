@@ -7,7 +7,7 @@
 
 class Echo_Request_Handler : public Request_Handler{
     public:
-        reply handleRequest(char* data, int bytes_transferred, reply::status_type status);
+        reply handleRequest(char* data, int bytes_transferred);
 };
 
 #endif // echo_request_handler_h 

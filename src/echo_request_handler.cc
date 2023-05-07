@@ -2,9 +2,9 @@
 #include "reply.h"
 #include <string>
 
-reply Echo_Request_Handler::handleRequest(char* data, int bytes_transferred, reply::status_type status){
+reply Echo_Request_Handler::handleRequest(char* data, int bytes_transferred){
   using namespace std;
-  reply_.status = status;
+  reply_.status = reply::ok;
   reply_.content = string(data, bytes_transferred);
   header length_header = {"Content-Length", to_string(bytes_transferred)};
   header type_header = {"Content-Type", "text/plain"};
