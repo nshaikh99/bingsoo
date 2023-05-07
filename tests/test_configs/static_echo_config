@@ -1,5 +1,5 @@
 server {
-    listen       7101;
+    listen       8086;
     
     echo {
         location /echo;
