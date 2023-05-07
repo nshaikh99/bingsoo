@@ -6,8 +6,7 @@
 
 class Request_Handler {
     public:
-        virtual reply handleRequest(char* data, int bytes_transferred, reply::status_type status) = 0;
-        virtual ~Request_Handler(){}
+        virtual reply handleRequest(char* data, int bytes_transferred) = 0;
     protected:
         reply reply_;
 };
