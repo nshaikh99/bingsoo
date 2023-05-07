@@ -6,20 +6,17 @@
 
 using boost::asio::ip::tcp;
 
-server::server(boost::asio::io_service& io_service, short port, std::vector<std::string> parsed_config_paths, std::string echo_path, bool is_echo, bool is_static)
+server::server(boost::asio::io_service& io_service, short port, NginxConfig config)
   : io_service_(io_service),
     acceptor_(io_service, tcp::endpoint(tcp::v4(), port)),
-    parsed_config_paths_(parsed_config_paths),
-    echo_path_(echo_path),
-    is_echo_(is_echo),
-    is_static_(is_static)
+    config_(config)
 {
   start_accept();
 }
 
 void server::start_accept()
 {
-  session* new_session = new session(io_service_, parsed_config_paths_, echo_path_, is_echo_, is_static_); //initializes a tcp socket in member var socket_
+  session* new_session = new session(io_service_, config_); //initializes a tcp socket in member var socket_
   acceptor_.async_accept(new_session->socket(), //starts an asynchronous accept for incoming requests 
       boost::bind(&server::handle_accept, this, new_session,
         boost::asio::placeholders::error));
