@@ -12,7 +12,7 @@ using namespace std; // For atoi.
 
 #include "session.h"
 #include "server.h"
-#include "config_parser.h"
+// #include "config_parser.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -62,6 +62,7 @@ int main(int argc, char* argv[])
 
     NginxConfigParser config_parser;
     NginxConfig config;
+    std::cout << "ARGV" << argv[1] << std::endl;
     bool parsed_config = config_parser.Parse(argv[1], &config);
     if (!parsed_config){
       // cerr << "Invalid config file" << std::endl;
@@ -70,10 +71,10 @@ int main(int argc, char* argv[])
     }
 
     int port_num = config.get_port_num();
-    std::vector<std::string> parsed_config_paths = config.get_static_file_path();
-    std::string echo_path = config.get_echo_path();
-    bool is_echo = config.is_echo();
-    bool is_static = config.is_static();
+    // std::vector<std::string> parsed_config_paths = config.get_static_file_path();
+    // std::string echo_path = config.get_echo_path();
+    // bool is_echo = config.is_echo();
+    // bool is_static = config.is_static();
     if (port_num == -1) {
       // cerr << "Invalid port number in config file" << std::endl;
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid port number in config file";
@@ -84,7 +85,8 @@ int main(int argc, char* argv[])
 
     boost::asio::io_service io_service;
 
-    server s(io_service, port_num, parsed_config_paths, echo_path, is_echo, is_static); //calls the server::server(...) function in server.cc
+    // server s(io_service, port_num, parsed_config_paths, echo_path, is_echo, is_static); //calls the server::server(...) function in server.cc
+    server s(io_service, port_num, config); //calls the server::server(...) function in server.cc
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
 
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);

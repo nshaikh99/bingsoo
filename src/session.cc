@@ -17,9 +17,11 @@
 using boost::asio::ip::tcp;
 using namespace std;
 
-session::session(boost::asio::io_service& io_service, std::vector<std::string> parsed_config_paths, std::string echo_path, bool is_echo, bool is_static)
-  : socket_(io_service), parsed_config_paths_(parsed_config_paths), echo_path_(echo_path), 
-  is_echo_(is_echo),is_static_(is_static)
+// session::session(boost::asio::io_service& io_service, std::vector<std::string> parsed_config_paths, std::string echo_path, bool is_echo, bool is_static)
+//   : socket_(io_service), parsed_config_paths_(parsed_config_paths), echo_path_(echo_path), 
+//   is_echo_(is_echo),is_static_(is_static)
+session::session(boost::asio::io_service& io_service, NginxConfig config)
+  : socket_(io_service), config_(config)
 {
 }
 
@@ -59,8 +61,10 @@ int session::handle_read(const boost::system::error_code& error,
     auto pair = req_parser_.parse(req, data_, data_ + bytes_transferred);
     parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
 
-    bool is_echo_request = is_echo_;
-    bool is_static_request = is_static_;
+    // bool is_echo_request = is_echo_;
+    // bool is_static_request = is_static_;
+    bool is_echo_request = config_.is_echo();
+    bool is_static_request = config_.is_static();
     if (parse_status == request_parser::good) {
       bool echoed = false;
       result = 0;
@@ -78,6 +82,7 @@ int session::handle_read(const boost::system::error_code& error,
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
       if (is_echo_request){
         // echo reply case
+        std::string echo_path_ = config_.get_echo_path();
         if (echo_path_ == req.uri)
         {
           Echo_Request_Handler echo_request;
@@ -87,6 +92,7 @@ int session::handle_read(const boost::system::error_code& error,
       }
       if (is_static_request) {
         // static reply case
+        std::vector<std::string> parsed_config_paths_ = config_.get_static_file_path();
         bool served = false;
         for (auto original_path : parsed_config_paths_)
         {
