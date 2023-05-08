@@ -34,6 +34,24 @@
       "parentUuid": "7d4c736d_9c5e9de5",
       "revId": "efbe15674d1f396883bdf1cb80038545e86b57f5",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92061536_8c65576d",
+        "filename": "tests/successful_get_404_response_integration_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-08T06:55:30Z",
+      "side": 1,
+      "message": "Just kidding, sure",
+      "parentUuid": "03059496_ca8f765f",
+      "revId": "efbe15674d1f396883bdf1cb80038545e86b57f5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
