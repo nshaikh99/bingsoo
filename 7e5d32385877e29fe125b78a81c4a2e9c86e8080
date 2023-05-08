@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "747196ab_254bd454",
+        "filename": "include/request_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-08T05:35:02Z",
+      "side": 1,
+      "message": "Yes, I meant to take that out",
+      "parentUuid": "5d16fb7c_3d224ec8",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d8f70d_4bad9863",
         "filename": "src/session.cc",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2023-05-08T05:31:22Z",
       "side": 1,
       "message": "can we add a documentation comment to explain what this is doing? perhaps provide an example?",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f72571_b4e4f567",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-08T05:35:02Z",
+      "side": 1,
+      "message": "Yes, i\u0027ll add that",
+      "parentUuid": "a9d8f70d_4bad9863",
       "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
