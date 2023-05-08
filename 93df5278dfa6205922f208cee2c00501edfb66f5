@@ -16,6 +16,24 @@
       "message": "can we double check that these vars still exist? i think sabrina may have refactored these out",
       "revId": "93df5278dfa6205922f208cee2c00501edfb66f5",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11436d0c_ce6d4cfc",
+        "filename": "src/session.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-08T17:06:07Z",
+      "side": 1,
+      "message": "I overlooked that. I\u0027ll fix this part",
+      "parentUuid": "eecf2b6e_dd852ec4",
+      "revId": "93df5278dfa6205922f208cee2c00501edfb66f5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
