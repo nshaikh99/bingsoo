@@ -196,8 +196,6 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     std::string token;
     token_type = ParseToken(config_file, &token);
 
-    // printf ("%s: %s\n", TokenTypeAsString(token_type), token.c_str());
-
     // log each token in the config file
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << TokenTypeAsString(token_type) << ": " << token.c_str();
 

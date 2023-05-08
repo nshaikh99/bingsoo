@@ -28,7 +28,6 @@ using boost::asio::ip::tcp;
 
 void handler(const boost::system::error_code& error, int signum)
 {
-  std::cout << "Terminated program with signal: " << signum << std::endl;
   BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Terminated program with signal: " << signum;
 
   exit(signum); // Terminate program
@@ -63,24 +62,24 @@ int main(int argc, char* argv[])
     NginxConfig config;
     bool parsed_config = config_parser.Parse(argv[1], &config);
     if (!parsed_config){
-      // cerr << "Invalid config file" << std::endl;
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid config file";
       return -1;
     }
 
     int port_num = config.get_port_num();
     if (port_num == -1) {
-      // cerr << "Invalid port number in config file" << std::endl;
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid port number in config file";
       return -1;
     }
 
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Parsed config file";
+    BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << parsed_config;
 
     boost::asio::io_service io_service;
 
     server s(io_service, port_num, config); //calls the server::server(...) function in server.cc
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Starting server on port " << port_num;
 
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
     signals.async_wait(handler);
@@ -98,7 +97,6 @@ int main(int argc, char* argv[])
   catch (std::exception& e)
   {
     std::cerr << "Exception: " << e.what() << "\n";
-    // BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << e.what();
   }
 
   return 0;
