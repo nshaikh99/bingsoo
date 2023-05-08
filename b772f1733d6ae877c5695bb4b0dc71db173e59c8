@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66104a6a_e90d79e8",
+        "filename": "include/server.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-08T06:02:18Z",
+      "side": 1,
+      "message": "Yes, I will delete the extra comments",
+      "parentUuid": "e368e143_34edc78d",
+      "revId": "b772f1733d6ae877c5695bb4b0dc71db173e59c8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33772f4a_72de09af",
         "filename": "include/server.h",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2023-05-08T05:21:25Z",
       "side": 1,
       "message": "ditto for these lines",
+      "revId": "b772f1733d6ae877c5695bb4b0dc71db173e59c8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc337c9a_852a4259",
+        "filename": "include/server.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-08T06:02:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33772f4a_72de09af",
       "revId": "b772f1733d6ae877c5695bb4b0dc71db173e59c8",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "339858d9_535d6ceb",
+        "filename": "include/session.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-08T06:02:18Z",
+      "side": 1,
+      "message": "Yes, will delete this too.",
+      "parentUuid": "b124af7c_e47d05c2",
+      "revId": "b772f1733d6ae877c5695bb4b0dc71db173e59c8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e900204c_e2e94584",
         "filename": "src/server_main.cc",
         "patchSetId": 2
@@ -82,6 +136,24 @@
       "writtenOn": "2023-05-08T05:21:25Z",
       "side": 1,
       "message": "can we use boost log messages instead of cout statements for any sort of printing of info?",
+      "revId": "b772f1733d6ae877c5695bb4b0dc71db173e59c8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d984c8d0_32f5a098",
+        "filename": "src/server_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-08T06:02:18Z",
+      "side": 1,
+      "message": "Yes, I forgot to delete this line when debugging.",
+      "parentUuid": "e900204c_e2e94584",
       "revId": "b772f1733d6ae877c5695bb4b0dc71db173e59c8",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
