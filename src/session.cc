@@ -40,6 +40,7 @@ bool session::start()
 int session::handle_read(const boost::system::error_code& error,
     size_t bytes_transferred)
 {
+  BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_read().";
   int result = -1; //if result is still -1 this means an error has occured
   if (!error) {
     request_parser::result_type parse_status;
@@ -51,7 +52,7 @@ int session::handle_read(const boost::system::error_code& error,
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Client IP: " << socket_.remote_endpoint().address().to_string() << "\n";
     }
     catch(...){
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Client IP unknown" << "\n";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Client IP unknown.";
     }
 
     if (parse_status == request_parser::good) {
@@ -99,6 +100,7 @@ int session::handle_read(const boost::system::error_code& error,
 //writes max amount of data to stream. if there's more than max data, the rest gets sent back to handle_read
 void session::handle_write(const boost::system::error_code& error)
 {
+  BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_write().";
   if (!error)
   {
     socket_.async_read_some(boost::asio::buffer(data_, max_length), 
@@ -130,10 +132,13 @@ std::string session::request_info()
 
 reply::request_type session::get_request_type()
 {
+  BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc get_request_type().";
   if (config_.is_echo() && config_.get_echo_path() == req_.uri){ 
+    LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Echo Request";
     return reply::type_echo;
   }
-  else if (config_.is_static()) { 
+  else if (config_.is_static()) {
+    LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static Request"; 
     std::vector<std::string> parsed_config_paths_ = config_.get_static_file_path();
     for (auto original_path : parsed_config_paths_)
     {
