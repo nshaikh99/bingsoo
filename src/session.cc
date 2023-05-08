@@ -74,12 +74,12 @@ int session::handle_read(const boost::system::error_code& error,
       {
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Client IP unknown" << std::endl;
       }
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good request has occurred.\n";
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
       if (is_echo_request){
         // echo reply case
         if (echo_path_ == req.uri)
         {
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good request has occurred.\n";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
           Echo_Request_Handler echo_request;
           reply_ = echo_request.handleRequest(data_, bytes_transferred, reply::ok);
           echoed = true;
@@ -92,6 +92,8 @@ int session::handle_read(const boost::system::error_code& error,
         {
           if (original_path == req.uri)
           {
+            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good request has occurred.\n";
+            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
             std::string path_with_dot = "."+original_path;
             Static_Request_Handler static_request = Static_Request_Handler(path_with_dot);
             reply_ = static_request.handleRequest(data_, bytes_transferred, reply::ok);
@@ -100,6 +102,8 @@ int session::handle_read(const boost::system::error_code& error,
         }
         if (!served && !echoed)
         {
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.\n";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
           reply_ = reply_.stock_reply(reply::not_found);
         }
       }
