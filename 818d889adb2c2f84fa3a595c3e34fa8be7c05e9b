@@ -34,6 +34,24 @@
       "parentUuid": "d8fc9fd1_027fe4af",
       "revId": "818d889adb2c2f84fa3a595c3e34fa8be7c05e9b",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8441c9_bff4785a",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T06:33:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c697796_350ba35c",
+      "revId": "818d889adb2c2f84fa3a595c3e34fa8be7c05e9b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
