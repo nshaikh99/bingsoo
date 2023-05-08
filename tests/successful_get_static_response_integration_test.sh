@@ -5,19 +5,19 @@
 
 sleep 1
 # send a request to the server
-curl -i -v -o ./tests/result http://localhost:80 -s
+curl -i -v -o ./tests/result http://localhost:80/static/index.html -s
 
 
-diff ./tests/result ./tests/successful_get_response_integration_test_result
+diff --strip-trailing-cr ./tests/result ./tests/successful_get_static_response_integration_test_result
 
 # compare the output of the diff; zero indicates no difference in the diff
 if [[ $? -eq 0 ]]; then
-    echo "success"; 
+    echo "success";
     kill %1
     rm ./tests/result
     exit 0;
-else 
-    echo "failed"; 
+else
+    echo "failed";
     kill %1
     rm ./tests/result
     exit 1;
