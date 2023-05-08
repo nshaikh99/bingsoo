@@ -16,6 +16,24 @@
       "message": "this looks great! is it possible to add a third test where we try to access a URI that doesnt exist on static/ and we receive back a 404 error?",
       "revId": "323ddef29576367dc3ae017e2f6c6ac1d0ff81e9",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3238a204_8a2c87c7",
+        "filename": "tests/successful_get_static_response_integration_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-08T05:37:47Z",
+      "side": 1,
+      "message": "Sure, do you want me to add that in this change or is it alright if I put it in a later one?",
+      "parentUuid": "341d890f_a1c1ea3b",
+      "revId": "323ddef29576367dc3ae017e2f6c6ac1d0ff81e9",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
