@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "272e0f95_7abe488a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T05:31:22Z",
+      "side": 1,
+      "message": "thanks for cleaning this up!",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d16fb7c_3d224ec8",
+        "filename": "include/request_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T05:31:22Z",
+      "side": 1,
+      "message": "can we delete this if we aren\u0027t using it?",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d8f70d_4bad9863",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T05:31:22Z",
+      "side": 1,
+      "message": "can we add a documentation comment to explain what this is doing? perhaps provide an example?",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
