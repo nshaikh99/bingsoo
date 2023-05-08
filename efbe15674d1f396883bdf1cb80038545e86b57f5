@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4c736d_9c5e9de5",
+        "filename": "tests/successful_get_404_response_integration_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T06:34:52Z",
+      "side": 1,
+      "message": "nit, can we make this like `file_that_doesnt_exist` or something more clear",
+      "revId": "efbe15674d1f396883bdf1cb80038545e86b57f5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
