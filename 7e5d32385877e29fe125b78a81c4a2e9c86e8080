@@ -70,6 +70,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52936b32_c0b35888",
+        "filename": "include/request_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T17:00:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "747196ab_254bd454",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9d8f70d_4bad9863",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Yes, i\u0027ll add that",
       "parentUuid": "a9d8f70d_4bad9863",
+      "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a078491_4173d9b3",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-08T17:00:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8f72571_b4e4f567",
       "revId": "7e5d32385877e29fe125b78a81c4a2e9c86e8080",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
