@@ -40,7 +40,7 @@ bool session::start()
 int session::handle_read(const boost::system::error_code& error,
     size_t bytes_transferred)
 {
-  BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_read().";
+  // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_read().";
   int result = -1; //if result is still -1 this means an error has occured
   if (!error) {
     request_parser::result_type parse_status;
@@ -49,10 +49,10 @@ int session::handle_read(const boost::system::error_code& error,
 
     // Client IP address
     try{
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Client IP: " << socket_.remote_endpoint().address().to_string() << "\n";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Incoming request from client with IP: " << socket_.remote_endpoint().address().to_string();
     }
     catch(...){
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Client IP unknown.";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Incoming request from client with unknown IP";
     }
 
     if (parse_status == request_parser::good) {
@@ -61,28 +61,28 @@ int session::handle_read(const boost::system::error_code& error,
       reply::request_type req_type = get_request_type(); //echo, static, or not_found
 
       if (req_type == reply::type_echo){
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.\n";
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
         Echo_Request_Handler echo_request;
         reply_ = echo_request.handleRequest(data_, bytes_transferred);
       }
       else if (req_type == reply::type_static){
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good static request has occurred.\n";
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good static request has occurred.";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
         //req_.uri contains the path to the file that the client is requesting
         Static_Request_Handler static_request = Static_Request_Handler(req_.uri);
         reply_ = static_request.handleRequest(data_, bytes_transferred);
       }
       else{
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.\n";
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
         reply_ = reply_.stock_reply(reply::not_found);
       }
     } 
     else if (parse_status == request_parser::bad) {
       result = 1;
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "400 BAD REQUEST: A bad request has occurred.\n";
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request:\n" << request_info() << "\n";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "400 BAD: A bad request has occurred.\n";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       reply_ = reply_.stock_reply(reply::bad_request);
     }
     boost::asio::async_write(socket_,
@@ -100,7 +100,7 @@ int session::handle_read(const boost::system::error_code& error,
 //writes max amount of data to stream. if there's more than max data, the rest gets sent back to handle_read
 void session::handle_write(const boost::system::error_code& error)
 {
-  BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_write().";
+  // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_write().";
   if (!error)
   {
     socket_.async_read_some(boost::asio::buffer(data_, max_length), 
@@ -132,7 +132,7 @@ std::string session::request_info()
 
 reply::request_type session::get_request_type()
 {
-  BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc get_request_type().";
+  // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc get_request_type().";
   if (config_.is_echo() && config_.get_echo_path() == req_.uri){ 
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Echo Request";
     return reply::type_echo;

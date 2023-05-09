@@ -197,7 +197,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     token_type = ParseToken(config_file, &token);
 
     // log each token in the config file
-    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << TokenTypeAsString(token_type) << ": " << token.c_str();
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Parsing " << TokenTypeAsString(token_type) << ": " << token.c_str();
 
     if (token_type == TOKEN_TYPE_ERROR) {
       break;
@@ -270,7 +270,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     }
     last_token_type = token_type;
   }
-
+  BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "Error parsing config file: " << TokenTypeAsString(token_type) << " followed " << TokenTypeAsString(last_token_type);
   return false;
 }
 

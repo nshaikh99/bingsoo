@@ -43,6 +43,8 @@ int main(int argc, char* argv[])
       return 1;
     }
 
+    // logging setup
+
     boost::log::add_common_attributes();
 
     boost::log::add_console_log(
@@ -58,6 +60,8 @@ int main(int argc, char* argv[])
       boost::log::keywords::format = "[%TimeStamp%]:[%ThreadID%]:%Message%"
     );
 
+    // config file parsing
+
     NginxConfigParser config_parser;
     NginxConfig config;
     bool parsed_config = config_parser.Parse(argv[1], &config);
@@ -65,6 +69,11 @@ int main(int argc, char* argv[])
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid config file";
       return -1;
     }
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Parsed config file";
+    BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << parsed_config;
+
+
+    // extract info from config file
 
     int port_num = config.get_port_num();
     if (port_num == -1) {
@@ -72,17 +81,19 @@ int main(int argc, char* argv[])
       return -1;
     }
 
-    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Parsed config file";
-    BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << parsed_config;
+    // instantiate server
 
     boost::asio::io_service io_service;
 
     server s(io_service, port_num, config); //calls the server::server(...) function in server.cc
-    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
-    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Starting server on port " << port_num;
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Server running on port" << port_num;
 
+    // handle signals
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
     signals.async_wait(handler);
+
+    // run server
+    io_service.run();
 
     // Sample error messages
     // BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "A trace severity message";
@@ -91,8 +102,6 @@ int main(int argc, char* argv[])
     // BOOST_LOG_TRIVIAL(warning) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::WARNING] << "A warning severity message";
     // BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "An error severity message";
     // BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "A fatal severity message";
-
-    io_service.run();
   }
   catch (std::exception& e)
   {

@@ -59,6 +59,7 @@ reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred){
     }
     static_file.close();
 
+    // Populate fields
     reply_.status = reply::ok;
     reply_.content = file_contents;
     header length_header = {"Content-Length", std::to_string(file_contents.length())};
