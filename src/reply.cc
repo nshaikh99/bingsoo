@@ -59,27 +59,6 @@ std::vector<boost::asio::const_buffer> reply::to_buffers()
   return buffers;
 }
 
-namespace stock_replies {
-
-const char ok[] = "";
-const char bad_request[] =
-  "<html>"
-  "<head><title>Bad Request</title></head>"
-  "<body><h1>400 Bad Request</h1></body>"
-  "</html>";
-const char not_found[] =
-  "<html>"
-  "<head><title>Not Found</title></head>"
-  "<body><h1>404 Not Found</h1></body>"
-  "</html>";
-
-const char server_error[] =
-  "<html>"
-  "<head><title>Internal Server Error</title></head>"
-  "<body><h1>500 Internal Server Error</h1></body>"
-  "</html>";
-}
-
 reply reply::stock_reply(reply::status_type status)
 {
   reply rep;

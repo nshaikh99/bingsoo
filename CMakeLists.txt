@@ -60,7 +60,7 @@ add_executable(request_parser_test tests/request_parser_test.cc)
 target_link_libraries(request_parser_test request_parser gtest_main)
 
 add_executable(reply_test tests/reply_test.cc)
-target_link_libraries(reply_test reply config_parser_lib gtest_main)
+target_link_libraries(reply_test reply  gtest_main)
 target_link_libraries(reply_test session Boost::log Boost::log_setup)
 
 add_executable(session_test tests/session_test.cc)
