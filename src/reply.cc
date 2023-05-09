@@ -8,17 +8,14 @@
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
 
-#include "reply.h"
 #include <string>
 
-const std::string ok =
-  "HTTP/1.0 200 OK\r\n";
-const std::string bad_request =
-  "HTTP/1.0 400 Bad Request\r\n";
-const std::string not_found = 
-  "HTTP/1.0 404 Not Found\r\n";
-const std::string internal_server_error =
-  "HTTP/1.0 500 Internal Server Error\r\n";
+#include "reply.h"
+
+const std::string ok = "HTTP/1.0 200 OK\r\n";
+const std::string bad_request = "HTTP/1.0 400 Bad Request\r\n";
+const std::string not_found = "HTTP/1.0 404 Not Found\r\n";
+const std::string internal_server_error = "HTTP/1.0 500 Internal Server Error\r\n";
 
 boost::asio::const_buffer to_buffer(reply::status_type status)
 {
@@ -35,12 +32,11 @@ boost::asio::const_buffer to_buffer(reply::status_type status)
   }
 }
 
-namespace misc_strings {
-
-const char name_value_separator[] = { ':', ' ' };
-const char crlf[] = { '\r', '\n' };
-
-} // namespace misc_strings
+namespace misc_strings
+{
+  const char name_value_separator[] = { ':', ' ' };
+  const char crlf[] = { '\r', '\n' };
+}
 
 std::vector<boost::asio::const_buffer> reply::to_buffers()
 {
@@ -59,25 +55,24 @@ std::vector<boost::asio::const_buffer> reply::to_buffers()
   return buffers;
 }
 
-namespace stock_replies {
-
-const char ok[] = "";
-const char bad_request[] =
-  "<html>"
-  "<head><title>Bad Request</title></head>"
-  "<body><h1>400 Bad Request</h1></body>"
-  "</html>";
-const char not_found[] =
-  "<html>"
-  "<head><title>Not Found</title></head>"
-  "<body><h1>404 Not Found</h1></body>"
-  "</html>";
-
-const char server_error[] =
-  "<html>"
-  "<head><title>Internal Server Error</title></head>"
-  "<body><h1>500 Internal Server Error</h1></body>"
-  "</html>";
+namespace stock_replies
+{
+  const char ok[] = "";
+  const char bad_request[] =
+    "<html>"
+    "<head><title>Bad Request</title></head>"
+    "<body><h1>400 Bad Request</h1></body>"
+    "</html>";
+  const char not_found[] =
+    "<html>"
+    "<head><title>Not Found</title></head>"
+    "<body><h1>404 Not Found</h1></body>"
+    "</html>";
+  const char server_error[] =
+    "<html>"
+    "<head><title>Internal Server Error</title></head>"
+    "<body><h1>500 Internal Server Error</h1></body>"
+    "</html>";
 }
 
 reply reply::stock_reply(reply::status_type status)

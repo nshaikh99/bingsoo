@@ -3,6 +3,7 @@
 #include "reply.h"
 #include <boost/asio.hpp>
 
+<<<<<<< HEAD
 class ReplyTestFixture : public ::testing::Test {
   protected:
     reply rep;
@@ -34,3 +35,36 @@ class ReplyTestFixture : public ::testing::Test {
 //   EXPECT_EQ(input, rep.content);
 // }
 
+=======
+class ReplyTestFixture : public ::testing::Test
+{
+ protected:
+  boost::asio::io_service io_service;
+  std::vector<std::string> parsed_config_paths;
+  std::string echo_path = "/echo";
+  bool is_echo = true;
+  bool is_static = true;
+  session* new_session = new session(io_service, parsed_config_paths, echo_path, is_echo, is_static);
+  reply rep;
+};
+
+TEST_F(ReplyTestFixture, ValidRequest)
+{
+  char input[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r\n";
+  rep = new_session->generate_response(input, strlen(input), reply::ok);
+
+  bool status_success = rep.status == reply::ok ? true : false;
+  EXPECT_TRUE(status_success);
+  EXPECT_EQ(input, rep.content);
+}
+
+TEST_F(ReplyTestFixture, InvalidRequest)
+{
+  char input[1024] = "fake request";
+  rep = new_session->generate_response(input, strlen(input), reply::bad_request);
+
+  bool status_failure = rep.status == reply::bad_request ? true : false;
+  EXPECT_TRUE(status_failure);
+  EXPECT_EQ(input, rep.content);
+}
+>>>>>>> 187db93 (Code cleanup and additional logging)

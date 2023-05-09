@@ -5,10 +5,11 @@
 #include <string>
 #include <vector>
 
-class NginxConfig;
+class NginxConfig; // forward declaration
 
 // The parsed representation of a single config statement.
-class NginxConfigStatement {
+class NginxConfigStatement
+{
  public:
   std::string ToString(int depth);
   std::vector<std::string> tokens_;
@@ -16,7 +17,8 @@ class NginxConfigStatement {
 };
 
 // The parsed representation of the entire config.
-class NginxConfig {
+class NginxConfig
+{
  public:
   std::string ToString(int depth = 0);
   std::vector<std::shared_ptr<NginxConfigStatement>> statements_;
@@ -28,7 +30,8 @@ class NginxConfig {
 };
 
 // The driver that parses a config file and generates an NginxConfig.
-class NginxConfigParser {
+class NginxConfigParser
+{
  public:
   NginxConfigParser() {}
 
@@ -39,7 +42,8 @@ class NginxConfigParser {
   bool Parse(const char* file_name, NginxConfig* config);
 
  private:
-  enum TokenType {
+  enum TokenType
+  {
     TOKEN_TYPE_START = 0,
     TOKEN_TYPE_NORMAL = 1,
     TOKEN_TYPE_START_BLOCK = 2,
@@ -51,7 +55,8 @@ class NginxConfigParser {
   };
   const char* TokenTypeAsString(TokenType type);
 
-  enum TokenParserState {
+  enum TokenParserState
+  {
     TOKEN_STATE_INITIAL_WHITESPACE = 0,
     TOKEN_STATE_SINGLE_QUOTE = 1,
     TOKEN_STATE_DOUBLE_QUOTE = 2,

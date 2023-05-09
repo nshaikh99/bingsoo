@@ -122,16 +122,16 @@ NginxConfigParser::TokenType NginxConfigParser::ParseToken(std::istream* input,
           if (!input->good()) {
             break;
           }
-          if (after_c){
+          if (after_c) {
             if (after_c == ' ' || after_c == '\t' || after_c == '\n' || after_c == '\r' || 
-                  after_c == '{' || after_c == '}' || after_c == ';'){
+                  after_c == '{' || after_c == '}' || after_c == ';') {
               input->unget();
               return TOKEN_TYPE_NORMAL;
             }
           }
           return TOKEN_TYPE_ERROR;
         }
-        else if (c == '\\'){
+        else if (c == '\\') {
           value->pop_back();
           *value += c;
           state = TOKEN_STATE_SINGLE_QUOTE;
@@ -144,16 +144,16 @@ NginxConfigParser::TokenType NginxConfigParser::ParseToken(std::istream* input,
           if (!input->good()) {
             break;
           }
-          if (after_c){
+          if (after_c) {
             if (after_c == ' ' || after_c == '\t' || after_c == '\n' || after_c == '\r' || 
-                  after_c == '{' || after_c == '}' || after_c == ';'){
+                  after_c == '{' || after_c == '}' || after_c == ';') {
               input->unget();
               return TOKEN_TYPE_NORMAL;
             }
           }
           return TOKEN_TYPE_ERROR;
         }
-        else if (c == '\\'){
+        else if (c == '\\') {
           value->pop_back();
           *value += c;
           state = TOKEN_STATE_DOUBLE_QUOTE;
@@ -197,7 +197,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     token_type = ParseToken(config_file, &token);
 
     // log each token in the config file
-    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << TokenTypeAsString(token_type) << ": " << token.c_str();
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Parsing " << TokenTypeAsString(token_type) << ": " << token.c_str();
 
     if (token_type == TOKEN_TYPE_ERROR) {
       break;
@@ -271,6 +271,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     last_token_type = token_type;
   }
 
+  BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "Error parsing config file: " << TokenTypeAsString(token_type) << " followed " << TokenTypeAsString(last_token_type);
   return false;
 }
 
@@ -278,9 +279,7 @@ bool NginxConfigParser::Parse(const char* file_name, NginxConfig* config) {
   std::ifstream config_file;
   config_file.open(file_name);
   if (!config_file.good()) {
-    // printf ("Failed to open config file: %s\n", file_name);
     BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "Failed to open config file: " << file_name;
-
     return false;
   }
 
@@ -290,7 +289,7 @@ bool NginxConfigParser::Parse(const char* file_name, NginxConfig* config) {
   return return_value;
 }
 
-int NginxConfig::get_port_num(){
+int NginxConfig::get_port_num() {
   for (auto config_statement : statements_) {
     if (config_statement->child_block_.get() == nullptr) {
       if (config_statement->tokens_.size() == 2 && config_statement->tokens_[0] == "listen") {
@@ -315,7 +314,7 @@ int NginxConfig::get_port_num(){
   return -1;
 }
 
-std::vector<std::string> NginxConfig::get_static_file_path(){
+std::vector<std::string> NginxConfig::get_static_file_path() {
   std::vector<std::string> paths_vec;
   for (const auto& statement : statements_) {
     if (statement->tokens_[0] == "server") {
@@ -344,7 +343,7 @@ std::vector<std::string> NginxConfig::get_static_file_path(){
   return paths_vec;
 }
 
-std::string NginxConfig::get_echo_path(){
+std::string NginxConfig::get_echo_path() {
   std::string paths_str;
   for (const auto& statement : statements_) {
     if (statement->tokens_[0] == "server") {
@@ -366,12 +365,14 @@ std::string NginxConfig::get_echo_path(){
   return paths_str;
 }
 
-bool NginxConfig::is_echo(){
+bool NginxConfig::is_echo()
+{
   std::string echo_in_config = get_echo_path();
   return echo_in_config != "";
 }
 
-bool NginxConfig::is_static(){
+bool NginxConfig::is_static()
+{
   std::vector<std::string> static_in_config = get_static_file_path();
   return static_in_config.size() > 0;
 }

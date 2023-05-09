@@ -1,5 +1,9 @@
 server {
+<<<<<<< HEAD
     listen       8086;
+=======
+    listen 7101;
+>>>>>>> 187db93 (Code cleanup and additional logging)
     
     echo {
         location /echo;

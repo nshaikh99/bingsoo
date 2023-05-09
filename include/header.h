@@ -19,4 +19,4 @@ struct header
   std::string value;
 };
 
-#endif // header_h
+#endif

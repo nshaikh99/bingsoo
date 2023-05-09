@@ -34,26 +34,23 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 
 include_directories(include)
 
-# TODO(!): Update name and srcs
+# Lib names and srcs
 add_library(session src/session.cc src/request_parser.cc src/reply.cc src/echo_request_handler.cc src/static_request_handler.cc)
 add_library(server_lib src/server.cc src/session.cc)
 add_library(request_parser src/request_parser.cc)
 add_library(reply src/reply.cc)
-add_library(config_parser_lib src/config_parser.cc)
+add_library(config_parser src/config_parser.cc)
 add_library(echo_request_handler src/echo_request_handler.cc)
 add_library(static_request_handler src/static_request_handler.cc)
-target_link_libraries(server_lib session config_parser_lib reply request_parser Boost::log_setup Boost::log)
+target_link_libraries(server_lib session config_parser reply request_parser Boost::log_setup Boost::log)
 
-
-# TODO(!): Update executable name, srcs, and deps
+# Executable names, srcs, and deps
 add_executable(server src/server_main.cc)
-target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler config_parser_lib Boost::log_setup Boost::log)
+target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler config_parser Boost::log_setup Boost::log)
 
-# TODO(!): Update test executable name, srcs, and deps
-# add_executable(example_lib_test tests/example_lib_test.cc)
-# target_link_libraries(example_lib_test example_lib gtest_main)
+# Test executable names, srcs, and deps
 add_executable(config_parser_test tests/config_parser_test.cc)
-target_link_libraries(config_parser_test config_parser_lib gtest_main)
+target_link_libraries(config_parser_test config_parser gtest_main)
 target_link_libraries(config_parser_test Boost::log Boost::log_setup)
 
 add_executable(request_parser_test tests/request_parser_test.cc)
@@ -73,9 +70,7 @@ target_link_libraries(echo_request_handler_test echo_request_handler gtest_main 
 add_executable(static_request_handler_test tests/static_request_handler_test.cc)
 target_link_libraries(static_request_handler_test static_request_handler gtest_main reply)
 
-
-# TODO(!): Update with test binary
-# gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+# Test binaries
 gtest_discover_tests(config_parser_test WORKING_DIRECTORY ../tests)
 gtest_discover_tests(reply_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(echo_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
@@ -91,8 +86,6 @@ if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
 endif()
 gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
-
-# TODO(!): Update with target/test targets
+# Target/test targets
 include(cmake/CodeCoverageReportConfig.cmake)
-# generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
-generate_coverage_report(TARGETS server session server_lib echo_request_handler static_request_handler Boost::system request_parser reply  config_parser_lib TESTS config_parser_test reply_test request_parser_test session_test)
+generate_coverage_report(TARGETS server session server_lib echo_request_handler static_request_handler Boost::system request_parser reply  config_parser TESTS config_parser_test reply_test request_parser_test session_test)
