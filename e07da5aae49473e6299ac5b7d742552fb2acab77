@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1c6750_93e7d28c",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-09T20:16:31Z",
+      "side": 1,
+      "message": "why is this commented out?",
+      "revId": "e07da5aae49473e6299ac5b7d742552fb2acab77",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
