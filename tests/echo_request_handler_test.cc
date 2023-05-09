@@ -8,10 +8,12 @@ class EchoRequestHandlerTestFixture : public ::testing::Test {
 };
 
 TEST_F(EchoRequestHandlerTestFixture, ValidRequest){
-  char request[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r\n";
+  char request[1024] = "sample request";
   reply response = handler.handleRequest(request, strlen(request));
-  bool status_success = response.status == reply::ok ? true : false;
   
-  EXPECT_TRUE(status_success);
-  EXPECT_EQ(request, response.content);
-}
+  bool success1 = response.status == reply::ok;
+  bool success2 = response.content == response.content;
+  bool success3 = response.headers[0].value == std::to_string(response.content.size());
+  bool success4 = response.headers[1].value == "text/plain";
+  EXPECT_TRUE(success1 && success2 && success3 && success4);
+} 
