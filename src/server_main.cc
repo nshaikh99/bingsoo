@@ -8,13 +8,17 @@
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
 
+<<<<<<< HEAD
 using namespace std; // For atoi.
 
 #include "session.h"
 #include "server.h"
 
+=======
+>>>>>>> 187db93 (Code cleanup and additional logging)
 #include <cstdlib>
 #include <iostream>
+
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
 #include <boost/log/trivial.hpp>
@@ -22,14 +26,18 @@ using namespace std; // For atoi.
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/utility/setup/console.hpp>
 
+#include "config_parser.h"
+#include "server.h"
+
 #include "global.h"
+
+using namespace std; // For atoi.
 
 using boost::asio::ip::tcp;
 
 void handler(const boost::system::error_code& error, int signum)
 {
   BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Terminated program with signal: " << signum;
-
   exit(signum); // Terminate program
 }
 
@@ -43,13 +51,12 @@ int main(int argc, char* argv[])
       return 1;
     }
 
+    // logging setup
     boost::log::add_common_attributes();
-
     boost::log::add_console_log(
       std::cout,
       boost::log::keywords::format = "[%TimeStamp%]:[%ThreadID%]:%Message%"
     );
-
     boost::log::add_file_log(
       boost::log::keywords::file_name = "./logs/log_%N.log",
       boost::log::keywords::rotation_size = 1024 * 1024 * 10, // 1024 bytes/kilobyte * 1024 kilobytes/megabyte * 10 megabytes
@@ -58,47 +65,73 @@ int main(int argc, char* argv[])
       boost::log::keywords::format = "[%TimeStamp%]:[%ThreadID%]:%Message%"
     );
 
+    // config file parsing
     NginxConfigParser config_parser;
     NginxConfig config;
     bool parsed_config = config_parser.Parse(argv[1], &config);
+<<<<<<< HEAD
     if (!parsed_config){
+=======
+    if (!parsed_config)
+    {
+>>>>>>> 187db93 (Code cleanup and additional logging)
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid config file";
       return -1;
     }
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Parsed config file";
 
+    // extract info from config file
     int port_num = config.get_port_num();
+<<<<<<< HEAD
     if (port_num == -1) {
+=======
+    std::vector<std::string> parsed_config_paths = config.get_static_file_path();
+    std::string echo_path = config.get_echo_path();
+    bool is_echo = config.is_echo();
+    bool is_static = config.is_static();
+    if (port_num == -1)
+    {
+>>>>>>> 187db93 (Code cleanup and additional logging)
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid port number in config file";
       return -1;
     }
 
+<<<<<<< HEAD
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Parsed config file";
     BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << parsed_config;
 
+=======
+    // instantiate server
+>>>>>>> 187db93 (Code cleanup and additional logging)
     boost::asio::io_service io_service;
+    server s(io_service, port_num, parsed_config_paths, echo_path, is_echo, is_static); // calls server::server() in server.cc
 
+<<<<<<< HEAD
     server s(io_service, port_num, config); //calls the server::server(...) function in server.cc
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Instantiated server";
     BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Starting server on port " << port_num;
 
+=======
+    // handle signals
+>>>>>>> 187db93 (Code cleanup and additional logging)
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
     signals.async_wait(handler);
 
-    // Sample error messages
+    // run server
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Server running on port " << port_num;
+    io_service.run();
+
+    // Sample logging messages
     // BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "A trace severity message";
     // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "A debug severity message";
     // BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "An informational severity message";
     // BOOST_LOG_TRIVIAL(warning) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::WARNING] << "A warning severity message";
     // BOOST_LOG_TRIVIAL(error) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::ERROR] << "An error severity message";
     // BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "A fatal severity message";
-
-    io_service.run();
   }
-  catch (std::exception& e)
+  catch(std::exception& e)
   {
     std::cerr << "Exception: " << e.what() << "\n";
   }
-
   return 0;
 }
-

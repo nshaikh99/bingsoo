@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Start the webserver; uses port 80
+# start the webserver; uses port 80
 ./build/bin/server ./conf/sample.conf &
-
 sleep 1
 
 # check that a log file has been created

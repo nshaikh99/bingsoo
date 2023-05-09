@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Start the webserver; uses bad config with invalid config file
+# start the webserver; uses bad config with invalid config file
 ./build/bin/server asdf &
-
 sleep 1
 
 # check that log records invalid port number

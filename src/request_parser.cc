@@ -11,10 +11,7 @@
 #include "request_parser.h"
 #include "request.h"
 
-request_parser::request_parser()
-  : state_(method_start)
-{
-}
+request_parser::request_parser() : state_(method_start) {}
 
 void request_parser::reset()
 {

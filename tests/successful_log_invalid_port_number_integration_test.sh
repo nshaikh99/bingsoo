@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# Start the webserver; uses bad config with invalid port number
+# start the webserver; uses bad config with invalid port number
 ./build/bin/server ./tests/test_configs/bad_port_config &
-
 sleep 1
 
 # check that log records invalid port number

@@ -13,9 +13,10 @@
 
 #include <string>
 #include <vector>
+
 #include "header.h"
 
-/// A request received from a client.
+// A request received from a client.
 struct request
 {
   std::string method;
@@ -25,4 +26,4 @@ struct request
   std::vector<header> headers;
 };
 
-#endif // request_h
+#endif
