@@ -45,4 +45,24 @@ struct reply
   static reply stock_reply(status_type status);
 };
 
+namespace stock_replies {
+  // Declare standard reply messages
+  const char ok[] = "";
+  const char bad_request[] =
+    "<html>"
+    "<head><title>Bad Request</title></head>"
+    "<body><h1>400 Bad Request</h1></body>"
+    "</html>";
+  const char not_found[] =
+    "<html>"
+    "<head><title>Not Found</title></head>"
+    "<body><h1>404 Not Found</h1></body>"
+    "</html>";
+  const char server_error[] =
+    "<html>"
+    "<head><title>Internal Server Error</title></head>"
+    "<body><h1>500 Internal Server Error</h1></body>"
+    "</html>";
+}
+
 #endif // reply_h
