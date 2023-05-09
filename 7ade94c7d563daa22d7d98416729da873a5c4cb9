@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b3d315_dcbb1564",
+        "filename": "tests/echo_request_handler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-09T23:22:07Z",
+      "side": 1,
+      "message": "for the success variables can we name it more specifically like `statusSuccess`, `contentSuccess`, `contentSizeSuccess`, and `bodySuccess` just so when we are debugging its clearer? this applies to all of the tests with this format",
+      "revId": "7ade94c7d563daa22d7d98416729da873a5c4cb9",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
