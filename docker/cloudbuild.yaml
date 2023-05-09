@@ -1,11 +1,11 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'Pull image'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
     docker pull gcr.io/$PROJECT_ID/bingsoo:base || exit 0
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'Build image'
   args: [
     'build',
     '-f', 'docker/base.Dockerfile',
@@ -14,7 +14,7 @@ steps:
     '--cache-from', 'gcr.io/$PROJECT_ID/bingsoo:base',
     '.'
   ]
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'Push image'
   args: ['push', 'gcr.io/$PROJECT_ID/bingsoo:base']
 - name: 'gcr.io/cloud-builders/docker'
   args: [
@@ -23,7 +23,8 @@ steps:
     '-t', 'gcr.io/$PROJECT_ID/bingsoo:latest',
     '.'
   ]
-# - name: 'gcr.io/cloud-builders/docker'
+### COVERAGE STEP COMMENTED OUT BECAUSE FOR SOME REASON IT BREAKS THE CLOUD BUILD ####
+# - name: 'Coverage'
 #   args: [
 #     'build',
 #     '-f', 'docker/coverage.Dockerfile',
