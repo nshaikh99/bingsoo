@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 class NginxConfig;
 
@@ -21,7 +22,8 @@ class NginxConfig {
   std::string ToString(int depth = 0);
   std::vector<std::shared_ptr<NginxConfigStatement>> statements_;
   int get_port_num();
-  std::vector<std::string> get_static_file_path();
+  std::unordered_map<std::string,std::string> get_static_file_path();
+  std::string get_static_serving_path();
   std::string get_echo_path();
   bool is_echo();
   bool is_static();
