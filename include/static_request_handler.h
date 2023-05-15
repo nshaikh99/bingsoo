@@ -3,14 +3,16 @@
 
 #include <string>
 #include "request_handler.h"
-#include "reply.h"
+#include <boost/beast/http.hpp>
 
-class Static_Request_Handler : public Request_Handler{
-    public:
-        Static_Request_Handler(std::string file_path);
-        reply handleRequest(char* data, int bytes_transferred);
-    private:
-        std::string file_path_;
+using namespace boost::beast::http;
+
+class StaticHandler : public RequestHandler{
+  public:
+    StaticHandler(std::string path);
+    status handle_request(const request req, response& res);
+  private:
+    std::string file_path_;
 };
 
 #endif // static_request_handler_h

@@ -1,13 +1,8 @@
 #include "echo_request_handler.h"
-#include "reply.h"
-#include <string>
 
-reply Echo_Request_Handler::handleRequest(char* data, int bytes_transferred){
-  using namespace std;
-  reply_.status = reply::ok;
-  reply_.content = string(data, bytes_transferred);
-  header length_header = {"Content-Length", to_string(bytes_transferred)};
-  header type_header = {"Content-Type", "text/plain"};
-  reply_.headers = {length_header, type_header};
-  return reply_;
+status EchoHandler::handleRequest(const request req, response& res){
+    beast::ostream(res.body()) << req;
+    res.result(http::status::ok);
+    res.content_length((res.body().size()));
+    res.set(http::field::content_type, "text/plain");
 }

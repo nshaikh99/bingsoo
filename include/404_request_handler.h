@@ -1,15 +1,15 @@
-#ifndef echo_request_handler_h
-#define echo_request_handler_h
+#ifndef _404_request_handler_h
+#define _404_request_handler_h
 
 #include <string>
 #include "request_handler.h"
 #include <boost/beast/http.hpp>
-
+ 
 using namespace boost::beast::http;
 
-class EchoHandler : public RequestHandler{
+class _404Handler : public RequestHandler{
   public:
     status handle_request(const request req, response& res);
-};
+}
 
-#endif // echo_request_handler_h 
+#endif // _404_request_handler_h
