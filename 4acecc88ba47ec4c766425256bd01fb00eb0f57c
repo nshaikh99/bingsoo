@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fab1110_39bd0cf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T19:55:15Z",
+      "side": 1,
+      "message": "Remember to add more to the commit message, like the What, How, Why, and Test.",
+      "revId": "4acecc88ba47ec4c766425256bd01fb00eb0f57c",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370aad96_7d7bdb10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T19:55:15Z",
+      "side": 1,
+      "message": "This is a good starting step to the RequestHandler design.",
+      "revId": "4acecc88ba47ec4c766425256bd01fb00eb0f57c",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
