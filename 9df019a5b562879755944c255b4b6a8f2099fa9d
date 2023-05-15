@@ -18,6 +18,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56813e54_e7cd5de1",
+        "filename": "tests/test_configs/empty_body_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-15T16:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b87e32d6_83230131",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df95d58_039e5e0f",
@@ -35,6 +53,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d615ee_9238bbb2",
+        "filename": "tests/test_configs/empty_body_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-15T16:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df95d58_039e5e0f",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "930c4f8b_ad575bca",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-05-15T07:25:12Z",
       "side": 1,
       "message": "I feel like we can take out the line 1 since we are only wanting to test for listening to a port in this config.",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "613e3977_eceed931",
+        "filename": "tests/test_configs/port_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-15T16:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930c4f8b_ad575bca",
       "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
@@ -75,6 +129,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba8131e_6434aca0",
+        "filename": "tests/test_configs/static_echo_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-15T16:53:30Z",
+      "side": 1,
+      "message": "I\u0027m only gonna update this in the next CL cuz rn the logic isnt there to parse the new static format (only the old format works)",
+      "parentUuid": "1f14f89c_b49c04fe",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94ab555d_8ee76606",
@@ -88,6 +166,24 @@
       "writtenOn": "2023-05-15T07:25:12Z",
       "side": 1,
       "message": "I think we can take out the outer block with \"server\" since it is not needed as seen in the class config file format.",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a00697_86e7d495",
+        "filename": "tests/test_configs/unmatched_quote_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-15T16:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94ab555d_8ee76606",
       "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
