@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87e32d6_83230131",
+        "filename": "tests/test_configs/empty_body_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T07:25:12Z",
+      "side": 1,
+      "message": "Same with this line 1, I don\u0027t think it is necessary in this test config.",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df95d58_039e5e0f",
+        "filename": "tests/test_configs/empty_body_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T07:25:12Z",
+      "side": 1,
+      "message": "For this config, since it is a test for an \"empty body\", maybe insert one of the blocks with the location keyword with an empty body.",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930c4f8b_ad575bca",
+        "filename": "tests/test_configs/port_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T07:25:12Z",
+      "side": 1,
+      "message": "I feel like we can take out the line 1 since we are only wanting to test for listening to a port in this config.",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f14f89c_b49c04fe",
+        "filename": "tests/test_configs/static_echo_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T07:25:12Z",
+      "side": 1,
+      "message": "You might have forgotten to update the design for the static block. It should start with location /static StaticHandler",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ab555d_8ee76606",
+        "filename": "tests/test_configs/unmatched_quote_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T07:25:12Z",
+      "side": 1,
+      "message": "I think we can take out the outer block with \"server\" since it is not needed as seen in the class config file format.",
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
