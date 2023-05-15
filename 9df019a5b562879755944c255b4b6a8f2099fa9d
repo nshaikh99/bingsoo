@@ -153,6 +153,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5205f8_8a35a30d",
+        "filename": "tests/test_configs/static_echo_config",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T19:48:02Z",
+      "side": 1,
+      "message": "I see sounds good.",
+      "parentUuid": "6ba8131e_6434aca0",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "9df019a5b562879755944c255b4b6a8f2099fa9d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94ab555d_8ee76606",
