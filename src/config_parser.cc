@@ -14,6 +14,7 @@
 #include <stack>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
@@ -315,29 +316,47 @@ int NginxConfig::get_port_num(){
   return -1;
 }
 
-std::vector<std::string> NginxConfig::get_static_file_path(){
-  std::vector<std::string> paths_vec;
+std::unordered_map<std::string,std::string> NginxConfig::get_static_file_path(){
+  std::unordered_map<std::string,std::string> paths_map;
   for (const auto& statement : statements_) {
-    if (statement->child_block_.get() != nullptr &&  statement->tokens_[0] == "static") {
-      for (auto static_statements : statement->child_block_->statements_) {
-          if (static_statements->child_block_.get() != nullptr) {
-            if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") {
-              for (auto loc_statement : static_statements->child_block_->statements_)
-              {
-                if (loc_statement->tokens_[0] == "root" && 
-                  loc_statement->tokens_.size() == 2)         
-                {
-                  std::string result_file_path = static_statements->tokens_[1] + loc_statement->tokens_[1];
-                  paths_vec.push_back(result_file_path);
-                }
-              } 
+    if (statement->tokens_[0] == "location" && statement->tokens_[2] == "StaticHandler") {
+      for (auto config_statement : statement -> child_block_ -> statements_) {
+        int token_length = config_statement->tokens_.size();
+        for (int i = 0; i < token_length; i++){
+          if (config_statement->tokens_[i] == "root") {
+            std::string result_file_path = config_statement->tokens_[i+1];
+            size_t extension_start = result_file_path.find_last_of("/");
+            std::string built_uri;
+            if (extension_start != std::string::npos)
+                built_uri = statement->tokens_[1] + result_file_path.substr(extension_start);
+            else {
+              built_uri = statement->tokens_[1] + "/" 
+              + result_file_path;
             }
+            if (result_file_path[0] == '.' && result_file_path[1] == '/'){
+              result_file_path = result_file_path.substr(2, result_file_path.length());
+            }
+            paths_map[built_uri] = result_file_path;
+            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static File: " << result_file_path;
+            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Built uri: " << built_uri;
           }
         }
-      return paths_vec;
+      }
+      return paths_map;
     }
   }
-  return paths_vec;
+  return paths_map;
+}
+
+std::string NginxConfig::get_static_serving_path(){
+  std::string paths_str;
+  for (const auto& statement : statements_) {
+    if (statement->tokens_[0] == "location" && statement->tokens_[2] == "StaticHandler") {
+      paths_str = statement->tokens_[1];
+      return paths_str;
+    }
+  }
+  return paths_str;
 }
 
 std::string NginxConfig::get_echo_path(){
@@ -357,6 +376,6 @@ bool NginxConfig::is_echo(){
 }
 
 bool NginxConfig::is_static(){
-  std::vector<std::string> static_in_config = get_static_file_path();
-  return static_in_config.size() > 0;
+  std::string static_in_config = get_static_serving_path();
+  return static_in_config != "";
 }

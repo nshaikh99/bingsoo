@@ -69,9 +69,28 @@ int session::handle_read(const boost::system::error_code& error,
       else if (req_type == reply::type_static){
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good static request has occurred.";
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
-        //req_.uri contains the path to the file that the client is requesting
-        Static_Request_Handler static_request = Static_Request_Handler(req_.uri);
-        reply_ = static_request.handleRequest(data_, bytes_transferred);
+        std::unordered_map<std::string,std::string> parsed_config_paths_ = config_.get_static_file_path();
+        std::string parsed_static_serving_path = config_.get_static_serving_path();
+        std::unordered_map<string, string>::iterator original_path;
+        bool served_file = false;
+        for (original_path = parsed_config_paths_.begin(); original_path != parsed_config_paths_.end(); original_path++)
+        {
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Trying to Serve Static File: " << original_path->first;
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "requested uri substring is " << req_.uri;
+          if (req_.uri == original_path->first){
+            Static_Request_Handler static_request = Static_Request_Handler(original_path->second);
+            reply_ = static_request.handleRequest(data_, bytes_transferred);
+            served_file = true;
+          }
+          else{
+            continue;
+          }
+        }
+        if (!served_file){
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          reply_ = reply_.stock_reply(reply::not_found);
+        }
       }
       else{
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
@@ -139,12 +158,10 @@ reply::request_type session::get_request_type()
   }
   else if (config_.is_static()) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static Request"; 
-    std::vector<std::string> parsed_config_paths_ = config_.get_static_file_path();
-    for (auto original_path : parsed_config_paths_)
-    {
-      if (original_path == req_.uri){
-        return reply::type_static;
-      }
+    std::string parsed_static_serving_path = config_.get_static_serving_path();
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is " << req_.uri;
+    if (req_.uri.substr(0, parsed_static_serving_path.length()) == (parsed_static_serving_path)){
+      return reply::type_static;
     }
   }
   return reply::type_not_found;

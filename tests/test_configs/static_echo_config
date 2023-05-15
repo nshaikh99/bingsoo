@@ -4,12 +4,7 @@ port       8086;
 location /echo EchoHandler {
 }
 
-static {
-    location /static/ {
-        root index.html;
-    }
-
-    location /static/ {
-        root screenshot1.png;
-    }
+location /static StaticHandler {
+    root index.html;
+    root screenshot1.png;
 }
