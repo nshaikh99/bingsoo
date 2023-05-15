@@ -1,7 +1,3 @@
 foo "bar";
 
-server {
-  location /{
-    listen 3100;
-  }
-}
+port 3100;
