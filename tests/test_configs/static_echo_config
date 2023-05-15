@@ -1,17 +1,15 @@
-server {
-    listen       8086;
-    
-    echo {
-        location /echo;
+
+port       8086;
+
+location /echo EchoHandler {
+}
+
+static {
+    location /static/ {
+        root index.html;
     }
 
-    static {
-        location /static/ {
-            root index.html;
-        }
-
-        location /static/ {
-            root screenshot1.png;
-        }
+    location /static/ {
+        root screenshot1.png;
     }
 }

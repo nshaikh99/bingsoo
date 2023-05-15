@@ -246,7 +246,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
     } else if (token_type == TOKEN_TYPE_END_BLOCK) {
       block_start_count--;
       block_end_count++;
-      if (last_token_type != TOKEN_TYPE_STATEMENT_END  && last_token_type != TOKEN_TYPE_START_BLOCK && last_token_type != TOKEN_TYPE_END_BLOCK) {
+      if (last_token_type != TOKEN_TYPE_STATEMENT_END  && last_token_type != TOKEN_TYPE_START_BLOCK && last_token_type != TOKEN_TYPE_END_BLOCK && last_token_type != TOKEN_TYPE_NORMAL) {
         // Error.
         break;
       }
@@ -293,8 +293,8 @@ bool NginxConfigParser::Parse(const char* file_name, NginxConfig* config) {
 int NginxConfig::get_port_num(){
   for (auto config_statement : statements_) {
     if (config_statement->child_block_.get() == nullptr) {
-      if (config_statement->tokens_.size() == 2 && config_statement->tokens_[0] == "listen") {
-        // if the line says "listening <port_num>"
+      if (config_statement->tokens_[0] == "port") {
+        // if the line says "port <port_num>"
         int port_number = atoi(config_statement->tokens_[1].c_str());
         if (port_number >= 0 && port_number <= 65535){
           // if inside the valid port number range
@@ -318,27 +318,23 @@ int NginxConfig::get_port_num(){
 std::vector<std::string> NginxConfig::get_static_file_path(){
   std::vector<std::string> paths_vec;
   for (const auto& statement : statements_) {
-    if (statement->tokens_[0] == "server") {
-      for (auto config_statement : statement -> child_block_ -> statements_) {
-        if (config_statement->child_block_.get() != nullptr &&  config_statement->tokens_[0] == "static") {
-          for (auto static_statements : config_statement->child_block_->statements_) {
-              if (static_statements->child_block_.get() != nullptr) {
-                if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") {
-                  for (auto loc_statement : static_statements->child_block_->statements_)
-                  {
-                    if (loc_statement->tokens_[0] == "root" && 
-                      loc_statement->tokens_.size() == 2)         
-                    {
-                      std::string result_file_path = static_statements->tokens_[1] + loc_statement->tokens_[1];
-                      paths_vec.push_back(result_file_path);
-                    }
-                  } 
+    if (statement->child_block_.get() != nullptr &&  statement->tokens_[0] == "static") {
+      for (auto static_statements : statement->child_block_->statements_) {
+          if (static_statements->child_block_.get() != nullptr) {
+            if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") {
+              for (auto loc_statement : static_statements->child_block_->statements_)
+              {
+                if (loc_statement->tokens_[0] == "root" && 
+                  loc_statement->tokens_.size() == 2)         
+                {
+                  std::string result_file_path = static_statements->tokens_[1] + loc_statement->tokens_[1];
+                  paths_vec.push_back(result_file_path);
                 }
-              }
+              } 
             }
-          return paths_vec;
+          }
         }
-      }
+      return paths_vec;
     }
   }
   return paths_vec;
@@ -347,20 +343,9 @@ std::vector<std::string> NginxConfig::get_static_file_path(){
 std::string NginxConfig::get_echo_path(){
   std::string paths_str;
   for (const auto& statement : statements_) {
-    if (statement->tokens_[0] == "server") {
-      for (auto config_statement : statement -> child_block_ -> statements_) {
-        if (config_statement->child_block_.get() != nullptr &&  config_statement->tokens_[0] == "echo") {
-          for (auto static_statements : config_statement->child_block_->statements_) {
-              if (static_statements->child_block_.get() == nullptr) {
-                if (static_statements->tokens_.size() == 2 && static_statements->tokens_[0] == "location") { 
-                  paths_str = static_statements->tokens_[1];
-                  return paths_str;
-                }
-              }
-            }
-          return paths_str;
-        }
-      }
+    if (statement->tokens_[0] == "location" && statement->tokens_[2] == "EchoHandler") {
+      paths_str = statement->tokens_[1];
+      return paths_str;
     }
   }
   return paths_str;

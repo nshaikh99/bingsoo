@@ -1,3 +1,1 @@
-server {
-    listen -4;
-}
+port -4;
