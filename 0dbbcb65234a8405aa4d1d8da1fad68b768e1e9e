@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dddc2069_82ee545b",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T23:49:50Z",
+      "side": 1,
+      "message": "Could you explain why we need to check if it\u0027s not equal to std::string::npos? Is it checking if the extension_start exceeds a certain length?",
+      "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b289519d_08a673ce",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T23:49:50Z",
+      "side": 1,
+      "message": "This is a small thing I noticed, but I think the correct format is \"400 BAD REQUEST\" instead of \"400 BAD\" so maybe it can be changed later.",
+      "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee04e6e4_9997a78c",
+        "filename": "src/static_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-15T23:49:50Z",
+      "side": 1,
+      "message": "Could you add a comment explaining what the absolute_path is?",
+      "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
