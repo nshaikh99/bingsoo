@@ -333,9 +333,6 @@ std::unordered_map<std::string,std::string> NginxConfig::get_static_file_path(){
               built_uri = statement->tokens_[1] + "/" 
               + result_file_path;
             }
-            if (result_file_path[0] == '.' && result_file_path[1] == '/'){
-              result_file_path = result_file_path.substr(2, result_file_path.length());
-            }
             paths_map[built_uri] = result_file_path;
             BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static File: " << result_file_path;
             BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Built uri: " << built_uri;
