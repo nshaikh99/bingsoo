@@ -1,18 +1,39 @@
 #include "gtest/gtest.h"
 #include "static_request_handler.h"
-#include "reply.h"
+#include <fstream>
 
-class StaticRequestHandlerTestFixture : public ::testing::Test {
-  protected:
-    std::string test_file_path = "./test_files/test.html";
-    Static_Request_Handler handler = Static_Request_Handler(test_file_path);
-};
+using namespace std;
+
+class StaticRequestHandlerTestFixture : public ::testing::Test {};
 
 TEST_F(StaticRequestHandlerTestFixture, ValidRequest){
-//   char request[1024] = "GET / HTTP/1.1\r\nHost: www.test.com\r\nConnection: close\r\n\r\n";
-//   reply response = handler.handleRequest(request, strlen(request), reply::ok);
-//   bool status_success = response.status == reply::ok ? true : false;
-  
-  EXPECT_TRUE(true);
-//   EXPECT_EQ(request, response.content);
+  string filename = "../static/index.html";
+  StaticHandler test_handler = StaticHandler(filename);
+  http::response<http::string_body> test_res;
+  http::request<http::string_body> test_req;
+  test_handler.handle_request(test_req, test_res);
+
+  std::ifstream test_file(filename.c_str(), std::ios::in | std::ios::binary);
+
+  char c;
+  std::string file_content = "";
+  while (test_file.get(c))
+    file_content += c;
+  test_file.close();
+
+  int idx = 0;
+  std::string fields[2];
+  for (auto& field : test_res.base()) {
+    fields[idx] = std::string(field.value());
+    idx++;
+  }
+
+  bool status_success = test_res.result() == http::status::ok;
+  bool content_success = test_res.body() == file_content;
+  bool content_size_success = fields[0] == std::to_string(file_content.length());
+  bool content_type_success = fields[1] == "text/html";
+  EXPECT_TRUE(status_success);
+  EXPECT_TRUE(content_success);
+  EXPECT_TRUE(content_size_success);
+  EXPECT_TRUE(content_type_success);
 }
