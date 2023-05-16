@@ -1,12 +1,17 @@
 #include "static_request_handler.h"
+#include "reply.h"
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <filesystem>
+=======
+ 
+StaticHandler::StaticHandler(std::string file_path){
+    file_path_ = "." + file_path; //"." is added in order to root the directory. path will not be found without it
+}
 
 std::string extension_type_map(std::string ext)
 {
-
     if(ext==".htm")  return "text/html";
     if(ext==".html") return "text/html";
     if(ext==".php")  return "text/html";
@@ -36,8 +41,7 @@ std::string extension_type_map(std::string ext)
 Static_Request_Handler::Static_Request_Handler(std::string file_path){
     file_path_ = file_path;
 }
-
-reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred){
+status StaticHandler::handle_request(const http::request<http::string_body> req, http::response<http::string_body> &res){
     namespace fs = std::filesystem;
     std::ifstream static_file(file_path_.c_str(), std::ios::in | std::ios::binary);
     fs::path p = fs::current_path();
@@ -46,8 +50,11 @@ reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred){
     std::ifstream static_file_absolute(absolute_path.c_str(), std::ios::in | std::ios::binary); 
     if (!static_file && !static_file_absolute)
     {
-        reply_ = reply_.stock_reply(reply::not_found);
-        return reply_;
+        res.body() = stock_replies::bad_request;
+        res.result(http::status::not_found);
+        res.content_length((res.body().size()));
+        res.set(http::field::content_type, "text/html");
+        return false;
     }
 
     // Find the extension type and map it to the return content type
@@ -79,11 +86,9 @@ reply Static_Request_Handler::handleRequest(char* data, int bytes_transferred){
     }
 
     // Populate fields
-    reply_.status = reply::ok;
-    reply_.content = file_contents;
-    header length_header = {"Content-Length", std::to_string(file_contents.length())};
-    header type_header = {"Content-Type", extension_type_map(ext_type)};
-    reply_.headers = {length_header, type_header};
-    return reply_;
+    res.body() = file_contents;
+    res.result(http::status::ok);
+    res.content_length((res.body().size()));
+    res.set(http::field::content_type, extension_type_map(ext_type));
+    return true;
 }
-
