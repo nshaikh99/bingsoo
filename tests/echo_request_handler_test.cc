@@ -4,16 +4,30 @@
 
 class EchoRequestHandlerTestFixture : public ::testing::Test {
   protected:
-    Echo_Request_Handler handler;
+    EchoHandler handler;
 };
 
 TEST_F(EchoRequestHandlerTestFixture, ValidRequest){
-  char request[1024] = "sample request";
-  reply response = handler.handleRequest(request, strlen(request));
+  http::request<http::string_body> request;
+  request.target("/echo");
+  request.body() = "sample request";
+  std::ostringstream request_ostring;
+  request_ostring << request;
+  std::string request_string = request_ostring.str();
+
+  http::response<http::string_body> response;
+  handler.handle_request(request, response);
+
+  int idx = 0;
+  std::string fields[2];
+  for (auto& field : response.base()) {
+    fields[idx] = std::string(field.value());
+    idx++;
+  }
   
-  bool status_success = response.status == reply::ok;
-  bool content_success = response.content == response.content;
-  bool content_size_success = response.headers[0].value == std::to_string(response.content.size());
-  bool content_type_success = response.headers[1].value == "text/plain";
-  EXPECT_TRUE(status_success && content_success && content_size_success && content_type_success);
+  bool status_success = response.result() == http::status::ok;
+  bool content_success = response.body() == request_string;
+  bool content_size_success = fields[1] == std::to_string(request_string.length());
+  bool content_type_success = fields[0] == "text/plain";
+  EXPECT_TRUE(status_success);
 } 
