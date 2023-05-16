@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae26377f_e0053f0b",
+        "filename": "src/static_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-16T19:32:34Z",
+      "side": 1,
+      "message": "Is there a way to make this into a separate function and pass in the type of stock reply? Just so we don\u0027t have to repeat these lines of code in lines 80-84 and 88-92.",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9a91e4_3404089e",
+        "filename": "tests/static_request_handler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-16T19:32:34Z",
+      "side": 1,
+      "message": "I\u0027m assuming you commented this test because the functionality is not finished yet. Remember to uncomment this test later on.",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10e2a1f_63905d85",
+        "filename": "tests/successful_get_404_response_integration_test_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-16T19:32:34Z",
+      "side": 1,
+      "message": "Just wondering, why was this changed from 1.0 to 1.1",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45ab7b9_8985af7a",
+        "filename": "tests/successful_get_echo_response_integration_test_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-16T19:32:34Z",
+      "side": 1,
+      "message": "Same here, why was it changed to 1.1",
+      "range": {
+        "startLine": 1,
+        "startChar": 5,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ff730f_c7f9a1da",
+        "filename": "tests/successful_get_static_response_integration_test_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-16T19:32:34Z",
+      "side": 1,
+      "message": "Same here, why was it changed to 1.1",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
