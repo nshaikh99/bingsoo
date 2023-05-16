@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c2edeed_0f1386ca",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-16T00:00:41Z",
+      "side": 1,
+      "message": "if its not equal to the npos it means there is \u0027/\u0027 in the file path (so it is an absolute path). if it enters the else case, there is no \u0027/\u0027 in the path so it is a relative path",
+      "parentUuid": "dddc2069_82ee545b",
+      "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b289519d_08a673ce",
         "filename": "src/session.cc",
         "patchSetId": 2
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6044974_a63c1bc1",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-16T00:00:41Z",
+      "side": 1,
+      "message": "sure, this is a line copied and pasted from other parts of our repo so i think it needs to be changed everywhere. can we do it in a follow up CL?",
+      "parentUuid": "b289519d_08a673ce",
+      "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee04e6e4_9997a78c",
         "filename": "src/static_request_handler.cc",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2023-05-15T23:49:50Z",
       "side": 1,
       "message": "Could you add a comment explaining what the absolute_path is?",
+      "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9a6848_72d060c1",
+        "filename": "src/static_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-16T00:00:41Z",
+      "side": 1,
+      "message": "the absolute path uses the root pathway and appends the current file pathway. it allows us to access things on an absolute path (https://www.computerhope.com/issues/ch001708.htm explains the difference between absolute and relative paths)",
+      "parentUuid": "ee04e6e4_9997a78c",
       "revId": "0dbbcb65234a8405aa4d1d8da1fad68b768e1e9e",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
