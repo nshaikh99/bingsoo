@@ -1,8 +1,15 @@
 #include "session.h"
 #include "request_parser.h"
 #include "request.h"
+#include "404_request_handler.h"
+#include "bad_request_handler.h"
 #include "echo_request_handler.h"
 #include "static_request_handler.h"
+#include "request_handler_factory.h"
+#include "404_handler_factory.h"
+#include "bad_handler_factory.h"
+#include "echo_handler_factory.h"
+#include "static_handler_factory.h"
 #include <iostream>
 
 #include <boost/bind.hpp>
@@ -40,6 +47,7 @@ bool session::start()
 int session::handle_read(const boost::system::error_code& error,
     size_t bytes_transferred)
 {
+
   // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc handle_read().";
   int result = -1; //if result is still -1 this means an error has occured
   if (!error) {
@@ -55,6 +63,12 @@ int session::handle_read(const boost::system::error_code& error,
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Incoming request from client with unknown IP";
     }
 
+    string data(data_);
+    request_.body() = data;
+    http::response<http::string_body> response;
+
+    RequestHandlerFactory* factory = NULL;
+    
     if (parse_status == request_parser::good) {
       result = 0;
 
@@ -63,8 +77,7 @@ int session::handle_read(const boost::system::error_code& error,
       if (req_type == reply::type_echo){
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
-        Echo_Request_Handler echo_request;
-        reply_ = echo_request.handleRequest(data_, bytes_transferred);
+        factory = new EchoHandlerFactory(std::string(request_.target()), config_);
       }
       else if (req_type == reply::type_static){
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good static request has occurred.";
@@ -78,8 +91,7 @@ int session::handle_read(const boost::system::error_code& error,
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Trying to Serve Static File: " << original_path->first;
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "requested uri substring is " << req_.uri;
           if (req_.uri == original_path->first){
-            Static_Request_Handler static_request = Static_Request_Handler(original_path->second);
-            reply_ = static_request.handleRequest(data_, bytes_transferred);
+            factory = new StaticHandlerFactory(original_path->second, config_);
             served_file = true;
           }
           else{
@@ -89,23 +101,34 @@ int session::handle_read(const boost::system::error_code& error,
         if (!served_file){
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
-          reply_ = reply_.stock_reply(reply::not_found);
+          factory = new _404HandlerFactory(std::string(request_.target()), config_);
         }
+        //req_.uri contains the path to the file that the client is requesting
       }
       else{
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
-        reply_ = reply_.stock_reply(reply::not_found);
+        factory = new _404HandlerFactory(std::string(request_.target()), config_);
       }
     } 
     else if (parse_status == request_parser::bad) {
       result = 1;
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "400 BAD: A bad request has occurred.\n";
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
-      reply_ = reply_.stock_reply(reply::bad_request);
+      factory = new BadHandlerFactory(std::string(request_.target()), config_);
     }
+
+    RequestHandler* handler = factory->create();
+    handler->handle_request(request_, response);
+
+    std::vector<boost::asio::const_buffer> response_buffer;
+    std::ostringstream response_ostring;
+    response_ostring << response;
+    std::string request_string = response_ostring.str();
+    response_buffer.push_back(boost::asio::buffer(request_string));
+
     boost::asio::async_write(socket_,
-        reply_.to_buffers(),
+        response_buffer,
         boost::bind(&session::handle_write, this,
         boost::asio::placeholders::error));
   }
