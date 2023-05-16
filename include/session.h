@@ -8,7 +8,10 @@
 #include "request.h"
 #include "config_parser.h"
 
+#include <boost/beast/http.hpp>
+
 using boost::asio::ip::tcp;
+namespace http = boost::beast::http;
 
 class session
 {
@@ -28,6 +31,7 @@ private:
   request_parser req_parser_;
   NginxConfig config_;
   request req_;
+  http::request<http::string_body> request_;
 };
 
 #endif
