@@ -211,7 +211,7 @@ The server must be updated so that it is aware of what factories are available t
 ```cpp
 // in server.cc
 
-RequestHandlerFactory* createHandlerFactory(
+RequestHandlerFactory* server::createHandlerFactory(
   const string& name,
   string uri
 )
@@ -229,7 +229,7 @@ RequestHandlerFactory* createHandlerFactory(
     return new _404HandlerFactory(uri, config_);
 }
 
-std::unordered_map<std::string, RequestHandlerFactory*> configMap() {
+std::unordered_map<std::string, RequestHandlerFactory*> server::configMap() {
   std::unordered_map<std::string, RequestHandlerFactory*> routes;
   std::unordered_map<std::string, std::string> static_path_map = config_.get_static_file_path();
   std::string echo_path = config_.get_echo_path();
