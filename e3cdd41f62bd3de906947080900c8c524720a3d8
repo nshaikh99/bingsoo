@@ -36,6 +36,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85fb856_8be98ba8",
+        "filename": "src/static_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T01:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c409c06_3687c0d5",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad9a91e4_3404089e",
@@ -71,6 +89,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86223d7_07ef0b8d",
+        "filename": "tests/static_request_handler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T01:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "762b9c01_5bfafa3a",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b10e2a1f_63905d85",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "we are using boost::beast::http::response now, which defaults to 1.1",
       "parentUuid": "b10e2a1f_63905d85",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c52a97_cbcdda79",
+        "filename": "tests/successful_get_404_response_integration_test_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T01:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9bbbc8b5_539c8094",
       "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
@@ -153,6 +207,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29220cd_92fecc25",
+        "filename": "tests/successful_get_echo_response_integration_test_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T01:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efa5cbe7_58ee1b01",
+      "range": {
+        "startLine": 1,
+        "startChar": 5,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25ff730f_c7f9a1da",
@@ -184,6 +262,24 @@
       "side": 1,
       "message": "we are using boost::beast::http::response now, which defaults to 1.1",
       "parentUuid": "25ff730f_c7f9a1da",
+      "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a321fa_1e040477",
+        "filename": "tests/successful_get_static_response_integration_test_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T01:41:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac85c86c_53051271",
       "revId": "e3cdd41f62bd3de906947080900c8c524720a3d8",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
