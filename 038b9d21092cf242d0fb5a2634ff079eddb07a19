@@ -48,6 +48,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97ab695_3dd3c183",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T06:47:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e35872c_fa1550ee",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "038b9d21092cf242d0fb5a2634ff079eddb07a19",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9774a6da_7a4052fa",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "deleted in this new patch",
       "parentUuid": "9774a6da_7a4052fa",
+      "revId": "038b9d21092cf242d0fb5a2634ff079eddb07a19",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92a96bc_2d8fc888",
+        "filename": "src/session.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T06:47:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d290723_102fd8bf",
       "revId": "038b9d21092cf242d0fb5a2634ff079eddb07a19",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
