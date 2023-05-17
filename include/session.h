@@ -7,6 +7,15 @@
 #include "request_parser.h"
 #include "request.h"
 #include "config_parser.h"
+#include "404_request_handler.h"
+#include "bad_request_handler.h"
+#include "echo_request_handler.h"
+#include "static_request_handler.h"
+#include "request_handler_factory.h"
+#include "404_handler_factory.h"
+#include "bad_handler_factory.h"
+#include "echo_handler_factory.h"
+#include "static_handler_factory.h"
 
 #include <boost/beast/http.hpp>
 
@@ -16,7 +25,7 @@ namespace http = boost::beast::http;
 class session
 {
 public:
-  session(boost::asio::io_service& io_service, NginxConfig config);
+  session(boost::asio::io_service& io_service, NginxConfig config, std::unordered_map<std::string, RequestHandlerFactory*> routes);
   tcp::socket& socket();
   bool start();
   enum { max_length = 1024 };
@@ -32,6 +41,7 @@ private:
   NginxConfig config_;
   request req_;
   http::request<http::string_body> request_;
+  std::unordered_map<std::string, RequestHandlerFactory*> routes_;
 };
 
 #endif
