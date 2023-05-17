@@ -80,6 +80,9 @@ target_link_libraries(session_test Boost::log Boost::log_setup)
 add_executable(static_request_handler_test tests/static_request_handler_test.cc)
 target_link_libraries(static_request_handler_test static_request_handler gtest_main reply)
 
+add_executable(404_request_handler_test tests/404_request_handler_test.cc)
+target_link_libraries(404_request_handler_test 404_request_handler gtest_main reply)
+
 
 # TODO(!): Update with test binary
 # gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
@@ -87,6 +90,7 @@ gtest_discover_tests(config_parser_test WORKING_DIRECTORY ../tests)
 gtest_discover_tests(reply_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(echo_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(static_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+gtest_discover_tests(404_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(request_parser_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_get_echo_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_echo_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
