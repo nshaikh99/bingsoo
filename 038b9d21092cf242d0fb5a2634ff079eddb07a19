@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fcfe7b_c3ab71e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T05:56:32Z",
+      "side": 1,
+      "message": "Remember to add the correct description for commit messages with What, Why, How, Test.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "038b9d21092cf242d0fb5a2634ff079eddb07a19",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9774a6da_7a4052fa",
+        "filename": "src/session.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-17T05:56:32Z",
+      "side": 1,
+      "message": "Just wondering, are you going to uncomment these later or delete these lines?",
+      "revId": "038b9d21092cf242d0fb5a2634ff079eddb07a19",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
