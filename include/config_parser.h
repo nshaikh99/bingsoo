@@ -28,6 +28,7 @@ class NginxConfig {
   std::unordered_map<std::string,std::string> get_static_file_path();
   std::string get_static_serving_path();
   std::string get_echo_path();
+  std::pair<std::string, std::string> get_crud_paths();
   bool is_echo();
   bool is_static();
 };
