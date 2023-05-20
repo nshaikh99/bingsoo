@@ -125,3 +125,11 @@ TEST_F(NginxConfigTestFixture, ToStringConfigStatement) {
 
   EXPECT_TRUE(success);
 }
+
+TEST_F(NginxConfigTestFixture, GetCrudPathTest) {
+  bool success = parser.Parse("test_configs/handler_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_crud_path();
+  ASSERT_EQ(paths, "/api");
+}

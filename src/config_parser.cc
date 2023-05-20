@@ -376,3 +376,15 @@ bool NginxConfig::is_static(){
   std::string static_in_config = get_static_serving_path();
   return static_in_config != "";
 }
+
+std::string NginxConfig::get_crud_path() {
+  std::string path_str;
+
+  for(const auto& statement : statements_) {
+    if(statement->tokens_[0] == "location" && statement->tokens_[2] == "CrudHandler") {
+        path_str = statement->tokens_[1];
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Obtained crud path: " << path_str;
+    }
+  }
+  return path_str;
+}
