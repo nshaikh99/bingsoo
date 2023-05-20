@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65b7dae3_6370182b",
+        "filename": "conf/sample.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000399
+      },
+      "writtenOn": "2023-05-20T20:15:41Z",
+      "side": 1,
+      "message": "Hmmm I get where you are coming from. According to the spec (https://www.cs130.org/assignments/7/), it looks like we create and use a new keyword called \"data_path\" which is the file path that specifies the root directory of the created data. I don\u0027t think they want us to use the \"root\" keyword, but I may be misinterpreting the spec. Take a look and let me know what you think!",
+      "parentUuid": "7cf51c36_37e10bf2",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "b8f3d9920b103ccfa21b57287182ccc61b9019b5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "436494e0_6aea3866",
         "filename": "src/crud_request_handler.cc",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-20T19:46:38Z",
       "side": 1,
       "message": "I\u0027m not sure that this will compile as there is no status being returned by the function. I understand that this is just the skeleton code, but it is good practice to commit code that can compile. I would suggest adding a line that returns a failed status for now until the function has been implemented.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "b8f3d9920b103ccfa21b57287182ccc61b9019b5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd487a9_d228cf3d",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000399
+      },
+      "writtenOn": "2023-05-20T20:15:41Z",
+      "side": 1,
+      "message": "Good point, added this in!",
+      "parentUuid": "436494e0_6aea3866",
       "range": {
         "startLine": 7,
         "startChar": 0,
