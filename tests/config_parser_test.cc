@@ -125,3 +125,25 @@ TEST_F(NginxConfigTestFixture, ToStringConfigStatement) {
 
   EXPECT_TRUE(success);
 }
+
+TEST_F(NginxConfigTestFixture, GetCrudPathTest) {
+  bool success = parser.Parse("test_configs/handler_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_crud_path();
+  ASSERT_EQ(paths, "/api");
+}
+
+TEST_F(NginxConfigTestFixture, GetCrudArgsTest) {
+  bool success = parser.Parse("test_configs/handler_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::unordered_map<std::string,std::string> args_map = out_config.get_crud_args();
+
+  // Check if the map contains data_path arg
+  auto it = args_map.find("data_path");
+  bool hasKey = it != args_map.end();
+
+  ASSERT_TRUE(hasKey);
+  ASSERT_EQ(args_map["data_path"], "/foo/bar");
+}

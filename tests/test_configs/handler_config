@@ -1,0 +1,14 @@
+port 80;
+
+location /echo EchoHandler {
+}
+
+location /static StaticHandler {
+  root static/index.html;
+  root static/screenshot1.png;
+  root relative_file_path.html;
+}
+
+location /api CrudHandler {
+  data_path /foo/bar;
+}
