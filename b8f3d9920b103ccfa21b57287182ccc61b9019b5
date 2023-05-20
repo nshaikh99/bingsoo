@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253d744f_bd35f0c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-20T19:46:38Z",
+      "side": 1,
+      "message": "Looking good for the most part! Just recommending a couple of stylistic changes",
+      "revId": "b8f3d9920b103ccfa21b57287182ccc61b9019b5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf51c36_37e10bf2",
+        "filename": "conf/sample.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-20T19:46:38Z",
+      "side": 1,
+      "message": "In the interest of keeping the config file format consistent with the already-existing StaticHandler, may I suggest changing the name of the field from \"data_path\" to \"root\"?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "b8f3d9920b103ccfa21b57287182ccc61b9019b5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "436494e0_6aea3866",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-20T19:46:38Z",
+      "side": 1,
+      "message": "I\u0027m not sure that this will compile as there is no status being returned by the function. I understand that this is just the skeleton code, but it is good practice to commit code that can compile. I would suggest adding a line that returns a failed status for now until the function has been implemented.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "b8f3d9920b103ccfa21b57287182ccc61b9019b5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
