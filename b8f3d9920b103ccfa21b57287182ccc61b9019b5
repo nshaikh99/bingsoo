@@ -65,6 +65,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0340a118_bd5e218f",
+        "filename": "conf/sample.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-20T20:39:51Z",
+      "side": 1,
+      "message": "That\u0027s my bad, it definitely should be data_path. Thanks for the clarification!",
+      "parentUuid": "65b7dae3_6370182b",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "b8f3d9920b103ccfa21b57287182ccc61b9019b5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "436494e0_6aea3866",
