@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af0ea5a_f4d44569",
+        "filename": "src/crud_handler_factory.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-21T19:09:01Z",
+      "side": 1,
+      "message": "Depending how you guys decide to resolve the comment https://code.cs130.org/c/bingsoo/+/15052/4/src/config_parser.cc#389 you may need to include parse parameter \u0027config\u0027 in the constructor in order to find the value of path_",
+      "revId": "241b6c918cb490f47e706762129749e84f8759f7",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec100f9c_f4b710a3",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-21T19:09:01Z",
+      "side": 1,
+      "message": "For style consistency maybe use a member initializer list for all class constructors\nie \u0027: data_path_(path){}\u0027 instead of {data_path_ \u003d path;}",
+      "revId": "241b6c918cb490f47e706762129749e84f8759f7",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6574ec72_47fbfd81",
+        "filename": "src/server.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-21T19:09:01Z",
+      "side": 1,
+      "message": "Why stringify crud_paths.second but not crud_paths.first?",
+      "revId": "241b6c918cb490f47e706762129749e84f8759f7",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
