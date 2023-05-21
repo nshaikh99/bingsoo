@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ffb4457_ea780520",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-21T18:55:56Z",
+      "side": 1,
+      "message": "Not sure if parsing the {...} block in config_parser follows the common API. Under https://www.cs130.org/assignments/6/#request-handlers it states, \"RequestHandlerFactorys should be responsible for parsing the Nginx config object, so the server passes the arguments in the { ... } block into the RequestHandlerFactory.\" Since the data_path is in the {...} block, we believe finding it is up to a Factory rather than the config parser.",
+      "revId": "29dbaa59bc239f6a566f3cfb695faf010fdcf84d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
