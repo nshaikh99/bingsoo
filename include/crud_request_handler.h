@@ -6,12 +6,14 @@
 #include <boost/beast/http.hpp>
 
 namespace http = boost::beast::http;
-
 typedef bool status;
 
 class CrudHandler : public RequestHandler {
- public:
-  status handle_request(const http::request<http::string_body> req, http::response<http::string_body> res);
+  public:
+    CrudHandler(std::string path);
+    status handle_request(const http::request<http::string_body> req, http::response<http::string_body> &res);
+  private:
+    std::string data_path_;
 };
 
 #endif // crud_request_handler_h
