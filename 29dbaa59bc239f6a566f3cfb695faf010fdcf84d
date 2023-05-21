@@ -34,6 +34,24 @@
       "parentUuid": "1ffb4457_ea780520",
       "revId": "29dbaa59bc239f6a566f3cfb695faf010fdcf84d",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020720da_cc5caa36",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-21T21:47:27Z",
+      "side": 1,
+      "message": "Could you amend this commit with the data_path parsing change? Unless it would be easier for your development to just +1 this one and make the change in the next. I\u0027m just not sure we should be merging code we know needs fixing.",
+      "parentUuid": "9f67668e_0ea63f71",
+      "revId": "29dbaa59bc239f6a566f3cfb695faf010fdcf84d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
