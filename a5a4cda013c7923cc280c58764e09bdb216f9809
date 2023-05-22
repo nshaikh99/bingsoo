@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fb93b2_68b076e8",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000399
+      },
+      "writtenOn": "2023-05-22T06:20:47Z",
+      "side": 1,
+      "message": "For each statement in the CrudHandler block, we save its argument to a map, so data_path should be saved. \n\nMy plan is that this parsing function will be called inside the CrudFactoryHandler create() func or the constructor as you mentioned. Please lmk if this aligns with the reqs of the common API.",
+      "revId": "a5a4cda013c7923cc280c58764e09bdb216f9809",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
