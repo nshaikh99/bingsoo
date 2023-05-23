@@ -26,7 +26,7 @@ steps:
     '-t', 'gcr.io/$PROJECT_ID/bingsoo:latest',
     '.'
   ]
-coverage
+# coverage image
 - name: 'gcr.io/cloud-builders/docker'
   args: [
     'build',
