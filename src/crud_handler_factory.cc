@@ -1,5 +1,7 @@
+#include <memory>
 #include "crud_handler_factory.h"
 #include "crud_request_handler.h"
+#include "real_filesystem.h"
 
 CrudHandlerFactory::CrudHandlerFactory(const std::string& path, const NginxConfig& config)
 : location_path_(path), config_(config) {
@@ -8,5 +10,6 @@ CrudHandlerFactory::CrudHandlerFactory(const std::string& path, const NginxConfi
 }
 
 RequestHandler* CrudHandlerFactory::create() {
-  return new CrudHandler(data_path_);
+  std::shared_ptr<filesystem_interface> filesystem = std::make_shared<real_filesystem>();
+  return new CrudHandler(data_path_, filesystem);
 }
