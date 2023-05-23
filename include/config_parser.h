@@ -32,6 +32,7 @@ class NginxConfig {
   std::unordered_map<std::string,std::string> get_crud_args();
   bool is_echo();
   bool is_static();
+  bool is_crud();
 };
 
 // The driver that parses a config file and generates an NginxConfig.
