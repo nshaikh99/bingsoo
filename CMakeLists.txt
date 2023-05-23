@@ -45,6 +45,7 @@ add_library(static_request_handler src/static_request_handler.cc)
 add_library(404_request_handler src/404_request_handler.cc)
 add_library(bad_request_handler src/bad_request_handler.cc)
 add_library(crud_request_handler src/crud_request_handler.cc)
+add_library(filesystem_lib include/filesystem_interface.h src/real_filesystem.cc)
 
 add_library(echo_handler_factory src/echo_handler_factory.cc)
 add_library(static_handler_factory src/static_handler_factory.cc)
@@ -52,11 +53,11 @@ add_library(bad_handler_factory src/bad_handler_factory.cc)
 add_library(404_handler_factory src/404_handler_factory.cc)
 add_library(crud_handler_factory src/crud_handler_factory.cc)
 
-target_link_libraries(server_lib session config_parser_lib reply request_parser Boost::log_setup Boost::log)
+target_link_libraries(server_lib session config_parser_lib reply request_parser filesystem_lib Boost::log_setup Boost::log)
 
 # TODO(!): Update executable name, srcs, and deps
 add_executable(server src/server_main.cc)
-target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler 404_request_handler bad_request_handler crud_request_handler config_parser_lib Boost::log_setup Boost::log echo_handler_factory static_handler_factory bad_handler_factory 404_handler_factory crud_handler_factory)
+target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler 404_request_handler bad_request_handler crud_request_handler config_parser_lib Boost::log_setup Boost::log echo_handler_factory static_handler_factory bad_handler_factory 404_handler_factory crud_handler_factory filesystem_lib)
 
 # TODO(!): Update test executable name, srcs, and deps
 # add_executable(example_lib_test tests/example_lib_test.cc)
