@@ -377,6 +377,11 @@ bool NginxConfig::is_static(){
   return static_in_config != "";
 }
 
+bool NginxConfig::is_crud(){
+  std::string crud_in_config = get_crud_path();
+  return crud_in_config != "";
+}
+
 std::string NginxConfig::get_crud_path() {
   std::string path_str;
 
