@@ -55,6 +55,7 @@ int session::handle_read(const boost::system::error_code& error,
     }
 
     string data(data_);
+    request_.method_string(req_.method);
     request_.body() = data;
     http::response<http::string_body> response;
     RequestHandlerFactory* factory = NULL;
@@ -73,7 +74,7 @@ int session::handle_read(const boost::system::error_code& error,
     if (parse_status == request_parser::good) {
       result = 0;
 
-      reply::request_type req_type = get_request_type(); //echo, static, or not_found
+      reply::request_type req_type = get_request_type(); //echo, static, crud, or not_found
 
       if (req_type == reply::type_echo){
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
@@ -103,6 +104,11 @@ int session::handle_read(const boost::system::error_code& error,
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
           factory = routes_["/"];
         }
+      } else if (req_type == reply::type_crud){
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good CRUD request has occurred.";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          std::string parsed_crud_path = config_.get_crud_path();
+          factory = routes_[parsed_crud_path];
       }
       else{
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
@@ -116,6 +122,7 @@ int session::handle_read(const boost::system::error_code& error,
     }
     RequestHandler* handler = factory->create();
     handler->handle_request(request_, response);
+
 
     std::vector<boost::asio::const_buffer> response_buffer;
     std::ostringstream response_ostring;
@@ -182,6 +189,12 @@ reply::request_type session::get_request_type()
     if (req_.uri.substr(0, parsed_static_serving_path.length()) == (parsed_static_serving_path)){
       return reply::type_static;
     }
+  } 
+  else if (config_.is_crud()) {
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "CRUD Request";
+    std::string parsed_crud_serving_path = config_.get_crud_path();
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is " << req_.uri;
+    return reply::type_crud;
   }
   return reply::type_not_found;
 }
