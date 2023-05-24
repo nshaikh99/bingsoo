@@ -16,6 +16,24 @@
       "message": "what is the purpose of this interface?",
       "revId": "42b768261c596aefc74b5bd43423da6c5376bc9a",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ad6c56_1b7eba01",
+        "filename": "include/filesystem_interface.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000370
+      },
+      "writtenOn": "2023-05-24T00:43:36Z",
+      "side": 1,
+      "message": "so that we can create a fake filesystem and unit test using dependency injection",
+      "parentUuid": "26605d39_d9288e32",
+      "revId": "42b768261c596aefc74b5bd43423da6c5376bc9a",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
