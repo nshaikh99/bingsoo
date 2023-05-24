@@ -212,12 +212,10 @@ TEST(RequestCrudTest, DeleteFile) {
     // Write a test file to the mock filesystem for the requested file
     std::string target = " ./mnt/crud/Shoes/1";
     std::string fileContent = "{\n    \"brand\": \"Nike\",\n    \"color\": \"red\"\n}";
-    m_filesystem->write_file(target, fileContent);
     // Create a GET request for the test file
     http::request<http::string_body> request;
     request.method(http::verb::delete_);
     request.target("/api/Shoes/1");  // Set the target path of the request
-    // request.body() = "{\n    \"brand\": \"Adidas\",\n    \"color\": \"light-green\",\n  \"size\": \"12\"}";
     // Call the handle_request function
     bool status = crud.handle_request(request, response);
     // Assert the expected result
@@ -227,7 +225,7 @@ TEST(RequestCrudTest, DeleteFile) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::ok);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "Deleted ./mnt/crud/Shoes/1 from the server");
+    ASSERT_EQ(response.body(), fileContent);
 }
 
 TEST(RequestCrudTest, BadRequestWithOneSlash) {

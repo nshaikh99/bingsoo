@@ -105,6 +105,7 @@ if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_create_log_file_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_create_log_file_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME successful_log_invalid_port_number_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_log_invalid_port_number_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME successful_log_invalid_config_file_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_log_invalid_config_file_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    add_test(NAME crud_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/crud_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
