@@ -124,9 +124,9 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       else{
         //if the directory does not exist, return a 404 not found response
         res.result(http::status::not_found);
-        res.content_length((res.body().size()));
         res.set(http::field::content_type, "application/json");
         res.body() = "Directory not found";
+        res.content_length((res.body().size()));
 
         return false;
 
@@ -141,10 +141,11 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       bool result = filesystem_->read_file(path_to_entities, file_content);
 
       //if we have successfully read it, return the contents
-      if(result){
+      if(result) {
         res.result(http::status::ok);
         res.set(http::field::content_type, "application/json");
         res.body() = file_content;
+        res.content_length((res.body().size()));
 
         return true;
       }
@@ -162,9 +163,9 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
     }
     else{
       res.result(http::status::not_found);
-      res.content_length((res.body().size()));
       res.set(http::field::content_type, "application/json");
       res.body() = "File does not exist";
+      res.content_length((res.body().size()));
 
       return false; 
     }
@@ -177,13 +178,17 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       //if there is one 
       //check if the file exists
       if(filesystem_->file_exists(path_to_entities)){
-        //if the file exists, delete it
+
+        //if the file exists, read contents then delete it
+        std::string file_content;
+        bool read_result = filesystem_->read_file(path_to_entities, file_content);
         bool result = filesystem_->delete_file(path_to_entities);
-        if(result){
-          //if the file was successfully deleted, return a response
+        if(read_result && result) {
+          //if the file was successfully deleted, return a response with deleted entity data
           res.result(http::status::ok);
           res.set(http::field::content_type, "application/json");
-          res.body() = "Deleted " + path_to_entities + " from the server";;
+          res.body() = file_content;
+          res.content_length((res.body().size()));
 
           return true;
         }
