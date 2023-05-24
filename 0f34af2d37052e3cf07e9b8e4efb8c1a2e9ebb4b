@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feec4cb0_d515b07d",
+        "filename": "src/session.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-24T06:51:53Z",
+      "side": 1,
+      "message": "this assignment should be handled by line 68. req_.uri holds the uri of a given request, so in the case of a crud request, req_uri \u003d\u003d \u0027api\u0027 so there shouldn\u0027t be a need for lines 110-111",
+      "revId": "0f34af2d37052e3cf07e9b8e4efb8c1a2e9ebb4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92eb2f6_a9658e19",
+        "filename": "src/session.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-24T06:51:53Z",
+      "side": 1,
+      "message": "is this meant to be taken out",
+      "revId": "0f34af2d37052e3cf07e9b8e4efb8c1a2e9ebb4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
