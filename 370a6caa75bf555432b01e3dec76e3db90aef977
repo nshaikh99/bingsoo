@@ -16,6 +16,23 @@
       "message": "Thank you great Isaac pt 2. I will be pushing another patchset to this review id with unit tests and all your comments acknowledged!",
       "revId": "370a6caa75bf555432b01e3dec76e3db90aef977",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9e6e8c_70204521",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:19:12Z",
+      "side": 1,
+      "message": "Just resolved the final comments. All of them are acknowledged in the patchset I am pushing right now.",
+      "revId": "370a6caa75bf555432b01e3dec76e3db90aef977",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
