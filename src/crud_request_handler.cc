@@ -124,9 +124,9 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       else{
         //if the directory does not exist, return a 404 not found response
         res.result(http::status::not_found);
-        res.content_length((res.body().size()));
         res.set(http::field::content_type, "application/json");
         res.body() = "Directory not found";
+        res.content_length((res.body().size()));
 
         return false;
 
@@ -141,10 +141,11 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       bool result = filesystem_->read_file(path_to_entities, file_content);
 
       //if we have successfully read it, return the contents
-      if(result){
+      if(result) {
         res.result(http::status::ok);
         res.set(http::field::content_type, "application/json");
         res.body() = file_content;
+        res.content_length((res.body().size()));
 
         return true;
       }
@@ -162,14 +163,15 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
     }
     else{
       res.result(http::status::not_found);
-      res.content_length((res.body().size()));
       res.set(http::field::content_type, "application/json");
       res.body() = "File does not exist";
+      res.content_length((res.body().size()));
 
       return false; 
     }
 
   }
+
   if (req.method() == http::verb::delete_) {
     // DELETE request
     //check if there is an id or not
@@ -184,7 +186,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
           res.result(http::status::ok);
           res.set(http::field::content_type, "application/json");
           res.body() = "Deleted " + path_to_entities + " from the server";;
-
+          res.content_length((res.body().size()));
           return true;
         }
         else{
@@ -193,7 +195,6 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
           res.content_length((res.body().size()));
           res.set(http::field::content_type, "application/json");
           res.body() = "Error deleting file";
-
           return false; 
         }
       }
@@ -203,7 +204,6 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
         res.content_length((res.body().size()));
         res.set(http::field::content_type, "application/json");
         res.body() = "File does not exist";
-
         return false; 
       }
     }
@@ -216,8 +216,6 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       res.set(http::field::content_type, "application/json");
       return false;
     }
-
-
   }
   if (req.method() == http::verb::put) {
     // PUT request
@@ -228,7 +226,6 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       // Write PUT body contents (JSON) to newly created instance
       std::string body_data = req.body().data();
       std::string PUT_data = body_data.substr(body_data.find("\r\n\r\n")+4); //skip the headers
-
       if(filesystem_->file_exists(path_to_entities)){
         res.result(http::status::ok);
     
@@ -236,11 +233,9 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       else{
         res.result(http::status::created);
       }
-
       res.set(http::field::content_type, "application/json");
       res.body() = "Edited " + path_to_entities + " on the server";
       filesystem_->write_file(path_to_entities, PUT_data);
-
       return true;
     }
     else{
@@ -253,10 +248,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       return false;
     }
       
-
   }
-
-
   
   return false;
 }
