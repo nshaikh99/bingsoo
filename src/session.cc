@@ -56,7 +56,8 @@ int session::handle_read(const boost::system::error_code& error,
 
     string data(data_);
     request_.method_string(req_.method);
-    request_.body() = data;
+    request_.body() = data.substr(data.find("\r\n\r\n")+4);
+    request_.target(req_.uri);
     http::response<http::string_body> response;
     RequestHandlerFactory* factory = NULL;
 
