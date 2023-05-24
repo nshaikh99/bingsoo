@@ -39,7 +39,6 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
     return false;
   }
 
-  // std::string entityPath = "./" + data_path_ + "/" + suffix;
   
   std::string path_to_entities = "." + data_path_ + "/" + suffix;
 
@@ -57,7 +56,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
     // make sure ID is not passed in POST request.
     
     if (isID) {
-      // Return 404 Not Found
+      // If there is an id, return 404 Not Found
       res.body() = "id in request uri of post request";
       res.result(http::status::bad_request);
       res.content_length((res.body().size()));
@@ -65,7 +64,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       return false;
     }
 
-    // Create new instance of Entity ()
+    // If there is no id, create new instance of Entity ()
     
 
     std::string instancePath;
@@ -81,7 +80,8 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       instancePath = path_to_entities + "/" + std::to_string(ID);
     }
     // Write POST body contents (JSON) to newly created instance
-    std::string POST_data = req.body().data();
+    std::string body_data = req.body().data();
+    std::string POST_data = body_data.substr(body_data.find("\r\n\r\n")+4); //skip the headers
     filesystem_->write_file(instancePath, POST_data);
 
     // Return ID of newly created instance in response
@@ -106,7 +106,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
 
     }
     catch(...){
-      //else, we want to fetch a list of the relevant ids for that resource
+      //if not, we want to fetch a list of the relevant ids for that resource
       
       //if the file exists, get the ids and return them
       if(filesystem_->file_exists(path_to_entities)){
@@ -123,7 +123,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       }
       else{
         //if the directory does not exist, return a 404 not found response
-        res.result(http::status::bad_request);
+        res.result(http::status::not_found);
         res.content_length((res.body().size()));
         res.set(http::field::content_type, "application/json");
         res.body() = "Directory not found";
@@ -133,7 +133,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       }
 
     }
-    //if yes, then we want to access a specific resource
+    //if an id exists, then we want to access a specific resource
 
     //if the file exists, get the specific data
     if(filesystem_->file_exists(path_to_entities)){
@@ -161,7 +161,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       }
     }
     else{
-      res.result(http::status::bad_request);
+      res.result(http::status::not_found);
       res.content_length((res.body().size()));
       res.set(http::field::content_type, "application/json");
       res.body() = "File does not exist";
@@ -177,9 +177,10 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       //if there is one 
       //check if the file exists
       if(filesystem_->file_exists(path_to_entities)){
-        //if yes, delete it
+        //if the file exists, delete it
         bool result = filesystem_->delete_file(path_to_entities);
         if(result){
+          //if the file was successfully deleted, return a response
           res.result(http::status::ok);
           res.set(http::field::content_type, "application/json");
           res.body() = "Deleted " + path_to_entities + " from the server";;
@@ -187,6 +188,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
           return true;
         }
         else{
+          //if there was an error during deletion, return an erroneous response
           res.result(http::status::bad_request);
           res.content_length((res.body().size()));
           res.set(http::field::content_type, "application/json");
@@ -196,8 +198,8 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
         }
       }
       else{
-        //if no, return error response
-        res.result(http::status::bad_request);
+        //if the file does not exist, return error response
+        res.result(http::status::not_found);
         res.content_length((res.body().size()));
         res.set(http::field::content_type, "application/json");
         res.body() = "File does not exist";
@@ -223,12 +225,21 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
     if(isID){
       //find file
       //edit file
-      std::string POST_data = req.body().data();
-      filesystem_->write_file(path_to_entities, POST_data);
+      // Write PUT body contents (JSON) to newly created instance
+      std::string body_data = req.body().data();
+      std::string PUT_data = body_data.substr(body_data.find("\r\n\r\n")+4); //skip the headers
 
-      res.result(http::status::ok);
+      if(filesystem_->file_exists(path_to_entities)){
+        res.result(http::status::ok);
+    
+      }
+      else{
+        res.result(http::status::created);
+      }
+
       res.set(http::field::content_type, "application/json");
-      res.body() = "Edited " + path_to_entities + " on the server";;
+      res.body() = "Edited " + path_to_entities + " on the server";
+      filesystem_->write_file(path_to_entities, PUT_data);
 
       return true;
     }
