@@ -18,6 +18,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78386b56_1160ed4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22452857_c452c7c4",
+      "revId": "304c538c957b3ad4969317592a51387126ce6f96",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f9e2fc_29519899",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-24T16:48:17Z",
       "side": 1,
       "message": "Should this file be removed since it is not a json object?",
+      "revId": "304c538c957b3ad4969317592a51387126ce6f96",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4c6e31_c025cb31",
+        "filename": "mnt/crud/Shoes/1",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:13:46Z",
+      "side": 1,
+      "message": "Acknowledged as a patchset to https://code.cs130.org/c/bingsoo/+/15590/1",
+      "parentUuid": "93f9e2fc_29519899",
       "revId": "304c538c957b3ad4969317592a51387126ce6f96",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
@@ -52,6 +88,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa95d44_4577393c",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:13:46Z",
+      "side": 1,
+      "message": "Acknowledged in a patchset to https://code.cs130.org/c/bingsoo/+/15590/1",
+      "parentUuid": "fc0dad5f_40a719e2",
+      "revId": "304c538c957b3ad4969317592a51387126ce6f96",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52a9064b_eef53ed4",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-05-24T16:48:17Z",
       "side": 1,
       "message": "maybe add more detail than just \"if no\" since there are many nested blocks, so it\u0027s hard to know what you\u0027re referring to. change to \"if file does not exist.\" Apply change to all comments",
+      "revId": "304c538c957b3ad4969317592a51387126ce6f96",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2bf3ad_7c3b01b6",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:13:46Z",
+      "side": 1,
+      "message": "Acknowledged in a patchset to https://code.cs130.org/c/bingsoo/+/15590/1",
+      "parentUuid": "52a9064b_eef53ed4",
       "revId": "304c538c957b3ad4969317592a51387126ce6f96",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
@@ -86,6 +158,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "843cb7fe_04d33377",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:13:46Z",
+      "side": 1,
+      "message": "Acknowledged in a patchset to https://code.cs130.org/c/bingsoo/+/15590/1",
+      "parentUuid": "9bcced08_e1164727",
+      "revId": "304c538c957b3ad4969317592a51387126ce6f96",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a145cbf_559c50a8",
@@ -99,6 +189,24 @@
       "writtenOn": "2023-05-24T16:48:17Z",
       "side": 1,
       "message": "does this break the functionality of other handlers (echo and static requests)?",
+      "revId": "304c538c957b3ad4969317592a51387126ce6f96",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce19c0e1_e5c154ef",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:13:46Z",
+      "side": 1,
+      "message": "Ooh good catch. It didn\u0027t break any tests for me when I ran make coverage. However, I put it back and dealt with the header problem internally in our CRUDHandler\u0027s handle_request function. Acknowledged in a patchset to https://code.cs130.org/c/bingsoo/+/15590/1",
+      "parentUuid": "5a145cbf_559c50a8",
       "revId": "304c538c957b3ad4969317592a51387126ce6f96",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
