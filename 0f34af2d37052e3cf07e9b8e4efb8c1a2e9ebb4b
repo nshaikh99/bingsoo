@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad8d294a_88c70e4a",
+        "filename": "src/session.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000370
+      },
+      "writtenOn": "2023-05-24T07:16:12Z",
+      "side": 1,
+      "message": "my understanding is that all of the uri\u0027s will have some Entity attached to it, e.g. POST /api/Shoes will have a uri of /api/Shoes which won\u0027t map to the crud handler",
+      "parentUuid": "feec4cb0_d515b07d",
+      "revId": "0f34af2d37052e3cf07e9b8e4efb8c1a2e9ebb4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b92eb2f6_a9658e19",
         "filename": "src/session.cc",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2023-05-24T06:51:53Z",
       "side": 1,
       "message": "is this meant to be taken out",
+      "revId": "0f34af2d37052e3cf07e9b8e4efb8c1a2e9ebb4b",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c280b388_45e44c10",
+        "filename": "src/session.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000370
+      },
+      "writtenOn": "2023-05-24T07:16:12Z",
+      "side": 1,
+      "message": "this is the source of the bug I mentioned in the change list message but I can remove it",
+      "parentUuid": "b92eb2f6_a9658e19",
       "revId": "0f34af2d37052e3cf07e9b8e4efb8c1a2e9ebb4b",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
