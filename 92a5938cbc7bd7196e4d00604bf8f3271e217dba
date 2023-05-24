@@ -120,6 +120,24 @@
       "message": "will this be added in the next patch?",
       "revId": "92a5938cbc7bd7196e4d00604bf8f3271e217dba",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b8fc49_e0c7497a",
+        "filename": "tests/crud_request_handler_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000573
+      },
+      "writtenOn": "2023-05-24T18:16:33Z",
+      "side": 1,
+      "message": "Yes!",
+      "parentUuid": "1bcd1637_6e9f36e2",
+      "revId": "92a5938cbc7bd7196e4d00604bf8f3271e217dba",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
