@@ -55,8 +55,9 @@ int session::handle_read(const boost::system::error_code& error,
     }
 
     string data(data_);
-    request_.method_string(req_.method);
-    request_.body() = data;
+    //request_.method_string(req_.method);
+    build_request(data);
+    //request_.body() = data;
     http::response<http::string_body> response;
     RequestHandlerFactory* factory = NULL;
 
@@ -197,4 +198,44 @@ reply::request_type session::get_request_type()
     return reply::type_crud;
   }
   return reply::type_not_found;
+}
+
+void session::build_request(std::string data) {
+  std::istringstream request_stream(data);
+  //http::request<http::string_body> request;
+
+  // Read the request method and target
+    std::string method;
+    std::string target;
+    // extract values from the request (separated by whitespace)
+    request_stream >> method >> target;
+    request_.method_string(method);
+    request_.target(req_.uri);
+
+    // Process the HTTP version
+    std::string version;
+    request_stream >> version;
+    if (version == "HTTP/1.1") {
+        request_.version(11);
+    } else if (version == "HTTP/1.0") {
+        request_.version(10);
+    } else {
+        request_.version(0);
+    }
+
+    // Process the headers
+    for (std::string line; std::getline(request_stream, line) && line != "\r"; ) {
+        std::string::size_type separator = line.find(":");
+        if (separator != std::string::npos) {
+            std::string name = line.substr(0, separator);
+            std::string value = line.substr(separator + 1);
+            request_.set(name, value);
+        }
+    }
+
+    // The remaining content is the body
+    std::string body((std::istreambuf_iterator<char>(request_stream)),
+                     std::istreambuf_iterator<char>());
+    request_.body() = body;
+    request_.prepare_payload();
 }

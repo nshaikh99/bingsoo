@@ -23,6 +23,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
           break;
         }
       }
+      
       if (isID) {
         // Return 404 Not Found
         res.body() = stock_replies::bad_request;
@@ -31,6 +32,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
         res.set(http::field::content_type, "application/json");
         return false;
       }
+      
 
       // Create new instance of Entity ()
       // get /api/{THIS PART}
@@ -44,7 +46,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
       }
 
       std::string entityPath = "./" + data_path_ + "/" + suffix;
-
+      std::cout<< "entityPath: " << entityPath << std::endl;
       std::string instancePath;
       int ID = 1; // Start w/ default ID
       if (!filesystem_->file_exists(entityPath)) {

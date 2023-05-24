@@ -42,6 +42,7 @@ private:
   request req_;
   http::request<http::string_body> request_;
   std::unordered_map<std::string, RequestHandlerFactory*> routes_;
+  void build_request(std::string data);
 };
 
 #endif
