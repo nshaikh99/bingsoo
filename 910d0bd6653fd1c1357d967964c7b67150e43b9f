@@ -69,6 +69,24 @@
       "parentUuid": "36e46a36_eea1d9f2",
       "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ca2ca9_15554c9b",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000399
+      },
+      "writtenOn": "2023-05-25T01:32:23Z",
+      "side": 1,
+      "message": "Completely valid, my bad for changing the implementation. Updated to retrieve the file path from the response in the integration test and compare with the path of the GET req",
+      "parentUuid": "fc9dbcda_615b348c",
+      "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
