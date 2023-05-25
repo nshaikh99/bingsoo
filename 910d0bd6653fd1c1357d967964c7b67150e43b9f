@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7495d509_66962cf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000399
+      },
+      "writtenOn": "2023-05-25T00:41:54Z",
+      "side": 1,
+      "message": "Please let me know whether to revert back to the original way or keep it how it is!",
+      "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7588461c_bf00d0bd",
@@ -14,6 +31,24 @@
       "writtenOn": "2023-05-25T00:30:15Z",
       "side": 1,
       "message": "Why was this change made? Wouldn\u0027t it be better if the res contained a confirmation of which file was deleted like the previous implementation?",
+      "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e46a36_eea1d9f2",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000399
+      },
+      "writtenOn": "2023-05-25T00:41:54Z",
+      "side": 1,
+      "message": "I personally it was better to check if the JSON from the deleted entity matched with the one sent over in the GET request but I realize that this decision was made solely with integration test in mind, which is flawed thinking on my end.\n\nIf you prefer the previous implementation, I can revert back to the original way it was done and change my integration test to check whether the returned file path matches the path sent in the DELETE request (i.e. Shoes/$id).",
+      "parentUuid": "7588461c_bf00d0bd",
       "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
