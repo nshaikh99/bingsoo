@@ -51,6 +51,24 @@
       "parentUuid": "7588461c_bf00d0bd",
       "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9dbcda_615b348c",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-25T00:54:46Z",
+      "side": 1,
+      "message": "Yeah the only issue is that how is the client supposed to know that the correct file was deleted. Maybe they don\u0027t know about the content of the file and they just want to know that the correct ID was deleted.\n\nI think if you set res.body() \u003d \"Deleted \" + path_to_entities\" then in the integration test you can just compare it to \"Deleted /api/Shoes/$id\"?",
+      "parentUuid": "36e46a36_eea1d9f2",
+      "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
