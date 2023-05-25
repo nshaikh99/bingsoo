@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5530701c_417a1061",
+        "filename": "tests/crud_integration_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-25T01:36:33Z",
+      "side": 1,
+      "message": "can we specifically check for $id here so we know the correct id is being deleted. Because right not what if the incorrect file was deleted, then this would still pass.",
+      "revId": "ba7be36506e652be49a580bb10ddbc09860830b3",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
