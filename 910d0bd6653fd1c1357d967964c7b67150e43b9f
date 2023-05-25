@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7588461c_bf00d0bd",
+        "filename": "src/crud_request_handler.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-05-25T00:30:15Z",
+      "side": 1,
+      "message": "Why was this change made? Wouldn\u0027t it be better if the res contained a confirmation of which file was deleted like the previous implementation?",
+      "revId": "910d0bd6653fd1c1357d967964c7b67150e43b9f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
