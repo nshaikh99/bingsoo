@@ -147,3 +147,11 @@ TEST_F(NginxConfigTestFixture, GetCrudArgsTest) {
   ASSERT_TRUE(hasKey);
   ASSERT_EQ(args_map["data_path"], "/foo/bar");
 }
+
+TEST_F(NginxConfigTestFixture, GetHealthPathTest) {
+  bool success = parser.Parse("test_configs/health_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_health_path();
+  ASSERT_EQ(paths, "/health");
+}
