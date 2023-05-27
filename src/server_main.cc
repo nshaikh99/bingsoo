@@ -69,8 +69,8 @@ int main(int argc, char* argv[])
       BOOST_LOG_TRIVIAL(fatal) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::FATAL] << "Invalid config file";
       return -1;
     }
-    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Parsed config file";
-    BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << parsed_config;
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Successfully parsed config file";
+    // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << parsed_config;
 
 
     // extract info from config file
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
     boost::asio::io_service io_service;
 
     server s(io_service, port_num, config); //calls the server::server(...) function in server.cc
-    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Server running on port" << port_num;
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Server running on port: " << port_num;
 
     // handle signals
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
