@@ -193,6 +193,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
   TokenType token_type;
   int block_start_count = 0;
   int block_end_count = 0;
+  BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN CONFIG PARSING----\n";
   while (true) {
     std::string token;
     token_type = ParseToken(config_file, &token);
@@ -264,6 +265,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
       if (block_end_count != 0){
         break;
       }
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----END OF CONFIG PARSING----\n";
       return true;
     } else {
       // Error. Unknown token.
@@ -320,6 +322,7 @@ std::unordered_map<std::string,std::string> NginxConfig::get_static_file_path(){
   std::unordered_map<std::string,std::string> paths_map;
   for (const auto& statement : statements_) {
     if (statement->tokens_[0] == "location" && statement->tokens_[2] == "StaticHandler") {
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request Handler: StaticHandler";
       for (auto config_statement : statement -> child_block_ -> statements_) {
         int token_length = config_statement->tokens_.size();
         for (int i = 0; i < token_length; i++){
@@ -335,7 +338,7 @@ std::unordered_map<std::string,std::string> NginxConfig::get_static_file_path(){
             }
             paths_map[built_uri] = result_file_path;
             BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static File: " << result_file_path;
-            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Built uri: " << built_uri;
+            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Built URI: " << built_uri;
           }
         }
       }
@@ -349,6 +352,7 @@ std::string NginxConfig::get_static_serving_path(){
   std::string paths_str;
   for (const auto& statement : statements_) {
     if (statement->tokens_[0] == "location" && statement->tokens_[2] == "StaticHandler") {
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request Handler: StaticHandler";
       paths_str = statement->tokens_[1];
       return paths_str;
     }
@@ -360,6 +364,7 @@ std::string NginxConfig::get_echo_path(){
   std::string paths_str;
   for (const auto& statement : statements_) {
     if (statement->tokens_[0] == "location" && statement->tokens_[2] == "EchoHandler") {
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request Handler: EchoHandler";
       paths_str = statement->tokens_[1];
       return paths_str;
     }
@@ -387,8 +392,9 @@ std::string NginxConfig::get_crud_path() {
 
   for(const auto& statement : statements_) {
     if(statement->tokens_[0] == "location" && statement->tokens_[2] == "CrudHandler") {
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Request Handler: CrudHandler";
         path_str = statement->tokens_[1];
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Obtained crud path: " << path_str;
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Obtained CRUD path: " << path_str;
     }
   }
   return path_str;

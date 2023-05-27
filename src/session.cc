@@ -91,7 +91,7 @@ int session::handle_read(const boost::system::error_code& error,
         for (original_path = parsed_config_paths_.begin(); original_path != parsed_config_paths_.end(); original_path++)
         {
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Trying to Serve Static File: " << original_path->first;
-          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "requested uri substring is " << req_.uri;
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI substring is: " << req_.uri;
           if (req_.uri == original_path->first){
             factory = new StaticHandlerFactory(original_path->second, config_);
             served_file = true;
@@ -186,7 +186,7 @@ reply::request_type session::get_request_type()
   else if (config_.is_static()) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static Request"; 
     std::string parsed_static_serving_path = config_.get_static_serving_path();
-    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is " << req_.uri;
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is: " << req_.uri;
     if (req_.uri.substr(0, parsed_static_serving_path.length()) == (parsed_static_serving_path)){
       return reply::type_static;
     }
@@ -194,7 +194,7 @@ reply::request_type session::get_request_type()
   else if (config_.is_crud()) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "CRUD Request";
     std::string parsed_crud_serving_path = config_.get_crud_path();
-    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is " << req_.uri;
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is: " << req_.uri;
     return reply::type_crud;
   }
   return reply::type_not_found;
