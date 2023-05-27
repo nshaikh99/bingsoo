@@ -193,6 +193,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
   TokenType token_type;
   int block_start_count = 0;
   int block_end_count = 0;
+  BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[ConfigParsing]" << "\n----BEGIN CONFIG PARSING----\n";
   while (true) {
     std::string token;
     token_type = ParseToken(config_file, &token);
@@ -264,6 +265,7 @@ bool NginxConfigParser::Parse(std::istream* config_file, NginxConfig* config) {
       if (block_end_count != 0){
         break;
       }
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----END OF CONFIG PARSING----\n";
       return true;
     } else {
       // Error. Unknown token.
@@ -318,6 +320,7 @@ int NginxConfig::get_port_num(){
 
 std::unordered_map<std::string,std::string> NginxConfig::get_static_file_path(){
   std::unordered_map<std::string,std::string> paths_map;
+  BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Building list of static routes";
   for (const auto& statement : statements_) {
     if (statement->tokens_[0] == "location" && statement->tokens_[2] == "StaticHandler") {
       for (auto config_statement : statement -> child_block_ -> statements_) {
@@ -335,7 +338,7 @@ std::unordered_map<std::string,std::string> NginxConfig::get_static_file_path(){
             }
             paths_map[built_uri] = result_file_path;
             BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static File: " << result_file_path;
-            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Built uri: " << built_uri;
+            BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Built URI: " << built_uri;
           }
         }
       }
@@ -420,7 +423,7 @@ std::string NginxConfig::get_crud_path() {
   for(const auto& statement : statements_) {
     if(statement->tokens_[0] == "location" && statement->tokens_[2] == "CrudHandler") {
         path_str = statement->tokens_[1];
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Obtained crud path: " << path_str;
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Obtained CRUD path: " << path_str;
     }
   }
   return path_str;

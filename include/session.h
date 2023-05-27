@@ -41,6 +41,7 @@ private:
   NginxConfig config_;
   request req_;
   http::request<http::string_body> request_;
+  http::response<http::string_body> response_;
   std::unordered_map<std::string, RequestHandlerFactory*> routes_;
 };
 
