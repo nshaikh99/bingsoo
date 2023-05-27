@@ -75,7 +75,7 @@ int session::handle_read(const boost::system::error_code& error,
     if (parse_status == request_parser::good) {
       result = 0;
 
-      reply::request_type req_type = get_request_type(); //echo, static, crud, or not_found
+      reply::request_type req_type = get_request_type(); //echo, static, crud, health, or not_found
 
       if (req_type == reply::type_echo){
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
@@ -110,6 +110,9 @@ int session::handle_read(const boost::system::error_code& error,
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
           std::string parsed_crud_path = config_.get_crud_path();
           factory = routes_[parsed_crud_path];
+      } else if (req_type == reply::type_health){
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good health request has occurred.";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       }
       else{
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
@@ -196,6 +199,10 @@ reply::request_type session::get_request_type()
     std::string parsed_crud_serving_path = config_.get_crud_path();
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is " << req_.uri;
     return reply::type_crud;
+  }
+  else if (config_.is_health()) {
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Health Request";
+    return reply::type_health;
   }
   return reply::type_not_found;
 }
