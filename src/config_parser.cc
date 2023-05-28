@@ -378,6 +378,17 @@ std::string NginxConfig::get_health_path(){
   return paths_str;
 }
 
+std::string NginxConfig::get_sleep_path(){
+  std::string paths_str;
+  for (const auto& statement : statements_) {
+    if (statement->tokens_[0] == "location" && statement->tokens_[2] == "SleepHandler") {
+      paths_str = statement->tokens_[1];
+      return paths_str;
+    }
+  }
+  return paths_str;
+}
+
 bool NginxConfig::is_echo(){
   std::string echo_in_config = get_echo_path();
   return echo_in_config != "";
@@ -396,6 +407,11 @@ bool NginxConfig::is_crud(){
 bool NginxConfig::is_health(){
   std::string health_in_config = get_health_path();
   return health_in_config != "";
+}
+
+bool NginxConfig::is_sleep(){
+  std::string sleep_in_config = get_sleep_path();
+  return sleep_in_config != "";
 }
 
 std::string NginxConfig::get_crud_path() {

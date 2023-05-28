@@ -155,3 +155,11 @@ TEST_F(NginxConfigTestFixture, GetHealthPathTest) {
   std::string paths = out_config.get_health_path();
   ASSERT_EQ(paths, "/health");
 }
+
+TEST_F(NginxConfigTestFixture, GetSleepPathTest) {
+  bool success = parser.Parse("test_configs/sleep_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_sleep_path();
+  ASSERT_EQ(paths, "/sleep");
+}

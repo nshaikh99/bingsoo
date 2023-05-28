@@ -9,6 +9,7 @@
 #include "bad_handler_factory.h"
 #include "crud_handler_factory.h"
 #include "health_handler_factory.h"
+#include "sleep_handler_factory.h"
 
 #include <boost/asio.hpp>
 #include <string>
