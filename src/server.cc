@@ -53,6 +53,8 @@ RequestHandlerFactory* server::createHandlerFactory(string name, string uri) {
     return new CrudHandlerFactory(uri, config_);
   else if (name == "HealthHandler")
     return new HealthHandlerFactory(uri, config_);
+  else if (name == "SleepHandler")
+    return new SleepHandlerFactory(uri, config_);
   else
     return new _404HandlerFactory(uri, config_);
 }
@@ -63,6 +65,7 @@ std::unordered_map<std::string, RequestHandlerFactory*> server::configMap() {
   std::string echo_path = config_.get_echo_path(); 
   std::string crud_path = config_.get_crud_path();
   std::string health_path = config_.get_health_path();
+  std::string sleep_path = config_.get_sleep_path();
   for (auto it : static_path_map){
     routes[it.first] = createHandlerFactory("StaticHandler", string(it.first));
   }
@@ -71,6 +74,6 @@ std::unordered_map<std::string, RequestHandlerFactory*> server::configMap() {
   routes["/"] = createHandlerFactory("_404Handler", "/");
   routes["bad"] = createHandlerFactory("BadHandler", "");
   routes[crud_path] = createHandlerFactory("CrudHandler", string(crud_path));
-
+  routes[sleep_path] = createHandlerFactory("SleepHandler", string(sleep_path));
   return routes;
 }

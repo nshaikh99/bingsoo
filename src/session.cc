@@ -75,7 +75,7 @@ int session::handle_read(const boost::system::error_code& error,
     if (parse_status == request_parser::good) {
       result = 0;
 
-      reply::request_type req_type = get_request_type(); //echo, static, crud, health, or not_found
+      reply::request_type req_type = get_request_type(); //echo, static, crud, health, sleep, or not_found
 
       if (req_type == reply::type_echo){
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
@@ -112,6 +112,9 @@ int session::handle_read(const boost::system::error_code& error,
           factory = routes_[parsed_crud_path];
       } else if (req_type == reply::type_health){
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good health request has occurred.";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+      } else if (req_type == reply::type_sleep){
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good sleep request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       }
       else{
@@ -203,6 +206,10 @@ reply::request_type session::get_request_type()
   else if (config_.is_health()) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Health Request";
     return reply::type_health;
+  }
+  else if (config_.is_sleep()) {
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Sleep Request";
+    return reply::type_sleep;
   }
   return reply::type_not_found;
 }
