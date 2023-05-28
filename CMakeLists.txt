@@ -92,6 +92,9 @@ target_link_libraries(404_request_handler_test 404_request_handler gtest_main re
 add_executable(crud_request_handler_test tests/crud_request_handler_test.cc src/mock_filesystem.cc)
 target_link_libraries(crud_request_handler_test crud_request_handler gtest_main gmock_main reply Boost::filesystem Boost::log)
 
+add_executable(health_request_handler_test tests/health_request_handler_test.cc)
+target_link_libraries(health_request_handler_test health_request_handler gtest_main reply)
+
 # TODO(!): Update with test binary
 # gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(config_parser_test WORKING_DIRECTORY ../tests)
@@ -101,6 +104,7 @@ gtest_discover_tests(static_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRE
 gtest_discover_tests(404_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(request_parser_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(crud_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+gtest_discover_tests(health_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_get_echo_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_echo_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME successful_get_static_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_static_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
@@ -109,6 +113,8 @@ if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_log_invalid_port_number_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_log_invalid_port_number_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME successful_log_invalid_config_file_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_log_invalid_config_file_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME crud_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/crud_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    add_test(NAME successful_get_health_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_health_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
 endif()
 gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
@@ -116,4 +122,4 @@ gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/
 # TODO(!): Update with target/test targets
 include(cmake/CodeCoverageReportConfig.cmake)
 # generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
-generate_coverage_report(TARGETS server session server_lib echo_request_handler static_request_handler Boost::system request_parser reply config_parser_lib TESTS config_parser_test reply_test request_parser_test session_test echo_request_handler_test static_request_handler_test 404_request_handler_test crud_request_handler_test)
+generate_coverage_report(TARGETS server session server_lib echo_request_handler static_request_handler health_request_handler Boost::system request_parser reply config_parser_lib TESTS config_parser_test reply_test request_parser_test session_test echo_request_handler_test static_request_handler_test 404_request_handler_test crud_request_handler_test health_request_handler_test)
