@@ -23,12 +23,14 @@ public:
   server(boost::asio::io_service& io_service, short port, NginxConfig config);
   RequestHandlerFactory* createHandlerFactory(string name, string uri);
   std::unordered_map<std::string, RequestHandlerFactory*> configMap();
+  void run_threads();
 private:
   void start_accept();
   void handle_accept(session* new_session, const boost::system::error_code& error);
   boost::asio::io_service& io_service_;
   tcp::acceptor acceptor_;
   NginxConfig config_;
+  int thread_count_ = 5;
 };
 
 #endif
