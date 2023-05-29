@@ -4,6 +4,7 @@
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
 #include <unordered_map>
+#include <boost/thread.hpp>
 
 using namespace std;
 
@@ -15,6 +16,16 @@ server::server(boost::asio::io_service& io_service, short port, NginxConfig conf
     config_(config)
 {
   start_accept();
+}
+
+void server::run_threads()
+{
+  boost::thread_group thread_group;
+  for (int i = 0; i < thread_count_; ++i)
+  {
+    thread_group.create_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
+  }
+  thread_group.join_all();
 }
 
 void server::start_accept()

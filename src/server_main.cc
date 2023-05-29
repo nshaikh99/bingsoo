@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
     signals.async_wait(handler);
 
     // run server
-    io_service.run();
+    s.run_threads();
 
     // Sample error messages
     // BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "A trace severity message";
