@@ -22,6 +22,30 @@
       },
       "revId": "c303d0558b3ff7c22b4a827d791bd5b9ed6faaa7",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de6a0cf5_2e8fff2c",
+        "filename": "tests/health_request_handler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-05-29T23:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8af05237_f3de70f5",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "c303d0558b3ff7c22b4a827d791bd5b9ed6faaa7",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
