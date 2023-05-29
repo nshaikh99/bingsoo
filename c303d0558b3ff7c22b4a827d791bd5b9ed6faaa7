@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af05237_f3de70f5",
+        "filename": "tests/health_request_handler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-29T22:39:22Z",
+      "side": 1,
+      "message": "Can you please add a comment to explain what is happening here? It is understandable but a comment would make it super clear",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "c303d0558b3ff7c22b4a827d791bd5b9ed6faaa7",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
