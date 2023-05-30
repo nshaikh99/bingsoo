@@ -45,10 +45,13 @@ int session::handle_read(const boost::system::error_code& error,
     request_parser::result_type parse_status;
     auto pair = req_parser_.parse(req_, data_, data_ + bytes_transferred);
     parse_status = std::get<0>(pair); //parse_status indicates whether the parsing was done successfully 
+    int response_code;
+    string IP_address = "";
 
     // Client IP address
     try{
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Incoming request from client with IP: " << socket_.remote_endpoint().address().to_string();
+      IP_address = socket_.remote_endpoint().address().to_string();
     }
     catch(...){
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Incoming request from client with unknown IP";
@@ -72,18 +75,23 @@ int session::handle_read(const boost::system::error_code& error,
       factory = routes_["/"]; // "/" is mapped to the 404 handler factory
     }
     
+    string handler_type = "";
+
     if (parse_status == request_parser::good) {
       result = 0;
 
       reply::request_type req_type = get_request_type(); //echo, static, crud, health, sleep, or not_found
 
+      response_code = 200;
       if (req_type == reply::type_echo){
+        handler_type = "Echo Handler";
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       }
       else if (req_type == reply::type_static){
+        handler_type = "Static Handler";
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good static request has occurred.";
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
         std::unordered_map<std::string,std::string> parsed_config_paths_ = config_.get_static_file_path();
         std::string parsed_static_serving_path = config_.get_static_serving_path();
         std::unordered_map<string, string>::iterator original_path;
@@ -101,31 +109,39 @@ int session::handle_read(const boost::system::error_code& error,
           }
         }
         if (!served_file){
+          handler_type = "404 Handler";
+          response_code = 404;
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
-          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
           factory = routes_["/"];
         }
       } else if (req_type == reply::type_crud){
+          handler_type = "CRUD Handler";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good CRUD request has occurred.";
-          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
           std::string parsed_crud_path = config_.get_crud_path();
           factory = routes_[parsed_crud_path];
       } else if (req_type == reply::type_health){
+          handler_type = "Health Handler";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good health request has occurred.";
-          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       } else if (req_type == reply::type_sleep){
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good sleep request has occurred.";
-          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       }
       else{
+        handler_type = "404 Handler";
+        response_code = 404;
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "404 NOT FOUND: A resource was requested that does not exist.";
-        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+        BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]"  << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       }
     } 
     else if (parse_status == request_parser::bad) {
+      handler_type = "Bad Request Handler";
+      response_code = 400;
       result = 1;
       BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "400 BAD: A bad request has occurred.\n";
-      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+      BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
     }
     RequestHandler* handler = factory->create();
     handler->handle_request(request_, response);
@@ -141,6 +157,9 @@ int session::handle_read(const boost::system::error_code& error,
         response_buffer,
         boost::bind(&session::handle_write, this,
         boost::asio::placeholders::error));
+    
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << " [ResponseMetrics]\nResponse Code: " << response_code << "\nRequest Path: " << req_.uri << "\nRequest IP: " << IP_address << "\nRequest Handler: " << handler_type << "\n";
+
   }
   else
   {
