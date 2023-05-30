@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33dbca4_d5af30f1",
+        "filename": "src/sleep_request_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-30T19:43:55Z",
+      "side": 1,
+      "message": "Why was this change made?",
+      "range": {
+        "startLine": 5,
+        "startChar": 2,
+        "endLine": 6,
+        "endChar": 38
+      },
+      "revId": "34aca36fc2b4cb833273f49f0f8168a794fb0341",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857c7fea_6e563274",
+        "filename": "tests/successful_multithreading_integration_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-30T19:43:55Z",
+      "side": 1,
+      "message": "Can you add a comment explaining that you are extracting line numbers? The code doesn\u0027t make much sense without that fundamental understanding",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "34aca36fc2b4cb833273f49f0f8168a794fb0341",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
