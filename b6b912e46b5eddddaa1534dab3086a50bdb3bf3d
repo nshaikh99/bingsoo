@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b4cb736_3fa37de1",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "It\u0027s under the if statement where it signifies the end of the the file, and it is right before \"return true\" so it wouldn\u0027t be printing for every token.",
+      "parentUuid": "b8b99f7e_f9daab7e",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 114
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f53ede9e_d05e2325",
         "filename": "src/config_parser.cc",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-28T19:06:21Z",
       "side": 1,
       "message": "I think that it might be more accurate to move this logging statement to the session::handle_read method and add more logging statements for other types of requests since get_static_file_path() is really just building a list of routes. Maybe move this statement outside of the for loop and rename it to \"Building list of static routes\"?",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 111
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee0ee9f_46ffc7e2",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f53ede9e_d05e2325",
       "range": {
         "startLine": 325,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4eda3ed_d4dcbafe",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4658868_dec6658e",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 111
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7afe403_18f82e99",
@@ -93,6 +165,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfffa083_6ba3f1ae",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7afe403_18f82e99",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 109
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94804751_b7d1d314",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-05-28T19:06:21Z",
       "side": 1,
       "message": "Same as above lmao",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 111
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6d4fb0_ebc6bd20",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94804751_b7d1d314",
       "range": {
         "startLine": 395,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1148aa0e_0c7257df",
+        "filename": "src/server_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Yes, it just printed true, which I don\u0027t think is necessary to keep.",
+      "parentUuid": "2d1b9001_0a837363",
+      "range": {
+        "startLine": 73,
+        "startChar": 81,
+        "endLine": 73,
+        "endChar": 94
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ca19851_7d3c795a",
         "filename": "src/server_main.cc",
         "patchSetId": 2
@@ -152,6 +296,30 @@
       "writtenOn": "2023-05-28T19:06:21Z",
       "side": 1,
       "message": "nit: can you make the p in \"Port\" lowercase and move it before the colon lol",
+      "range": {
+        "startLine": 89,
+        "startChar": 98,
+        "endLine": 89,
+        "endChar": 102
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75170d9d_fb679ee3",
+        "filename": "src/server_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ca19851_7d3c795a",
       "range": {
         "startLine": 89,
         "startChar": 98,
@@ -185,6 +353,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31fa8c1_3175f704",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39323e60_33c8d6cf",
+      "range": {
+        "startLine": 94,
+        "startChar": 97,
+        "endLine": 94,
+        "endChar": 106
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fe0f504_d8482cbb",
@@ -198,6 +390,30 @@
       "writtenOn": "2023-05-28T19:06:21Z",
       "side": 1,
       "message": "Instead of having multiple log statements which all log \"Requested URI is: \", you could probably move it to the top of the function before the if statements. That way, if we need to change them then we don\u0027t need to change every single one one by one",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 109
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2275c4c3_58c5108a",
+        "filename": "src/session.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-30T18:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fe0f504_d8482cbb",
       "range": {
         "startLine": 189,
         "startChar": 0,
