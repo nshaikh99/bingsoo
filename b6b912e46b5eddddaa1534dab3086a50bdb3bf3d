@@ -48,6 +48,30 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aafbaea3_e352b802",
+        "filename": "src/config_parser.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-30T20:29:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b4cb736_3fa37de1",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 114
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f53ede9e_d05e2325",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "Yes, it just printed true, which I don\u0027t think is necessary to keep.",
       "parentUuid": "2d1b9001_0a837363",
+      "range": {
+        "startLine": 73,
+        "startChar": 81,
+        "endLine": 73,
+        "endChar": 94
+      },
+      "revId": "b6b912e46b5eddddaa1534dab3086a50bdb3bf3d",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff248733_12c93c58",
+        "filename": "src/server_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-30T20:29:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1148aa0e_0c7257df",
       "range": {
         "startLine": 73,
         "startChar": 81,
