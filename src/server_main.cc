@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
     boost::asio::io_service io_service;
 
     server s(io_service, port_num, config); //calls the server::server(...) function in server.cc
-    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Server running on port" << port_num;
+    BOOST_LOG_TRIVIAL(trace) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::TRACE] << "Server running on port: " << port_num;
 
     // handle signals
     boost::asio::signal_set signals(io_service, SIGINT, SIGTERM);
