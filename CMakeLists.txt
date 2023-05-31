@@ -71,6 +71,9 @@ add_executable(config_parser_test tests/config_parser_test.cc)
 target_link_libraries(config_parser_test config_parser_lib gtest_main)
 target_link_libraries(config_parser_test Boost::log Boost::log_setup)
 
+add_executable(server_test tests/server_test.cc)
+target_link_libraries(server_test server_lib gtest_main)
+
 add_executable(echo_request_handler_test tests/echo_request_handler_test.cc)
 target_link_libraries(echo_request_handler_test echo_request_handler gtest_main reply)
 
@@ -115,6 +118,8 @@ gtest_discover_tests(crud_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT
 gtest_discover_tests(health_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(bad_request_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(sleep_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+gtest_discover_tests(server_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_get_echo_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_echo_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
     add_test(NAME successful_get_static_response_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_get_static_response_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
@@ -127,10 +132,9 @@ if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Coverage")
     add_test(NAME successful_multithreading_integration_test COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/tests/successful_multithreading_integration_test.sh WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 endif()
-gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 
 # TODO(!): Update with target/test targets
 include(cmake/CodeCoverageReportConfig.cmake)
 # generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
-generate_coverage_report(TARGETS server session server_lib echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler Boost::system request_parser reply config_parser_lib TESTS config_parser_test reply_test request_parser_test session_test echo_request_handler_test static_request_handler_test 404_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test sleep_request_handler_test bad_request_test)
+generate_coverage_report(TARGETS session server_lib echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler Boost::system request_parser reply config_parser_lib TESTS server_test config_parser_test reply_test request_parser_test session_test echo_request_handler_test static_request_handler_test 404_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test sleep_request_handler_test bad_request_test)
