@@ -22,6 +22,30 @@
       },
       "revId": "21ac66aef0379118747e10c47ee6b67acd2dd1ea",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746855db_5aa98376",
+        "filename": "tests/reply_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-05-31T20:52:28Z",
+      "side": 1,
+      "message": "It\u0027s just to make sure the function works and increase coverage",
+      "parentUuid": "811e020a_ed0472a2",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "21ac66aef0379118747e10c47ee6b67acd2dd1ea",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
