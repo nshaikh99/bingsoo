@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3197e047_4d0276cb",
+        "filename": "src/server.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-31T20:11:09Z",
+      "side": 1,
+      "message": "Now that this function returns a boolean, it may be worth adding some error checking that the function did what was expected",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "833eb0b039956ed2b3909c8ab5956b85fe2ef6f4",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
