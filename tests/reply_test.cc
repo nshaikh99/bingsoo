@@ -12,6 +12,7 @@ class ReplyTestFixture : public ::testing::Test {
 
 TEST_F(ReplyTestFixture, OkRequest_Stock){
   rep = reply::stock_reply(reply::ok);
+  rep.to_buffers();
   bool status_success = rep.status == reply::ok;
   bool content_success = rep.content == stock_replies::ok;
   bool content_size_success = rep.headers[0].value == to_string(rep.content.size());
