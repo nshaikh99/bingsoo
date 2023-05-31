@@ -150,7 +150,7 @@ int session::handle_read(const boost::system::error_code& error,
         boost::bind(&session::handle_write, this,
         boost::asio::placeholders::error));
     
-    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[ResponseMetrics]\nResponse Code: " << response_.result_int() << "\nRequest Path: " << req_.uri << "\nRequest IP: " << IP_address << "\nRequest Handler: " << handler_type << "\n";
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[ResponseMetrics] Response Code: " << response_.result_int() << ", Request Path: " << req_.uri << ", Request IP: " << IP_address << ", Request Handler: " << handler_type;
 
   }
   else
