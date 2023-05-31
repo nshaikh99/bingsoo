@@ -99,6 +99,7 @@ target_link_libraries(health_request_handler_test health_request_handler gtest_m
 
 add_executable(bad_request_test tests/bad_request_test.cc)
 target_link_libraries(bad_request_test bad_request_handler gtest_main reply)
+
 add_executable(sleep_request_handler_test tests/sleep_request_handler_test.cc)
 target_link_libraries(sleep_request_handler_test sleep_request_handler gtest_main reply)
 
