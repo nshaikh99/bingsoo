@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811e020a_ed0472a2",
+        "filename": "tests/reply_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-31T20:49:29Z",
+      "side": 1,
+      "message": "What does this line do/why was it added",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "21ac66aef0379118747e10c47ee6b67acd2dd1ea",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
