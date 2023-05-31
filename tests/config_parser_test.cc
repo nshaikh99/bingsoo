@@ -163,3 +163,41 @@ TEST_F(NginxConfigTestFixture, GetSleepPathTest) {
   std::string paths = out_config.get_sleep_path();
   ASSERT_EQ(paths, "/sleep");
 }
+
+TEST_F(NginxConfigTestFixture, GetStaticPathTest) {
+  bool success = parser.Parse("test_configs/static_echo_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_static_serving_path();
+  ASSERT_EQ(paths, "/static");
+}
+
+TEST_F(NginxConfigTestFixture, GetEchoPathTest) {
+  bool success = parser.Parse("test_configs/static_echo_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_echo_path();
+  ASSERT_EQ(paths, "/echo");
+}
+
+TEST_F(NginxConfigTestFixture, VerifyPathsTest) {
+  bool success = parser.Parse("test_configs/sample_everything_config", &out_config);
+  EXPECT_TRUE(success);
+
+  bool echo_exists = out_config.is_echo();
+  bool static_exists = out_config.is_static();
+  bool health_exists = out_config.is_health();
+  bool sleep_exists = out_config.is_sleep();
+  bool crud_exists = out_config.is_crud();
+  EXPECT_TRUE(echo_exists && static_exists && health_exists && sleep_exists && crud_exists);
+}
+
+TEST_F(NginxConfigTestFixture, GetStaticFilePathsTest) {
+  bool success = parser.Parse("test_configs/sample_everything_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::unordered_map<std::string,std::string> static_paths = out_config.get_static_file_path();
+  ASSERT_EQ(static_paths["/static/index.html"], "static/index.html");
+  ASSERT_EQ(static_paths["/static/screenshot1.png"], "static/screenshot1.png");
+  ASSERT_EQ(static_paths["/static/relative_file_path.html"], "relative_file_path.html");
+}
