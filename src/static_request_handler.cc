@@ -17,7 +17,6 @@ std::string extension_type_map(std::string ext)
     if(ext==".xml")  return "application/xml";
     if(ext==".swf")  return "application/x-shockwave-flash";
     if(ext==".flv")  return "video/x-flv";
-    if(ext==".png")  return "image/png";
     if(ext==".jpe")  return "image/jpeg";
     if(ext==".jpeg") return "image/jpeg";
     if(ext==".jpg")  return "image/jpeg";
@@ -30,6 +29,7 @@ std::string extension_type_map(std::string ext)
     if(ext==".svgz") return "image/svg+xml";
     if(ext==".zip") return "application/zip";
     if(ext==".pdf") return "application/pdf";
+    if(ext==".png")  return "image/png";
     return "application/text";
 }
 

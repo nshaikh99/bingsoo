@@ -59,3 +59,36 @@ TEST_F(StaticRequestHandlerTestFixture, InvalidRequest){
   EXPECT_TRUE(status_invalid && content_invalid && content_size_invalid && content_type_invalid);
   EXPECT_FALSE(handled);
 }
+
+TEST_F(StaticRequestHandlerTestFixture, ValidPNGRequest){
+  string filename = "../static/screenshot1.png";
+  StaticHandler test_handler = StaticHandler(filename);
+  http::response<http::string_body> test_res;
+  http::request<http::string_body> test_req;
+  test_handler.handle_request(test_req, test_res);
+
+  std::ifstream test_file(filename.c_str(), std::ios::in | std::ios::binary);
+
+  char c;
+  std::string file_content = "";
+  while (test_file.get(c))
+    file_content += c;
+  test_file.close();
+
+  int idx = 0;
+  std::string fields[2];
+  for (auto& field : test_res.base()) {
+    fields[idx] = std::string(field.value());
+    idx++;
+  }
+
+  bool status_success = test_res.result() == http::status::ok;
+  bool content_success = test_res.body() == file_content;
+  bool content_size_success = fields[0] == std::to_string(file_content.length());
+  bool content_type_success = fields[1] == "image/png";
+  EXPECT_TRUE(status_success);
+  EXPECT_TRUE(content_success);
+  EXPECT_TRUE(content_size_success);
+  EXPECT_TRUE(content_type_success);
+}
+
