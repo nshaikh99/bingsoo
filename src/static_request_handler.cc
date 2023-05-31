@@ -46,8 +46,8 @@ status StaticHandler::handle_request(const http::request<http::string_body> req,
     std::ifstream static_file_absolute(absolute_path.c_str(), std::ios::in | std::ios::binary); 
     if (!static_file && !static_file_absolute)
     {
-        res.body() = stock_replies::bad_request;
-        res.result(http::status::bad_request);
+        res.body() = stock_replies::not_found;
+        res.result(http::status::not_found);
         res.content_length((res.body().size()));
         res.set(http::field::content_type, "text/html");
         return false;
@@ -76,14 +76,6 @@ status StaticHandler::handle_request(const http::request<http::string_body> req,
         }
         static_file_absolute.close();
     }
-    else {
-        res.body() = stock_replies::not_found;
-        res.result(http::status::not_found);
-        res.content_length((res.body().size()));
-        res.set(http::field::content_type, "text/html");
-        return false;
-    }
-
     // Populate fields
     res.body() = file_contents;
     res.result(http::status::ok);
