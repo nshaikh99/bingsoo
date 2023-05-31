@@ -9,7 +9,7 @@ class SleepRequestHandlerTestFixture : public ::testing::Test {
 
 TEST_F(SleepRequestHandlerTestFixture, ValidRequest){
   http::request<http::string_body> request;
-  request.body() = "Slept for 3 second\n";
+  request.body() = "Slept for 2 second\n";
   std::ostringstream request_ostring;
   request_ostring << request.body();
   std::string request_string = request_ostring.str();
