@@ -7,7 +7,7 @@ using namespace std;
 class StaticRequestHandlerTestFixture : public ::testing::Test {};
 
 TEST_F(StaticRequestHandlerTestFixture, ValidRequest){
-  string filename = "../static/index.html";
+  std::string filename = "../static/index.html";
   StaticHandler test_handler = StaticHandler(filename);
   http::response<http::string_body> test_res;
   http::request<http::string_body> test_req;
@@ -36,4 +36,26 @@ TEST_F(StaticRequestHandlerTestFixture, ValidRequest){
   EXPECT_TRUE(content_success);
   EXPECT_TRUE(content_size_success);
   EXPECT_TRUE(content_type_success);
+}
+
+TEST_F(StaticRequestHandlerTestFixture, InvalidRequest){
+  std::string filename = "nonexistant.html";
+  StaticHandler test_handler = StaticHandler(filename);
+  http::response<http::string_body> test_res;
+  http::request<http::string_body> test_req;
+  bool handled = test_handler.handle_request(test_req, test_res);
+
+  int idx = 0;
+  std::string fields[2];
+  for (auto& field : test_res.base()) {
+    fields[idx] = std::string(field.value());
+    idx++;
+  }
+
+  bool status_invalid = test_res.result() == http::status::not_found;
+  bool content_invalid = test_res.body() == stock_replies::not_found;
+  bool content_size_invalid = fields[0] == std::to_string(test_res.body().size());
+  bool content_type_invalid = fields[1] == "text/html";
+  EXPECT_TRUE(status_invalid && content_invalid && content_size_invalid && content_type_invalid);
+  EXPECT_FALSE(handled);
 }
