@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7447f4c4_d68b533f",
+        "filename": "tests/static_request_handler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-05-31T19:16:54Z",
+      "side": 1,
+      "message": "I think that these should be not found requests (404), not bad requests (400)",
+      "range": {
+        "startLine": 55,
+        "startChar": 45,
+        "endLine": 56,
+        "endChar": 71
+      },
+      "revId": "78ec4418c037f8b7c02235c1eb605b1d8c03f30f",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
