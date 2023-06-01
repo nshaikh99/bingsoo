@@ -391,32 +391,7 @@ std::string NginxConfig::get_sleep_path(){
   }
   return paths_str;
 }
-
-bool NginxConfig::is_echo(){
-  std::string echo_in_config = get_echo_path();
-  return echo_in_config != "";
-}
-
-bool NginxConfig::is_static(){
-  std::string static_in_config = get_static_serving_path();
-  return static_in_config != "";
-}
-
-bool NginxConfig::is_crud(){
-  std::string crud_in_config = get_crud_path();
-  return crud_in_config != "";
-}
-
-bool NginxConfig::is_health(){
-  std::string health_in_config = get_health_path();
-  return health_in_config != "";
-}
-
-bool NginxConfig::is_sleep(){
-  std::string sleep_in_config = get_sleep_path();
-  return sleep_in_config != "";
-}
-
+ 
 std::string NginxConfig::get_crud_path() {
   std::string path_str;
 

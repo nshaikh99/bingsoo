@@ -32,11 +32,6 @@ class NginxConfig {
   std::string get_health_path();
   std::string get_sleep_path();
   std::unordered_map<std::string,std::string> get_crud_args();
-  bool is_echo();
-  bool is_static();
-  bool is_crud();
-  bool is_health();
-  bool is_sleep();
 };
 
 // The driver that parses a config file and generates an NginxConfig.

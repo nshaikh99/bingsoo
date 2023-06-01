@@ -86,7 +86,7 @@ TEST(RequestCrudTest, PostRequest) {
     ASSERT_EQ(response.result(), http::status::created);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
     // Assert the response body (newly created entity ID)
-    ASSERT_EQ(response.body(), "{\"id\": 1}");
+    ASSERT_EQ(response.body(), "{\"id\": 1}\n");
     // Assert that the file was written with the correct content
     std::string createdFile = target + "/1";
     std::string contents;
@@ -145,7 +145,7 @@ TEST(RequestCrudTest, PostFile) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::created);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "{\"id\": 2}");
+    ASSERT_EQ(response.body(), "{\"id\": 2}\n");
 }
 
 TEST(RequestCrudTest, PutFileToExistingId) {
@@ -172,7 +172,7 @@ TEST(RequestCrudTest, PutFileToExistingId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::ok);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "Edited ./mnt/crud/Shoes/1 on the server");
+    ASSERT_EQ(response.body(), "Edited ./mnt/crud/Shoes/1 on the server\n");
 }
 
 TEST(RequestCrudTest, PutFileToDesiredId) {
@@ -199,7 +199,7 @@ TEST(RequestCrudTest, PutFileToDesiredId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::created);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "Edited ./mnt/crud/Shoes/3 on the server");
+    ASSERT_EQ(response.body(), "Edited ./mnt/crud/Shoes/3 on the server\n");
 }
 
 TEST(RequestCrudTest, DeleteFile) {
@@ -227,7 +227,7 @@ TEST(RequestCrudTest, DeleteFile) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::ok);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "Deleted ./mnt/crud/Shoes/1 from the server");
+    ASSERT_EQ(response.body(), "Deleted ./mnt/crud/Shoes/1 from the server\n");
 }
 
 TEST(RequestCrudTest, BadRequestWithOneSlash) {
@@ -253,7 +253,7 @@ TEST(RequestCrudTest, BadRequestWithOneSlash) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::bad_request);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "Request uri /apiShoes1 only has 1 slash, instead of 2");
+    ASSERT_EQ(response.body(), "Request uri /apiShoes1 only has 1 slash, instead of 2\n");
 }
 
 TEST(RequestCrudTest, PostRequestWithId) {
@@ -279,7 +279,7 @@ TEST(RequestCrudTest, PostRequestWithId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::bad_request);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "id in request uri of post request");
+    ASSERT_EQ(response.body(), "id in request uri of post request\n");
 }
 
 TEST(RequestCrudTest, GetRequestWithIncorrectDirectory) {
@@ -305,7 +305,7 @@ TEST(RequestCrudTest, GetRequestWithIncorrectDirectory) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::not_found);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "Directory not found");
+    ASSERT_EQ(response.body(), "Directory not found\n");
 }
 
 TEST(RequestCrudTest, GetRequestWithIncorrectId) {
@@ -331,7 +331,7 @@ TEST(RequestCrudTest, GetRequestWithIncorrectId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::not_found);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "File does not exist");
+    ASSERT_EQ(response.body(), "File does not exist\n");
 }
 
 TEST(RequestCrudTest, DeleteRequestWithIncorrectId) {
@@ -357,7 +357,7 @@ TEST(RequestCrudTest, DeleteRequestWithIncorrectId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::not_found);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "File does not exist");
+    ASSERT_EQ(response.body(), "File does not exist\n");
 }
 
 TEST(RequestCrudTest, DeleteRequestWithNoId) {
@@ -383,7 +383,7 @@ TEST(RequestCrudTest, DeleteRequestWithNoId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::bad_request);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "numerical id not in request uri of delete request");
+    ASSERT_EQ(response.body(), "numerical id not in request uri of delete request\n");
 }
 
 TEST(RequestCrudTest, PutRequestWithNoId) {
@@ -409,5 +409,5 @@ TEST(RequestCrudTest, PutRequestWithNoId) {
     // Assert the response properties
     ASSERT_EQ(response.result(), http::status::bad_request);
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
-    ASSERT_EQ(response.body(), "numerical id not in request uri of put request");
+    ASSERT_EQ(response.body(), "numerical id not in request uri of put request\n");
 }
