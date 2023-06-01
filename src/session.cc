@@ -195,29 +195,29 @@ std::string session::request_info()
 
 reply::request_type session::get_request_type()
 {
-  // BOOST_LOG_TRIVIAL(debug) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::DEBUG] << "In session.cc get_request_type().";
   BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Requested URI is: " << req_.uri;
-  if (config_.is_echo() && config_.get_echo_path() == req_.uri){ 
+  string echo_path = config_.get_echo_path();
+  string static_path = config_.get_static_serving_path();
+  string crud_path = config_.get_crud_path();
+  string health_path = config_.get_health_path();
+  string sleep_path = config_.get_sleep_path();
+  if (echo_path != "" && req_.uri.rfind(echo_path, 0) == 0){
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Echo Request";
     return reply::type_echo;
   }
-  else if (config_.is_static()) {
+  else if (static_path != "" && (req_.uri.rfind(static_path, 0) == 0)) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Static Request"; 
-    std::string parsed_static_serving_path = config_.get_static_serving_path();
-    if (req_.uri.substr(0, parsed_static_serving_path.length()) == (parsed_static_serving_path)){
-      return reply::type_static;
-    }
+    return reply::type_static;
   } 
-  else if (config_.is_crud()) {
+  else if (crud_path != "" && (req_.uri.rfind(crud_path, 0) == 0)) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "CRUD Request";
-    std::string parsed_crud_serving_path = config_.get_crud_path();
     return reply::type_crud;
   }
-  else if (config_.is_health()) {
+  else if (health_path != "" && (req_.uri.rfind(health_path, 0) == 0)) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Health Request";
     return reply::type_health;
   }
-  else if (config_.is_sleep()) {
+  else if (sleep_path != "" && (req_.uri.rfind(sleep_path, 0) == 0)) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Sleep Request";
     return reply::type_sleep;
   }

@@ -180,18 +180,6 @@ TEST_F(NginxConfigTestFixture, GetEchoPathTest) {
   ASSERT_EQ(paths, "/echo");
 }
 
-TEST_F(NginxConfigTestFixture, VerifyPathsTest) {
-  bool success = parser.Parse("test_configs/sample_everything_config", &out_config);
-  EXPECT_TRUE(success);
-
-  bool echo_exists = out_config.is_echo();
-  bool static_exists = out_config.is_static();
-  bool health_exists = out_config.is_health();
-  bool sleep_exists = out_config.is_sleep();
-  bool crud_exists = out_config.is_crud();
-  EXPECT_TRUE(echo_exists && static_exists && health_exists && sleep_exists && crud_exists);
-}
-
 TEST_F(NginxConfigTestFixture, GetStaticFilePathsTest) {
   bool success = parser.Parse("test_configs/sample_everything_config", &out_config);
   EXPECT_TRUE(success);

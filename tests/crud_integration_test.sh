@@ -66,7 +66,7 @@ fi
 ########### TEST 4 #################
 
 echo "CRUD TEST 4: Send GET to verify that entity has been deleted"
-curl -s -i -v -X GET -o ./tests/result http://localhost:80/api/Shoes/$id
+curl -s -i -X GET -o ./tests/result http://localhost:80/api/Shoes/$id
 
 diff --strip-trailing-cr ./tests/result ./tests/crud_integration_test_404_result
 
