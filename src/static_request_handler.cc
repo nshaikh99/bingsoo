@@ -62,7 +62,7 @@ status StaticHandler::handle_request(const http::request<http::string_body> req,
     // Read the contents of the file
     char c;
     std::string file_contents;
-    if (static_file && !static_file_absolute){
+    if ((static_file && !static_file_absolute) || (static_file && static_file_absolute)){
         while (static_file.get(c))
         {
             file_contents += c;
