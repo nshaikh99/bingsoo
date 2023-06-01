@@ -34,6 +34,24 @@
       "parentUuid": "4195c981_29ac7541",
       "revId": "331dba0430e12ed63bdff4cc0f1f263f86fb4aa4",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73073661_c13909cc",
+        "filename": "tests/crud_integration_test_404_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-06-01T05:28:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0e73591_773008e2",
+      "revId": "331dba0430e12ed63bdff4cc0f1f263f86fb4aa4",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
