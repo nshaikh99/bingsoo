@@ -16,6 +16,24 @@
       "message": "Why did the content length change to 20?",
       "revId": "331dba0430e12ed63bdff4cc0f1f263f86fb4aa4",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e73591_773008e2",
+        "filename": "tests/crud_integration_test_404_result",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-06-01T05:28:17Z",
+      "side": 1,
+      "message": "I added \\n to the end of all response bodies so the content length increased by 1",
+      "parentUuid": "4195c981_29ac7541",
+      "revId": "331dba0430e12ed63bdff4cc0f1f263f86fb4aa4",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }

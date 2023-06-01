@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e30bfdbb_07229edc",
+        "filename": "conf/ass7.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-06-01T05:28:17Z",
+      "side": 0,
+      "message": "It’s just not necessary for the config’s purpose. I’m not sure why it was included in the first place",
+      "parentUuid": "7c5d5e1c_fd89be27",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "b576079893090cad98469900133b389fe30bd7f5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c02e655_b16accfa",
         "filename": "tests/crud_integration_test.sh",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-01T05:24:07Z",
       "side": 0,
       "message": "Why was this removed?",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "b576079893090cad98469900133b389fe30bd7f5",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ca02f7_205a0db4",
+        "filename": "tests/crud_integration_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000569
+      },
+      "writtenOn": "2023-06-01T05:28:17Z",
+      "side": 0,
+      "message": "-v is for “verbose” and it just adds more to the output than is necessary",
+      "parentUuid": "4c02e655_b16accfa",
       "range": {
         "startLine": 69,
         "startChar": 11,
