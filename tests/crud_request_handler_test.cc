@@ -411,3 +411,29 @@ TEST(RequestCrudTest, PutRequestWithNoId) {
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
     ASSERT_EQ(response.body(), "numerical id not in request uri of put request\n");
 }
+
+TEST(RequestCrudTest, GetRequestList) {
+    // Create a mock filesystem
+    std::shared_ptr<filesystem_interface> m_filesystem = std::make_shared<mock_filesystem>();
+    // Create a response object
+    http::response<http::string_body> response;
+    // Create an instance of the request_crud class
+    CrudHandler crud = CrudHandler("/mnt/crud", m_filesystem);
+    // Write a test file to the mock filesystem for the requested file
+    std::string target = " ./mnt/crud/Shoes/1";
+    std::string fileContent = "{\n    \"brand\": \"Nike\",\n    \"color\": \"red\"\n}";
+    m_filesystem->write_file(target, fileContent);
+    // Create a GET request for the test file
+    http::request<http::string_body> request;
+    request.method(http::verb::get);
+    request.target("/api/Shoes");  // Set the target path of the request
+    // Call the handle_request function
+    bool status = crud.handle_request(request, response);
+    // Assert the expected result
+    ASSERT_TRUE(status);
+
+    // Assert the response properties
+    ASSERT_EQ(response.result(), http::status::ok);
+    ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
+    ASSERT_EQ(response.body(), "[1]\n");
+}
