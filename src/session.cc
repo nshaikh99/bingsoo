@@ -79,7 +79,7 @@ int session::handle_read(const boost::system::error_code& error,
     if (parse_status == request_parser::good) {
       result = 0;
 
-      reply::request_type req_type = get_request_type(); //echo, static, crud, health, sleep, or not_found
+      reply::request_type req_type = get_request_type(); //echo, static, crud, health, sleep, markdown, or not_found
 
       if (req_type == reply::type_echo){
         handler_type = "Echo Handler";
@@ -120,7 +120,12 @@ int session::handle_read(const boost::system::error_code& error,
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good health request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       } else if (req_type == reply::type_sleep){
+        handler_type = "Sleep Handler";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good sleep request has occurred.";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+      } else if (req_type == reply::type_markdown){
+        handler_type = "Markdown Handler";
+          BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good markdown request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       }
       else{
@@ -201,6 +206,7 @@ reply::request_type session::get_request_type()
   string crud_path = config_.get_crud_path();
   string health_path = config_.get_health_path();
   string sleep_path = config_.get_sleep_path();
+  string markdown_path = config_.get_markdown_path();
   if (echo_path != "" && req_.uri.rfind(echo_path, 0) == 0){
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Echo Request";
     return reply::type_echo;
@@ -220,6 +226,10 @@ reply::request_type session::get_request_type()
   else if (sleep_path != "" && (req_.uri.rfind(sleep_path, 0) == 0)) {
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Sleep Request";
     return reply::type_sleep;
+  }
+  else if (markdown_path != "" && (req_.uri.rfind(markdown_path, 0) == 0)) {
+    BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Markdown Request";
+    return reply::type_markdown;
   }
   return reply::type_not_found;
 }
