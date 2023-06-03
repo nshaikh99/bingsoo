@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924c72d6_eadbf820",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-03T02:54:49Z",
+      "side": 1,
+      "message": "looks great otherwise : )",
+      "revId": "6a8bc58a8259e47d36c133430ae628c1884d8a38",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cdd1a0f_6632afaa",
+        "filename": "src/markdown_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-03T02:54:49Z",
+      "side": 1,
+      "message": "can you add these two files to our cmakelists?",
+      "revId": "6a8bc58a8259e47d36c133430ae628c1884d8a38",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
