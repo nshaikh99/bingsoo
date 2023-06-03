@@ -28,7 +28,7 @@ struct reply
     internal_server_error = 500,
   } status;
 
-  enum request_type {type_echo, type_static, type_crud, type_health, type_not_found, type_sleep};
+  enum request_type {type_echo, type_static, type_crud, type_health, type_not_found, type_sleep, type_markdown};
 
   /// The headers to be included in the reply.
   std::vector<header> headers;

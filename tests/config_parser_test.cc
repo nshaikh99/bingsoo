@@ -164,6 +164,14 @@ TEST_F(NginxConfigTestFixture, GetSleepPathTest) {
   ASSERT_EQ(paths, "/sleep");
 }
 
+TEST_F(NginxConfigTestFixture, GetMarkdownPathTest) {
+  bool success = parser.Parse("test_configs/markdown_config", &out_config);
+  EXPECT_TRUE(success);
+
+  std::string paths = out_config.get_markdown_path();
+  ASSERT_EQ(paths, "/markdown");
+}
+
 TEST_F(NginxConfigTestFixture, GetStaticPathTest) {
   bool success = parser.Parse("test_configs/static_echo_config", &out_config);
   EXPECT_TRUE(success);

@@ -404,6 +404,17 @@ std::string NginxConfig::get_crud_path() {
   return path_str;
 }
 
+std::string NginxConfig::get_markdown_path(){
+  std::string paths_str;
+  for (const auto& statement : statements_) {
+    if (statement->tokens_[0] == "location" && statement->tokens_[2] == "MarkdownHandler") {
+      paths_str = statement->tokens_[1];
+      return paths_str;
+    }
+  }
+  return paths_str;
+}
+
 std::unordered_map<std::string,std::string> NginxConfig::get_crud_args() {
   std::unordered_map<std::string,std::string> arg_map;
 

@@ -31,6 +31,7 @@ class NginxConfig {
   std::string get_crud_path();
   std::string get_health_path();
   std::string get_sleep_path();
+  std::string get_markdown_path();
   std::unordered_map<std::string,std::string> get_crud_args();
 };
 
