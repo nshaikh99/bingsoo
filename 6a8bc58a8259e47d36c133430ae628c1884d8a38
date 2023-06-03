@@ -51,6 +51,24 @@
       "parentUuid": "2cdd1a0f_6632afaa",
       "revId": "6a8bc58a8259e47d36c133430ae628c1884d8a38",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81a9cf3_7bfe6a75",
+        "filename": "src/markdown_handler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-03T02:56:05Z",
+      "side": 1,
+      "message": "oh, i see, that sounds good to me. thanks nabeel!",
+      "parentUuid": "1846bd11_25dc7c3b",
+      "revId": "6a8bc58a8259e47d36c133430ae628c1884d8a38",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
