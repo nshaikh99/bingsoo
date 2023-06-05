@@ -30,6 +30,7 @@ std::string extension_type_map(std::string ext)
     if(ext==".zip") return "application/zip";
     if(ext==".pdf") return "application/pdf";
     if(ext==".png")  return "image/png";
+    if(ext==".md")  return "text/html";
     return "application/text";
 }
 
@@ -59,6 +60,7 @@ status StaticHandler::handle_request(const http::request<http::string_body> req,
     if (extension_start != std::string::npos)
         ext_type = file_path_.substr(extension_start);
 
+    // std::cout << "LINE 63: static_request_handler.cc:  " << ext_type << std::endl; 
     // Read the contents of the file
     char c;
     std::string file_contents;
