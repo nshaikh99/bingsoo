@@ -1,4 +1,5 @@
 #include "static_request_handler.h"
+#include "markdown_handler.h"
 #include "reply.h"
 #include <string>
 #include <fstream>
@@ -30,6 +31,7 @@ std::string extension_type_map(std::string ext)
     if(ext==".zip") return "application/zip";
     if(ext==".pdf") return "application/pdf";
     if(ext==".png")  return "image/png";
+    if(ext==".md")  return "text/html";
     return "application/text";
 }
 
@@ -62,24 +64,30 @@ status StaticHandler::handle_request(const http::request<http::string_body> req,
     // Read the contents of the file
     char c;
     std::string file_contents;
-    if ((static_file && !static_file_absolute) || (static_file && static_file_absolute)){
-        while (static_file.get(c))
-        {
-            file_contents += c;
-        }
-        static_file.close();
+    MarkdownHandler handler_;
+    if (ext_type == ".md"){
+        return handler_.handle_request(req, res);
     }
-    else if (static_file_absolute && !static_file){
-        while (static_file_absolute.get(c))
-        {
-            file_contents += c;
+    else {
+        if ((static_file && !static_file_absolute) || (static_file && static_file_absolute)){
+            while (static_file.get(c))
+            {
+                file_contents += c;
+            }
+            static_file.close();
         }
-        static_file_absolute.close();
+        else if (static_file_absolute && !static_file){
+            while (static_file_absolute.get(c))
+            {
+                file_contents += c;
+            }
+            static_file_absolute.close();
+        }
+        // Populate fields
+        res.body() = file_contents;
+        res.result(http::status::ok);
+        res.content_length((res.body().size()));
+        res.set(http::field::content_type, extension_type_map(ext_type));
+        return true;    
     }
-    // Populate fields
-    res.body() = file_contents;
-    res.result(http::status::ok);
-    res.content_length((res.body().size()));
-    res.set(http::field::content_type, extension_type_map(ext_type));
-    return true;
 }
