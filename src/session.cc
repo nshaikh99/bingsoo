@@ -127,6 +127,8 @@ int session::handle_read(const boost::system::error_code& error,
         handler_type = "Markdown Handler";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good markdown request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
+          std::string parsed_markdown_path = config_.get_markdown_path();
+          factory = routes_[parsed_markdown_path];
       }
       else{
         handler_type = "404 Handler";
