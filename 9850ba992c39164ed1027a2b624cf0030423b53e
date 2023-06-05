@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cc247fe_66cc1fea",
+        "filename": "conf/sample.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-06-05T19:07:49Z",
+      "side": 1,
+      "message": "i thought \"serving simple markdown file on the /static path\" just meant that we would handle .md files as we would if the /markdown MarkdownHandler was called.",
+      "parentUuid": "0ca57ae5_daa01d67",
+      "revId": "9850ba992c39164ed1027a2b624cf0030423b53e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df4c15c6_ac6b19d9",
         "filename": "md",
         "patchSetId": 3
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcb6b916_5a8e3f45",
+        "filename": "md",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-06-05T19:07:49Z",
+      "side": 1,
+      "message": "i\u0027m not sure why this file was created, i will look into it.",
+      "parentUuid": "df4c15c6_ac6b19d9",
+      "revId": "9850ba992c39164ed1027a2b624cf0030423b53e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90c851a3_d9bedab5",
         "filename": "src/static_request_handler.cc",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2023-06-05T17:32:31Z",
       "side": 1,
       "message": "just a reminder to take this out if its for debugging!",
+      "revId": "9850ba992c39164ed1027a2b624cf0030423b53e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35c3af9_8337baa0",
+        "filename": "src/static_request_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-06-05T19:07:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "90c851a3_d9bedab5",
       "revId": "9850ba992c39164ed1027a2b624cf0030423b53e",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
