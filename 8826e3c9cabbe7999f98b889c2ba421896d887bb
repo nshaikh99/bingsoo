@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ffc6c6_6f592cda",
+        "filename": "src/markdown_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-05T04:43:04Z",
+      "side": 1,
+      "message": "could we add logging to this so these error messages are visible in logs?",
+      "revId": "8826e3c9cabbe7999f98b889c2ba421896d887bb",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
