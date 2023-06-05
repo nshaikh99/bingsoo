@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "static_request_handler.h"
+#include "markdown_handler.h"
 #include <fstream>
 
 using namespace std;
