@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2856dd90_8c5913b4",
+        "filename": "conf/sample.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-05T19:54:39Z",
+      "side": 1,
+      "message": "should this be 80?",
+      "revId": "d56e4592134af46dfb9e5ffa5a3911bec4bfa490",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
