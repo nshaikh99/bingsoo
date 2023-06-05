@@ -16,6 +16,24 @@
       "message": "could we add logging to this so these error messages are visible in logs?",
       "revId": "8826e3c9cabbe7999f98b889c2ba421896d887bb",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207875b7_a9b8d43a",
+        "filename": "src/markdown_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-06-05T04:47:53Z",
+      "side": 1,
+      "message": "I am planning on adding more logging in a later change once the core functionality has been fully implemented. Is that alright?",
+      "parentUuid": "b2ffc6c6_6f592cda",
+      "revId": "8826e3c9cabbe7999f98b889c2ba421896d887bb",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
