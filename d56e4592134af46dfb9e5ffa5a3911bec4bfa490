@@ -16,6 +16,24 @@
       "message": "should this be 80?",
       "revId": "d56e4592134af46dfb9e5ffa5a3911bec4bfa490",
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed80582b_d7848287",
+        "filename": "conf/sample.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000484
+      },
+      "writtenOn": "2023-06-05T20:06:12Z",
+      "side": 1,
+      "message": "oooh yes, i forgot to change it back when running locally. i will change it now.",
+      "parentUuid": "2856dd90_8c5913b4",
+      "revId": "d56e4592134af46dfb9e5ffa5a3911bec4bfa490",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     }
   ]
 }
