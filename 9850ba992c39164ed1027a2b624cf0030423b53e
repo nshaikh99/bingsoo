@@ -36,6 +36,24 @@
       "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b2c208_f9b69961",
+        "filename": "conf/sample.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-05T19:10:48Z",
+      "side": 1,
+      "message": "hmm, lets talk about this before you keep working",
+      "parentUuid": "0cc247fe_66cc1fea",
+      "revId": "9850ba992c39164ed1027a2b624cf0030423b53e",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df4c15c6_ac6b19d9",
