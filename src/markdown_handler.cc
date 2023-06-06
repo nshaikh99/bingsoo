@@ -7,10 +7,20 @@
 #include <string>
 #include <vector>
 
-MarkdownHandler::MarkdownHandler(std::string data_path = "") : data_path_(data_path) {}
+MarkdownHandler::MarkdownHandler(std::string data_path) : data_path_(data_path) {}
 
 status MarkdownHandler::handle_request(const http::request<http::string_body> req, http::response<http::string_body> &res) {
-  std::string md_file_path = std::string(req.target()).substr(10);
+  std::string md_file_path = std::string(req.target());
+  md_file_path = md_file_path.substr(md_file_path.find_first_of('/') + 1); // removes the first / from the request
+
+  // if only one / then empty file path which means README
+  if(md_file_path.find_first_of('/') == std::string::npos) {
+    md_file_path = "README.md";
+  }
+  else {
+    md_file_path = md_file_path.substr(md_file_path.find_first_of('/') + 1);
+    md_file_path = data_path_[data_path_.size() - 1] == '/' ? data_path_ + md_file_path : data_path_ + '/' + md_file_path; // constructs the Markdown file path by appending the Markdown file name to the data path, adding a / in between if there isn't one already
+  }
   
   // check for .md file extension
   if(!boost::ends_with(md_file_path, ".md")) {
@@ -67,6 +77,82 @@ status MarkdownHandler::handle_request(const http::request<http::string_body> re
   std::ofstream html_file(html_file_path, std::ios_base::app);
   bool inside_code_snippet = false;
   for(int i = 0; i < lines.size(); i++) {
+    // bold
+    while(lines[i].find("**") != std::string::npos || lines[i].find("__") != std::string::npos) {
+      std::string new_line = lines[i];
+      int idx;
+      if(lines[i].find("**") != std::string::npos) {
+        idx = new_line.find("**");
+        new_line.replace(idx, 2, "<strong>");
+        idx = new_line.find("**");
+        if(idx != std::string::npos) {
+          new_line.replace(idx, 2, "</strong>");
+          lines[i] = new_line;
+        }
+        else {
+          break;
+        }
+      }
+      else {
+        idx = new_line.find("__");
+        new_line.replace(idx, 2, "<strong>");
+        idx = new_line.find("__");
+        if(idx != std::string::npos) {
+          new_line.replace(idx, 2, "</strong>");
+          lines[i] = new_line;
+        }
+        else {
+          break;
+        }
+      }
+    }
+
+    // italics
+    while(lines[i].find("*") != std::string::npos || lines[i].find("_") != std::string::npos) {
+      std::string new_line = lines[i];
+      int idx;
+      if(lines[i].find("*") != std::string::npos) {
+        idx = new_line.find("*");
+        new_line.replace(idx, 1, "<em>");
+        idx = new_line.find("*");
+        if(idx != std::string::npos) {
+          new_line.replace(idx, 1, "</em>");
+          lines[i] = new_line;
+        }
+        else {
+          break;
+        }
+      }
+      else {
+        idx = new_line.find("_");
+        new_line.replace(idx, 1, "<em>");
+        idx = new_line.find("_");
+        if(idx != std::string::npos) {
+          new_line.replace(idx, 1, "</em>");
+          lines[i] = new_line;
+        }
+        else {
+          break;
+        }
+      }
+    }
+
+    // in-line code
+    while(lines[i].find("`") != std::string::npos && lines[i].find("```") == std::string::npos) {
+      std::string new_line = lines[i];
+      int idx;
+      idx = new_line.find("`");
+      new_line.replace(idx, 1, "<code>");
+      idx = new_line.find("`");
+      if(idx != std::string::npos) {
+        new_line.replace(idx, 1, "</code>");
+        lines[i] = new_line;
+      }
+      else {
+        break;
+      }
+    }
+
     // small headings
     if(lines[i].size() >= 4 && lines[i].substr(0, 3) == "###" && lines[i][3] == ' ') {
       html_file << "<h3 style=\"white-space: pre\">" + lines[i].substr(4) + "</h3>" << std::endl;
