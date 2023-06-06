@@ -90,7 +90,7 @@ target_link_libraries(session_test session config_parser_lib gtest_main)
 target_link_libraries(session_test Boost::log Boost::log_setup)
 
 add_executable(static_request_handler_test tests/static_request_handler_test.cc)
-target_link_libraries(static_request_handler_test static_request_handler markdown_handler gtest_main reply Boost::filesystem Boost::log)
+target_link_libraries(static_request_handler_test static_request_handler gtest_main reply)
 
 add_executable(404_request_handler_test tests/404_request_handler_test.cc)
 target_link_libraries(404_request_handler_test 404_request_handler gtest_main reply)
