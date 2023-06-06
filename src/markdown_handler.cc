@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+MarkdownHandler::MarkdownHandler(std::string data_path = "") : data_path_(data_path) {}
+
 status MarkdownHandler::handle_request(const http::request<http::string_body> req, http::response<http::string_body> &res) {
   std::string md_file_path = std::string(req.target()).substr(10);
   
