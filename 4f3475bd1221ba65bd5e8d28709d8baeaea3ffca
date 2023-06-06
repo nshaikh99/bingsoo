@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07c1c8e_e484f29f",
+        "filename": "include/markdown_handler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000504
+      },
+      "writtenOn": "2023-06-06T00:26:40Z",
+      "side": 1,
+      "message": "will this be updated to a different string once we parse the config?",
+      "revId": "4f3475bd1221ba65bd5e8d28709d8baeaea3ffca",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
