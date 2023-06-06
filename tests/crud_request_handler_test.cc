@@ -437,3 +437,25 @@ TEST(RequestCrudTest, GetRequestList) {
     ASSERT_EQ(response[boost::beast::http::field::content_type], "application/json");
     ASSERT_EQ(response.body(), "[1]\n");
 }
+
+TEST(RequestCrudTest, NoSlashesInURIRequest) {
+    // Create a mock filesystem
+    std::shared_ptr<filesystem_interface> m_filesystem = std::make_shared<mock_filesystem>();
+    // Create a response object
+    http::response<http::string_body> response;
+    // Create an instance of the request_crud class
+    CrudHandler crud = CrudHandler("/mnt/crud", m_filesystem);
+    // Set the target of the POST request
+    std::string target = "./mnt/crud/Shoes";
+    std::string requestBody = "{\"name\": \"New Shoes data\"}";
+    // Create a POST request for the directory
+    http::request<http::string_body> request;
+    request.method(http::verb::post);
+    request.target("api");
+    request.body() = requestBody;
+    // Call the handle_request function
+    bool fail = crud.handle_request(request, response);
+    // Assert the expected result
+    ASSERT_FALSE(fail);
+}
+ 

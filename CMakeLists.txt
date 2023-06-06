@@ -86,11 +86,11 @@ target_link_libraries(reply_test reply  gtest_main)
 target_link_libraries(reply_test session Boost::log Boost::log_setup)
 
 add_executable(session_test tests/session_test.cc)
-target_link_libraries(session_test session config_parser_lib gtest_main)
+target_link_libraries(session_test session config_parser_lib filesystem_lib gtest_main)
 target_link_libraries(session_test Boost::log Boost::log_setup)
 
 add_executable(static_request_handler_test tests/static_request_handler_test.cc)
-target_link_libraries(static_request_handler_test static_request_handler gtest_main reply)
+target_link_libraries(static_request_handler_test static_request_handler markdown_handler gtest_main reply Boost::filesystem Boost::log)
 
 add_executable(404_request_handler_test tests/404_request_handler_test.cc)
 target_link_libraries(404_request_handler_test 404_request_handler gtest_main reply)
@@ -139,3 +139,4 @@ endif()
 include(cmake/CodeCoverageReportConfig.cmake)
 # generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
 generate_coverage_report(TARGETS session server_lib server echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler markdown_handler request_parser reply config_parser_lib TESTS session_test server_test echo_request_handler_test static_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test bad_request_test sleep_request_handler_test request_parser_test reply_test config_parser_test)
+
