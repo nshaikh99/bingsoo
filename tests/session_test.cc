@@ -4,6 +4,7 @@
 #include "health_handler_factory.h"
 #include "sleep_handler_factory.h"
 #include "404_handler_factory.h"
+#include "crud_handler_factory.h"
 #include <iostream>
 #include <unordered_map>
 #include <strstream>
@@ -77,3 +78,14 @@ TEST_F(SessionTestFixture, _404Request)
   int res = test_session->handle_read(boost::system::error_code(), test_session->max_length);
   EXPECT_EQ(res, 0);
 }
+
+TEST_F(SessionTestFixture, CrudRequest)
+{
+  routes["/api"] = new CrudHandlerFactory("/api", config);
+  session* test_session = new session(io_service, config, routes);
+  const char* request = "GET /api HTTP/1.1\r\nHost: localhost\r\nUser-Agent: curl/7.81.0\r\nAccept: */*\r\n\r\n";
+  strcpy(test_session->data_, request);
+  int res = test_session->handle_read(boost::system::error_code(), test_session->max_length);
+  EXPECT_EQ(res, 0);
+}
+
