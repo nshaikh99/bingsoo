@@ -1,5 +1,5 @@
-#ifndef markdown_handler_h
-#define markdown_handler_h
+#ifndef markdown_request_handler_h
+#define markdown_request_handler_h
 
 #include "request_handler.h"
 #include <boost/beast/http.hpp>

@@ -35,7 +35,7 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 include_directories(include)
 
 # TODO(!): Update name and srcs
-add_library(session src/session.cc src/request_parser.cc src/reply.cc src/echo_request_handler.cc src/static_request_handler.cc src/404_request_handler.cc src/bad_request_handler.cc src/crud_request_handler.cc src/health_request_handler.cc src/sleep_request_handler.cc src/markdown_handler.cc src/404_handler_factory.cc src/bad_handler_factory.cc src/echo_handler_factory.cc src/static_handler_factory.cc src/crud_handler_factory.cc src/health_handler_factory.cc src/sleep_handler_factory.cc src/markdown_handler_factory.cc)
+add_library(session src/session.cc src/request_parser.cc src/reply.cc src/echo_request_handler.cc src/static_request_handler.cc src/404_request_handler.cc src/bad_request_handler.cc src/crud_request_handler.cc src/health_request_handler.cc src/sleep_request_handler.cc src/markdown_request_handler.cc src/404_handler_factory.cc src/bad_handler_factory.cc src/echo_handler_factory.cc src/static_handler_factory.cc src/crud_handler_factory.cc src/health_handler_factory.cc src/sleep_handler_factory.cc src/markdown_handler_factory.cc)
 add_library(server_lib src/server.cc src/session.cc)
 add_library(request_parser src/request_parser.cc)
 add_library(reply src/reply.cc)
@@ -47,7 +47,7 @@ add_library(bad_request_handler src/bad_request_handler.cc)
 add_library(crud_request_handler src/crud_request_handler.cc)
 add_library(health_request_handler src/health_request_handler.cc)
 add_library(sleep_request_handler src/sleep_request_handler.cc)
-add_library(markdown_handler src/markdown_handler.cc)
+add_library(markdown_request_handler src/markdown_request_handler.cc)
 add_library(filesystem_lib include/filesystem_interface.h src/real_filesystem.cc)
 
 add_library(echo_handler_factory src/echo_handler_factory.cc)
@@ -63,7 +63,7 @@ target_link_libraries(server_lib session config_parser_lib reply request_parser 
 
 # TODO(!): Update executable name, srcs, and deps
 add_executable(server src/server_main.cc)
-target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler 404_request_handler bad_request_handler crud_request_handler health_request_handler sleep_request_handler markdown_handler config_parser_lib Boost::log_setup Boost::log echo_handler_factory static_handler_factory bad_handler_factory 404_handler_factory crud_handler_factory health_handler_factory sleep_handler_factory markdown_handler_factory filesystem_lib)
+target_link_libraries(server session server_lib Boost::system request_parser reply echo_request_handler static_request_handler 404_request_handler bad_request_handler crud_request_handler health_request_handler sleep_request_handler markdown_request_handler config_parser_lib Boost::log_setup Boost::log echo_handler_factory static_handler_factory bad_handler_factory 404_handler_factory crud_handler_factory health_handler_factory sleep_handler_factory markdown_handler_factory filesystem_lib)
 
 # TODO(!): Update test executable name, srcs, and deps
 # add_executable(example_lib_test tests/example_lib_test.cc)
@@ -90,7 +90,7 @@ target_link_libraries(session_test session config_parser_lib filesystem_lib gtes
 target_link_libraries(session_test Boost::log Boost::log_setup)
 
 add_executable(static_request_handler_test tests/static_request_handler_test.cc)
-target_link_libraries(static_request_handler_test static_request_handler markdown_handler gtest_main reply Boost::filesystem Boost::log)
+target_link_libraries(static_request_handler_test static_request_handler markdown_request_handler gtest_main reply Boost::filesystem Boost::log)
 
 add_executable(404_request_handler_test tests/404_request_handler_test.cc)
 target_link_libraries(404_request_handler_test 404_request_handler gtest_main reply)
@@ -138,5 +138,5 @@ endif()
 # TODO(!): Update with target/test targets
 include(cmake/CodeCoverageReportConfig.cmake)
 # generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
-generate_coverage_report(TARGETS session server_lib server echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler markdown_handler request_parser reply config_parser_lib TESTS session_test server_test echo_request_handler_test static_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test bad_request_test sleep_request_handler_test request_parser_test reply_test config_parser_test)
+generate_coverage_report(TARGETS session server_lib server echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler markdown_request_handler request_parser reply config_parser_lib TESTS session_test server_test echo_request_handler_test static_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test bad_request_test sleep_request_handler_test request_parser_test reply_test config_parser_test)
 

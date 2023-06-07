@@ -1,4 +1,4 @@
-#include "markdown_handler.h"
+#include "markdown_request_handler.h"
 
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/filesystem.hpp>
@@ -205,6 +205,7 @@ status MarkdownHandler::handle_request(const http::request<http::string_body> re
     res.body() += line;
   }
   html_file_2.close();
+  std::remove(&html_file_path[0]);
   
   res.result(http::status::ok);
   res.content_length(res.body().size());

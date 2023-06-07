@@ -1,5 +1,5 @@
 #include "markdown_handler_factory.h"
-#include "markdown_handler.h"
+#include "markdown_request_handler.h"
 
 MarkdownHandlerFactory::MarkdownHandlerFactory(const std::string& location_path_, const NginxConfig& config)
 : location_path_(location_path_), config_(config) {
