@@ -430,3 +430,19 @@ std::unordered_map<std::string,std::string> NginxConfig::get_crud_args() {
     }
   return arg_map;
 }
+
+std::unordered_map<std::string,std::string> NginxConfig::get_markdown_args() {
+  std::unordered_map<std::string,std::string> arg_map;
+
+  for(const auto& statement : statements_) {
+    if(statement->tokens_[0] == "location" && statement->tokens_[2] == "MarkdownHandler") {
+        for (auto config_statement : statement -> child_block_ -> statements_) {
+            if (!config_statement->tokens_[0].empty()) {
+              arg_map[config_statement->tokens_[0]] = config_statement->tokens_[1];
+              BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "Obtained " << config_statement->tokens_[0] << " arg: " << config_statement->tokens_[1];
+          }
+        }
+      }
+    }
+  return arg_map;
+}

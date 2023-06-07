@@ -12,16 +12,16 @@ MarkdownHandler::MarkdownHandler(std::string data_path) : data_path_(data_path) 
 status MarkdownHandler::handle_request(const http::request<http::string_body> req, http::response<http::string_body> &res) {
   std::string md_file_path = std::string(req.target());
   md_file_path = md_file_path.substr(md_file_path.find_first_of('/') + 1); // removes the first / from the request
-
+  
   // if only one / then empty file path which means README
   if(md_file_path.find_first_of('/') == std::string::npos) {
     md_file_path = "README.md";
   }
   else {
     md_file_path = md_file_path.substr(md_file_path.find_first_of('/') + 1);
-    md_file_path = data_path_[data_path_.size() - 1] == '/' ? data_path_ + md_file_path : data_path_ + '/' + md_file_path; // constructs the Markdown file path by appending the Markdown file name to the data path, adding a / in between if there isn't one already
+    md_file_path = data_path_[data_path_.size() - 1] == '/' ? "./" + data_path_ + md_file_path : "./" + data_path_ + '/' + md_file_path; // constructs the Markdown file path by appending the Markdown file name to the data path, adding a / in between if there isn't one already
   }
-  
+  std::cout << "\nMD PATH: \n" << md_file_path << "\nEND MD PATH\n";
   // check for .md file extension
   if(!boost::ends_with(md_file_path, ".md")) {
     res.body() = "File requested is not a markdown file\n";
@@ -30,7 +30,7 @@ status MarkdownHandler::handle_request(const http::request<http::string_body> re
     res.set(http::field::content_type, "text/plain");
     return false;
   }
-
+ 
   // check that file exists
   if(!boost::filesystem::exists(md_file_path)) {
     res.body() = "File does not exist\n";
