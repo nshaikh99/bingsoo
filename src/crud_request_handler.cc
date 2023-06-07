@@ -41,6 +41,7 @@ status CrudHandler::handle_request( const http::request<http::string_body> req, 
 
   
   std::string path_to_entities = "." + data_path_ + "/" + suffix;
+  std::cout << "\nCRUD PATH: \n" << path_to_entities << "\nEND CRUD PATH\n";
 
   std::string basename = target.substr(target.find_last_of("/") + 1);
   bool isID = true;

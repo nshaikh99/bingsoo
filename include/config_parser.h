@@ -33,6 +33,7 @@ class NginxConfig {
   std::string get_sleep_path();
   std::string get_markdown_path();
   std::unordered_map<std::string,std::string> get_crud_args();
+  std::unordered_map<std::string,std::string> get_markdown_args();
 };
 
 // The driver that parses a config file and generates an NginxConfig.
