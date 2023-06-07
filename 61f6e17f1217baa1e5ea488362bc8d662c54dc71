@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d93fb82_3765a2ab",
+        "filename": "markdown/sample.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000364
+      },
+      "writtenOn": "2023-06-07T06:22:08Z",
+      "side": 1,
+      "message": "deez",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 4
+      },
+      "revId": "61f6e17f1217baa1e5ea488362bc8d662c54dc71",
+      "serverId": "8946f097-e5f6-4bfc-a755-dc9633490dc3"
+    }
+  ]
+}
