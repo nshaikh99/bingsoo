@@ -177,6 +177,8 @@ void session::handle_write(const boost::system::error_code& error)
         boost::bind(&session::handle_read, this,                    
           boost::asio::placeholders::error,                         
           boost::asio::placeholders::bytes_transferred));
+    boost::system::error_code ignored_ec;
+    socket_.shutdown(boost::asio::ip::tcp::socket::shutdown_both, ignored_ec);
   }
   else
   {
