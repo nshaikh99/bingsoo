@@ -1,19 +1,5 @@
 # bingsoo README
 
-## Table of contents
-1. [Source code layout](#source-code-layout)
-2. [Build, test, and run](#build-test-and-run)
-    * [Build](#build)
-    * [Test](#test)
-    * [Run](#run)
-    * [Config file format](#config-file-format)
-3. [How to add a request handler](#how-to-add-a-request-handler)
-    * [Design and implement request handler](#define-and-implement-request-handler)
-    * [Define and implement factory](#define-and-implement-factory)
-    * [Add to config file](#add-to-config-file)
-    * [Add to config parser interface and implementation](#add-to-config-parser-interface-and-implementation)
-    * [Add to server](#add-to-server)
-
 ## Source code layout
 The source code for this project is laid out as follows:
 ```
