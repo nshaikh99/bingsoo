@@ -2,4 +2,4 @@
 
 A nice **sample** markdown page
 
-    Here goes some code
+    `Here goes some code`
