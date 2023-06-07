@@ -6,10 +6,11 @@
 class MarkdownHandlerFactory : public RequestHandlerFactory
 {
   public:
-    MarkdownHandlerFactory(const std::string& path, const NginxConfig& config);
+    MarkdownHandlerFactory(const std::string& location_path_, const NginxConfig& config);
     RequestHandler* create();
   private:
-    std::string path_;
+    std::string location_path_;
+    std::string data_path_;
     NginxConfig config_;
 };
 
