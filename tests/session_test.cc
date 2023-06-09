@@ -1,10 +1,14 @@
 #include "gtest/gtest.h"
 #include "session.h"
+#include "reply.h"
+#include "request_parser.h"
 #include "echo_handler_factory.h"
+#include "static_handler_factory.h"
 #include "health_handler_factory.h"
 #include "sleep_handler_factory.h"
 #include "404_handler_factory.h"
 #include "crud_handler_factory.h"
+#include "markdown_handler_factory.h"
 #include <iostream>
 #include <unordered_map>
 #include <strstream>
@@ -49,6 +53,16 @@ TEST_F(SessionTestFixture, InvalidRequest)
   EXPECT_EQ(res, 1);
 }
 
+TEST_F(SessionTestFixture, StaticRequest)
+{
+  routes["/static"] = new StaticHandlerFactory("/static", config);
+  session* test_session = new session(io_service, config, routes);
+  const char* request = "GET /static HTTP/1.1\r\nHost: localhost\r\nUser-Agent: curl/7.81.0\r\nAccept: */*\r\n\r\n";
+  strcpy(test_session->data_, request);
+  int res = test_session->handle_read(boost::system::error_code(), test_session->max_length);
+  EXPECT_EQ(res, 0);
+}
+
 TEST_F(SessionTestFixture, HealthRequest)
 {
   routes["/health"] = new HealthHandlerFactory("/health", config);
@@ -89,3 +103,12 @@ TEST_F(SessionTestFixture, CrudRequest)
   EXPECT_EQ(res, 0);
 }
 
+TEST_F(SessionTestFixture, MarkdownRequest)
+{
+  routes["/markdown"] = new MarkdownHandlerFactory("/markdown", config);
+  session* test_session = new session(io_service, config, routes);
+  const char* request = "GET /markdown HTTP/1.1\r\nHost: localhost\r\nUser-Agent: curl/7.81.0\r\nAccept: */*\r\n\r\n";
+  strcpy(test_session->data_, request);
+  int res = test_session->handle_read(boost::system::error_code(), test_session->max_length);
+  EXPECT_EQ(res, 0);
+} 

@@ -80,7 +80,7 @@ int session::handle_read(const boost::system::error_code& error,
       result = 0;
 
       reply::request_type req_type = get_request_type(); //echo, static, crud, health, sleep, markdown, or not_found
-
+      
       if (req_type == reply::type_echo){
         handler_type = "Echo Handler";
         BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good echo request has occurred.";
@@ -120,11 +120,11 @@ int session::handle_read(const boost::system::error_code& error,
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good health request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       } else if (req_type == reply::type_sleep){
-        handler_type = "Sleep Handler";
+          handler_type = "Sleep Handler";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good sleep request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
       } else if (req_type == reply::type_markdown){
-        handler_type = "Markdown Handler";
+          handler_type = "Markdown Handler";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "200 OK: A good markdown request has occurred.";
           BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[RequestMetrics]" << "\n----BEGIN REQUEST----\n" << request_info() << "----END REQUEST----";
           std::string parsed_markdown_path = config_.get_markdown_path();
@@ -145,20 +145,18 @@ int session::handle_read(const boost::system::error_code& error,
     RequestHandler* handler = factory->create();
     handler->handle_request(request_, response_);
 
-
     std::vector<boost::asio::const_buffer> response_buffer;
     std::ostringstream response_ostring;
     response_ostring << response_;
     std::string request_string = response_ostring.str();
     response_buffer.push_back(boost::asio::buffer(request_string));
-
+    
     boost::asio::async_write(socket_,
         response_buffer,
         boost::bind(&session::handle_write, this,
         boost::asio::placeholders::error));
     
     BOOST_LOG_TRIVIAL(info) << LOG_MESSAGE_TYPES[LOG_MESSAGE_TYPE::INFO] << "[ResponseMetrics] Response Code: " << response_.result_int() << ", Request Path: " << req_.uri << ", Request IP: " << IP_address << ", Request Handler: " << handler_type;
-
   }
   else
   {
