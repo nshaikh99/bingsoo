@@ -40,7 +40,9 @@ TEST_F(ServerTestFixture, ConfigMap)
   std::string crud_path = config.get_crud_path();
   std::string health_path = config.get_health_path();
   std::string sleep_path = config.get_sleep_path();
+  std::string markdown_path = config.get_markdown_path();
   std::unordered_map<std::string, std::string> static_path_map = config.get_static_file_path();
+  test_server.createHandlerFactory("StaticHandler", "/static");
   bool static_success = true;
   for (auto it : static_path_map){
     if (routes[it.first] == nullptr){
@@ -53,5 +55,7 @@ TEST_F(ServerTestFixture, ConfigMap)
   bool health_success = routes[health_path] != nullptr;
   bool sleep_success = routes[sleep_path] != nullptr;
   bool _404_success = routes["/"] != nullptr;
-  EXPECT_TRUE(static_success && echo_success && bad_success && crud_success && health_success && sleep_success && _404_success);
+  bool markdown_success = routes[markdown_path] != nullptr;
+  EXPECT_TRUE(static_success && echo_success && bad_success && crud_success && health_success && sleep_success && _404_success && markdown_success);
 }
+ 

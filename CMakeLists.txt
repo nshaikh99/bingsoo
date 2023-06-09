@@ -107,6 +107,9 @@ target_link_libraries(bad_request_test bad_request_handler gtest_main reply)
 add_executable(sleep_request_handler_test tests/sleep_request_handler_test.cc)
 target_link_libraries(sleep_request_handler_test sleep_request_handler gtest_main reply)
 
+add_executable(markdown_request_handler_test tests/markdown_request_handler_test.cc)
+target_link_libraries(markdown_request_handler_test markdown_request_handler filesystem_lib gtest_main reply Boost::filesystem Boost::log)
+
 # TODO(!): Update with test binary
 # gtest_discover_tests(example_lib_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(config_parser_test WORKING_DIRECTORY ../tests)
@@ -118,6 +121,7 @@ gtest_discover_tests(request_parser_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURC
 gtest_discover_tests(crud_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(health_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(bad_request_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
+gtest_discover_tests(markdown_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(sleep_request_handler_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(session_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 gtest_discover_tests(server_test WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/tests)
@@ -138,5 +142,5 @@ endif()
 # TODO(!): Update with target/test targets
 include(cmake/CodeCoverageReportConfig.cmake)
 # generate_coverage_report(TARGETS example_server example_lib TESTS example_lib_test)
-generate_coverage_report(TARGETS session server_lib server echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler markdown_request_handler request_parser reply config_parser_lib TESTS session_test server_test echo_request_handler_test static_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test bad_request_test sleep_request_handler_test request_parser_test reply_test config_parser_test)
+generate_coverage_report(TARGETS session server_lib server echo_request_handler static_request_handler crud_request_handler health_request_handler 404_request_handler bad_request_handler sleep_request_handler markdown_request_handler request_parser reply config_parser_lib TESTS session_test server_test echo_request_handler_test static_request_handler_test crud_request_handler_test health_request_handler_test 404_request_handler_test bad_request_test markdown_request_handler_test sleep_request_handler_test request_parser_test reply_test config_parser_test)
 
