@@ -20,6 +20,8 @@ FROM ubuntu:jammy as deploy
 COPY --from=builder /usr/src/project/build/bin/server .
 COPY --from=builder /usr/src/project/conf/sample.conf .
 COPY --from=builder /usr/src/project/static ./static
+COPY --from=builder /usr/src/project/markdown ./markdown
+COPY --from=builder /usr/src/project/README.md .
 
 # TODO(!): Expose some port(s)
 EXPOSE 80
