@@ -22,6 +22,7 @@ status MarkdownHandler::handle_request(const http::request<http::string_body> re
     md_file_path = data_path_[data_path_.size() - 1] == '/' ? "./" + data_path_ + md_file_path : "./" + data_path_ + '/' + md_file_path; // constructs the Markdown file path by appending the Markdown file name to the data path, adding a / in between if there isn't one already
   }
 
+
   // check for .md file extension
   if(!boost::ends_with(md_file_path, ".md")) {
     res.body() = "File requested is not a markdown file\n";
